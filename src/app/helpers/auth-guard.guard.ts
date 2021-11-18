@@ -1,15 +1,24 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanDeactivate, CanLoad, Route, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanDeactivate, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+import { ConexionService } from '../servicios/conexion.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuardGuard implements CanActivate, CanActivateChild, CanDeactivate<unknown>, CanLoad {
+
+  constructor(private conexion:ConexionService, private router:Router){}
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+    
+    if (this.conexion.isLoggedin()) {
+      return true;
+    }
+    this.router.navigate(['/login'])
+    return false;
   }
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,

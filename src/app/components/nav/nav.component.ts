@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import {Router} from '@angular/router'
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
+
 export class NavComponent implements OnInit {
   token:boolean = false
   nombre:string = localStorage.getItem('user') || ''
-  aux: any; 
+
   constructor(
     private router: Router
   ) { }

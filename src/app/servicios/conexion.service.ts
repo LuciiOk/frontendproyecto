@@ -29,6 +29,14 @@ export class ConexionService {
     return resultado;
   }
 
+  isLoggedin():boolean {
+    if (localStorage.getItem('token')) {
+      return true
+    }
+
+    return false;
+  }
+
   register():Observable<any> {
     return this.http.post(`${environment.hostname}/auth/register`, JSON.stringify({}));
   }
