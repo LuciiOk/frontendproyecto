@@ -23,7 +23,7 @@
   height: 65px;
   left: 135px;
   top: 566px;
-  font-family: "Noto Sans", sans-serif;
+  font-family: Airbnb Cereal App Medium, sans-serif;
 }
 .fondo2 {
   background-image: url(../../../assets/recursos/fondo2.png);
@@ -44,7 +44,7 @@
   color: #01255b;
 }
 .o-text {
-  font-family: Airbnb Cereal App Book;
+  font-family: Airbnb Cereal App Medium;
   font-size: 16px;
   line-height: 170%;
   color: rgba(0, 0, 0, 0.8);

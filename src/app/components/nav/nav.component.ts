@@ -6,20 +6,24 @@ import {Router} from '@angular/router'
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-
-  nombre = "Daniela"
+  token:boolean = false
+  nombre:string = "Daniela"
   aux: any; 
   constructor(
     private router: Router
   ) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('token') !== null) {
+      this.token = true;
+    }
+    console.log(this.token)
   }
   prueba(){
     console.log('hols')
   }
-// realiza la navegacion al componente indicado
-navigateTo(component: string) {
-  this.router.navigate([component]);
-}
+  // realiza la navegacion al componente indicado
+  navigateTo(component: string) {
+    this.router.navigate([component]);
+  }
 }

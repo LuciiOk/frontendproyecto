@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ConexionService } from 'src/app/servicios/conexion.service';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  formulario:FormGroup;
+
+  constructor(public servicio:ConexionService, public form:FormBuilder, private router:Router) { 
+    this.formulario = this.form.group({
+      mail:['', [Validators.required, Validators.email]],
+      pass:['', Validators.required]
+    })
+
+  }
 
   ngOnInit(): void {
+  }
+
+  login() {
+    this.servicio.login(this.formulario.value)
+      .subscribe(data => localStorage.setItem('token', data));
+    this.router.navigate(['/juego']);
   }
 
 }
