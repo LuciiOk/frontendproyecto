@@ -25,7 +25,11 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.servicio.login(this.formulario.value)
-      .subscribe(data => localStorage.setItem('token', data));
+      .subscribe(data => {
+        console.log(data)
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', data.user.nombre)
+      });
     this.router.navigate(['/juego']);
   }
 

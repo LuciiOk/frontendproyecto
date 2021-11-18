@@ -7,7 +7,7 @@ import {Router} from '@angular/router'
 })
 export class NavComponent implements OnInit {
   token:boolean = false
-  nombre:string = "Daniela"
+  nombre:string = localStorage.getItem('user') || ''
   aux: any; 
   constructor(
     private router: Router
