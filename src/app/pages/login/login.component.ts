@@ -27,10 +27,11 @@ export class LoginComponent implements OnInit {
     this.servicio.login(this.formulario.value)
       .subscribe(data => {
         console.log(data)
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('user', data.user.nombre)
+        sessionStorage.setItem('token', data.token);
+        sessionStorage.setItem('user', data.user.nombre)
+        this.router.navigate(['/juego']);
+        window.location.reload();
       });
-    this.router.navigate(['/juego']);
   }
 
 }

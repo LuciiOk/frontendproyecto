@@ -4,8 +4,8 @@
     <div class="d-xl-flex flex-row-revers justify-content-between col-5">
           <a class="nav-link" [routerLink]="['/']" routerLinkActive="router-link-active">Nosotros</a>
           <a class="nav-link" [routerLink]="['/']" routerLinkActive="router-link-active">Conocenos</a>
-          <a class="nav-link" *ngIf="token === true"  [routerLink]="['/profile']" routerLinkActive="router-link-active">{{nombre}}</a>
-          <a class="nav-link" *ngIf="token === false" [routerLink]="['/login']" routerLinkActive="router-link-active">Iniciar sesión</a>
+          <a class="nav-link" *ngIf="token"  [routerLink]="['/profile']" >{{nombre}}</a>
+          <a class="nav-link" *ngIf="!token" [routerLink]="['/login']" >Iniciar sesión</a>
     </div> 
   </div>
 </nav>

@@ -11,17 +11,17 @@ const routes: Routes = [
   {
     path:'login',
     canActivate: [LoggedinGuardGuard],
-    loadChildren: () => import('./pages/login/login.module').then(m=>m.LoginModule)
+    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)
   },
   {
     path:'registro',
     canActivate: [LoggedinGuardGuard],
-    loadChildren: () => import('./pages/registro/registro.module').then(m=>m.RegistroModule)
+    loadChildren: () => import('./pages/registro/registro.module').then(m => m.RegistroModule)
   },
   {
     path:'juego',
     canActivate: [AuthGuardGuard],
-    loadChildren: () => import('./pages/game/game.module').then(m=>m.GameModule),
+    loadChildren: () => import('./pages/game/game.module').then(m => m.GameModule),
 
   },
   {
