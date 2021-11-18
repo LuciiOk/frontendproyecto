@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardGuard } from './helpers/auth-guard.guard';
+import { LoggedinGuardGuard } from './helpers/loggedin-guard.guard';
 
 const routes: Routes = [
   {
@@ -9,10 +10,12 @@ const routes: Routes = [
   },
   {
     path:'login',
+    canActivate: [LoggedinGuardGuard],
     loadChildren: () => import('./pages/login/login.module').then(m=>m.LoginModule)
   },
   {
     path:'registro',
+    canActivate: [LoggedinGuardGuard],
     loadChildren: () => import('./pages/registro/registro.module').then(m=>m.RegistroModule)
   },
   {
