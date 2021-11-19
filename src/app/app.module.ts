@@ -8,6 +8,7 @@ import { AuthGuardGuard } from './helpers/auth-guard.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { NavComponent } from './components/nav/nav.component';
 import { ComponentsModule } from './components/components.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ComponentsModule } from './components/components.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ComponentsModule
+    ComponentsModule,
+    BrowserAnimationsModule
   ],
   providers: [AuthGuardGuard],
   bootstrap: [AppComponent]
