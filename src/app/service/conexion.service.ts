@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Users } from '../interfaces/users';
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +42,8 @@ export class ConexionService {
   }
   
 
-  register():Observable<any> {
-    return this.http.post(`${environment.hostname}/auth/register`, JSON.stringify({}));
+  register(user:Users):Observable<any> {
+
+    return this.http.post(`${environment.hostname}/auth/register`, JSON.stringify({user}));
   }
 }
