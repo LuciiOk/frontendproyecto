@@ -73,7 +73,6 @@ export class RegistroComponent implements OnInit {
     console.log(user)
     this.authService.register(user).subscribe((data:any) => {
       this.error = false;
-      this.router.navigate(['']);
     }, error => {
       this.error = true;
       this.errorMessage = error.error.message;
