@@ -1,0 +1,50 @@
+.container-fluid{
+    background-image: url("../../../assets/recursos/fondo4.png");
+}
+h1{
+    font-family: Airbnb Cereal App Medium;
+    font-style: normal; 
+    font-weight: bold;
+    font-size: 37.0833px;
+    line-height: 48px;
+    color: #01255B;
+    margin-bottom: 30px;
+    text-align: center;
+
+}
+h3{
+    font-size:30px ;
+    font-weight: bold;
+    color: #01255B;
+}
+
+.col{
+    font-family: Airbnb Cereal App Medium;
+    font-style: normal; 
+    font-weight: bold;
+    font-size: 25.3333px;
+    line-height: 48px;
+    color: #01255B;
+    margin-bottom: 30px;
+   
+}
+
+
+p{
+    font-family: Airbnb Cereal App Medium;
+    font-size: 25px;
+    font-weight: normal;
+    line-height: 170%;
+    color: #01255B;
+}
+
+.main-title{
+    padding-top: 4%;
+    padding-bottom: 10%;
+}
+
+.main-title h1{
+    font-family: Subway;
+    font-size: 60px;
+    text-align: center;
+}
