@@ -16,8 +16,8 @@ export class ConexionService {
       'Access-Control-Allow-Headers': 'Content-Type',
       'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
       'Content-Type': 'application/json',
-    }
-    ),
+      }
+    )
   };
 
 
@@ -38,12 +38,20 @@ export class ConexionService {
   }
 
   getUser():Observable<any> {
-    return this.http.get(`${environment.hostname}/user/`);
+    return this.http.get(`${environment.hostname}/user`);
   }
-  
 
   register(user:Users):Observable<any> {
+    return this.http.post(`${environment.hostname}/auth/register`, 
+    user
+    , { headers:this.HttpUploadOptions.headers
+      ,observe: 'response'});
+  }
 
-    return this.http.post(`${environment.hostname}/auth/register`, JSON.stringify({user}));
+  registerHeaders(user:Users):Observable<any> {
+    return this.http.post(`${environment.hostname}/auth/register`, 
+    user,
+    {headers: this.HttpUploadOptions.headers, observe: 'response',},
+    );
   }
 }
