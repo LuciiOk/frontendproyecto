@@ -25,7 +25,7 @@ export class ConexionService {
 
   login({mail, pass}:any):Observable<any> {
 
-    let resultado =this.http.post(`${environment.hostname}/auth/login`, JSON.stringify({"email":mail, "pass":pass}), this.HttpUploadOptions);
+    let resultado =this.http.post(`${environment.hostname}/auth/login`, JSON.stringify({"email":mail, "pass":pass}), {headers: this.HttpUploadOptions.headers, observe: 'response',});
 
     return resultado;
   }

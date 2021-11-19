@@ -10,6 +10,7 @@ import { ConexionService } from 'src/app/service/conexion.service';
 })
 export class LoginComponent implements OnInit {
 
+  error:boolean = false;
   formulario:FormGroup;
 
   constructor(public servicio:ConexionService, public form:FormBuilder, private router:Router) { 
@@ -26,11 +27,12 @@ export class LoginComponent implements OnInit {
   login() {
     this.servicio.login(this.formulario.value)
       .subscribe(data => {
-        console.log(data)
         sessionStorage.setItem('token', data.token);
         sessionStorage.setItem('user', data.user.nombre)
         this.router.navigate(['/juego']);
         location.reload();
+      }, error => {
+        this.error = true;
       });
   }
 
