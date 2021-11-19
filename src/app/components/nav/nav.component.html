@@ -1,9 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
-    <a class="nav-link" [routerLink]="['/']" routerLinkActive="router-link-active"><img src="../../../assets/recursos/TS.png" style="width: 50%;"></a>
+    <a class="nav-link"
+     [routerLink]="['/']" fragment="" [routerLinkActive]="'active'"
+     [routerLinkActiveOptions]="{exact: false}">
+    <img src="../../../assets/recursos/TS.png" style="width: 50%;"></a>
     <div class="d-xl-flex flex-row-revers justify-content-between col-5">
-          <a class="nav-link" [routerLink]="['/']" routerLinkActive="router-link-active">Nosotros</a>
-          <a class="nav-link" [routerLink]="['/']" routerLinkActive="router-link-active">Conocenos</a>
+          <a class="nav-link" [routerLink]="['/']" fragment="conocenos">Nosotros</a>
+          <a class="nav-link" [routerLink]="['/']" fragment="nosotros">Conocenos</a>
           <a class="nav-link" *ngIf="token"  [routerLink]="['/profile']" >{{nombre}}</a>
           <a class="nav-link" *ngIf="!token" [routerLink]="['/login']" >Iniciar sesión</a>
     </div> 

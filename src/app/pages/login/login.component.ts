@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('token', data.token);
         sessionStorage.setItem('user', data.user.nombre)
         this.router.navigate(['/juego']);
-        window.location.reload();
+        location.reload();
       });
   }
 

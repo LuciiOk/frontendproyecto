@@ -26,9 +26,14 @@ export class NavComponent implements OnInit {
     })
   }
 
+  ira() {
+    this.router.navigate(['/'], {fragment: 'Test'});
+  }
+
   prueba(){
     console.log('hols')
   }
+  
   // realiza la navegacion al componente indicado
   navigateTo(component: string) {
     this.router.navigate([component]);
