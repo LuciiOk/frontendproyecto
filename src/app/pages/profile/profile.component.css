@@ -40,11 +40,18 @@ p{
 
 .main-title{
     padding-top: 4%;
-    padding-bottom: 10%;
+    
+}
+ .titulo-seccion{
+    padding-top: 10%;
+
 }
 
 .main-title h1{
     font-family: Subway;
     font-size: 60px;
     text-align: center;
+}
+#deportes{
+    padding-bottom: 10%;
 }
