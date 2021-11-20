@@ -25,13 +25,13 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.servicio.login(this.formulario.value)
-      .subscribe(data => {
-        sessionStorage.setItem('token', data.token);
-        sessionStorage.setItem('user', data.user.nombre)
-        this.router.navigate(['/juego']);
-        location.reload();
+    this.servicio.login(this.formulario.value).subscribe(data => {
+        sessionStorage.setItem('token', data.body.token);
+        sessionStorage.setItem('user', data.body.user.nombre)
+        this.router.navigate(['']);
+        window.location.reload();
       }, error => {
+        console.log(error.message);
         this.error = true;
       });
   }
