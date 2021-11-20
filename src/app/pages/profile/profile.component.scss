@@ -1,3 +1,6 @@
+$btncolor: #1e90ff;
+$btncolorhover: #047df5;
+
 .container-fluid{
     background-image: url("../../../assets/recursos/fondo4.png");
 }
@@ -57,3 +60,31 @@ p{
 #deportes{
     padding-bottom: 10%;
 }
+
+.o-button {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: $btncolor;
+    color: white;
+    border-radius: 4px;
+    font-size: 25px;
+    border-color: $btncolor;
+    width: 315px;
+    height: 65px;
+    left: 135px;
+    top: 566px;
+    font-family: Airbnb Cereal App Medium, sans-serif;
+  }
+  
+  .o-button:hover {
+    background-color: $btncolorhover;
+  }
+
+  #btn {
+      display: flex;
+      justify-content: center;
+  }
+  

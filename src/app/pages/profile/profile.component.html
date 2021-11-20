@@ -43,7 +43,7 @@
                 <h3>
                     Fecha de nacimiento
                 </h3>
-                <p *ngIf="infoPersonal !== undefined">{{infoPersonal.fechanacimiento}} </p>
+                <p *ngIf="infoPersonal !== undefined">{{ infoPersonal.fechanacimiento | date:'dd-MM-yyyy' }} </p>
             </div>
         </div>
         <div class="col" id="sexo">
@@ -77,14 +77,13 @@
             <h3>
                 Altura
             </h3>
-            <p *ngIf="infoMedica !== undefined">{{infoMedica.estatura}} </p>
+            <p *ngIf="infoMedica !== undefined">{{infoMedica.estatura * 100}} cm</p>
         </div>
     </div>
     <div class="row titulo-seccion">
         <div class="col">
             <h1>Comorbilidades</h1>
         </div>
-
     </div>
     <div class="row row-cols-3 justify-content-center" id="comorbilidades">
 
@@ -230,7 +229,8 @@
                 </p>
             </div>
         </div>
-
     </div>
-
+    <div class="container-fluid" id="btn">
+        <a [routerLink]="['/']" fragment="inicio" class="o-button" style="margin-bottom: 40px;">Volver al inicio</a>
+    </div>
 </div>
