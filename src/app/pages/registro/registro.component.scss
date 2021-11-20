@@ -2,13 +2,22 @@
   font-family: Airbnb Cereal App Medium;
 } 
 
+.fondo1 {
+  background-image: url(../../../assets/recursos/fondo4.png);
+  background-size: cover;
+  background-repeat: repeat-y;
+  background-position: center center;
+  min-height: 800px;
+}
+
 input,
 select {
   padding: 9px;
   background: #ffffff;
   border: 1px solid #01255b;
   box-sizing: border-box;
-  border-radius: 2px;
+  border-radius: 0px;
+  border: #000000 solid 3px;
 }
 
 h2,
@@ -92,22 +101,6 @@ h1 {
   float: left;
   position: relative;
   font-weight: 400;
-}
-
-#progressbar #step1:before {
-  content: "1";
-}
-
-#progressbar #step2:before {
-  content: "2";
-}
-
-#progressbar #step3:before {
-  content: "3";
-}
-
-#progressbar #step4:before {
-  content: "4";
 }
 
 #progressbar li:before {

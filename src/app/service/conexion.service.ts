@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Users } from '../interfaces/users';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,8 @@ export class ConexionService {
       'Access-Control-Allow-Headers': 'Content-Type',
       'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
       'Content-Type': 'application/json',
-    }
-    ),
+      }
+    )
   };
 
 
@@ -24,7 +25,7 @@ export class ConexionService {
 
   login({mail, pass}:any):Observable<any> {
 
-    let resultado =this.http.post(`${environment.hostname}/auth/login`, JSON.stringify({"email":mail, "pass":pass}), this.HttpUploadOptions);
+    let resultado =this.http.post(`${environment.hostname}/auth/login`, JSON.stringify({"email":mail, "pass":pass}), {headers: this.HttpUploadOptions.headers, observe: 'response',});
 
     return resultado;
   }
@@ -37,11 +38,20 @@ export class ConexionService {
   }
 
   getUser():Observable<any> {
-    return this.http.get(`${environment.hostname}/user/`);
+    return this.http.get(`${environment.hostname}/user`);
   }
-  
 
-  register():Observable<any> {
-    return this.http.post(`${environment.hostname}/auth/register`, JSON.stringify({}));
+  register(user:Users):Observable<any> {
+    return this.http.post(`${environment.hostname}/auth/register`, 
+    user
+    , { headers:this.HttpUploadOptions.headers
+      ,observe: 'response'});
+  }
+
+  registerHeaders(user:Users):Observable<any> {
+    return this.http.post(`${environment.hostname}/auth/register`, 
+    user,
+    {headers: this.HttpUploadOptions.headers, observe: 'response',},
+    );
   }
 }

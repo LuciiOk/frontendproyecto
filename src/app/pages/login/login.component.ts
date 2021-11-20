@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { ConexionService } from 'src/app/servicios/conexion.service';
+import { Router } from '@angular/router';
+import { ConexionService } from 'src/app/service/conexion.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
+  error:boolean = false;
   formulario:FormGroup;
 
   constructor(public servicio:ConexionService, public form:FormBuilder, private router:Router) { 
@@ -26,11 +27,12 @@ export class LoginComponent implements OnInit {
   login() {
     this.servicio.login(this.formulario.value)
       .subscribe(data => {
-        console.log(data)
         sessionStorage.setItem('token', data.token);
         sessionStorage.setItem('user', data.user.nombre)
         this.router.navigate(['/juego']);
-        window.location.reload();
+        location.reload();
+      }, error => {
+        this.error = true;
       });
   }
 

@@ -1,4 +1,3 @@
-
 <div
   class="container-expand d-flex justify-content-center flex-column align-items-center"
   style="
@@ -10,18 +9,40 @@
 >
   <div class="row">
     <div class="d-flex justify-content-center flex-column align-items-center">
-     <h1>¡Es hora de aprender jugando!</h1>
+     <h1 id="titulo">¡Es hora de aprender jugando!</h1>
       <main class="col col-lg-3 form-signin">       
-        <form class="d-flex justify-content-around flex-column" [formGroup]="formulario" (ngSubmit)="login()" novalidate>
+        <form class="d-flex justify-content-around flex-column" [formGroup]="formulario" class="needs-validaton" (ngSubmit)="login()" novalidate>
           <h1 class="form-tittle">Trivia Sano</h1>
+          <div class="alert alert-danger text-center" role="alert" *ngIf="error">
+            Email y/o contraseña incorrecta
+          </div>
           <div class="mb-3">
             <label for="exampleInputEmail1"  class="form-label">Email</label>
-            <input type="email" class="form-control" formControlName="mail" placeholder="ejemplo@email.mx">
+            <input type="email" class="form-control" formControlName="mail" placeholder="ejemplo@email.mx"
+            [ngClass]="{'is-invalid': formulario.controls['mail'].invalid && (formulario.controls['mail'].dirty || formulario.controls['mail'].touched)
+            , 'is-valid': formulario.controls['mail'].valid && (formulario.controls['mail'].dirty || formulario.controls['mail'].touched)}"
+            >
+            <div *ngIf="formulario.controls['mail'].invalid && (formulario.controls['mail'].dirty || formulario.controls['mail'].touched)" class="invalid-feedback">
+              <div *ngIf="formulario.controls['mail'].hasError('required')">
+                * Ingresa un email
+              </div>
+              <div *ngIf="formulario.controls['mail'].hasError('email')">
+                * Ingresa un email valido
+              </div>
+            </div>
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Contraseña
             </label>
-            <input type="password" class="form-control" formControlName="pass" placeholder="●●●●●●●●●●●●">
+            <input type="password" class="form-control" formControlName="pass" placeholder="●●●●●●●●●●●●"
+            [ngClass]="{'is-invalid': formulario.controls['pass'].invalid && (formulario.controls['pass'].dirty || formulario.controls['pass'].touched)
+            , 'is-valid': formulario.controls['pass'].valid && (formulario.controls['pass'].dirty || formulario.controls['pass'].touched)}"
+            >
+            <div *ngIf="formulario.controls['pass'].invalid && (formulario.controls['pass'].dirty || formulario.controls['pass'].touched)" class="invalid-feedback">
+              <div *ngIf="formulario.controls['pass'].hasError('required')">
+              * Ingresa tu contraseña
+              </div>
+            </div>
           </div>
           <div style="text-align: center;"><button type="submit" class="btn btn-primary">Iniciar sesión</button></div>
           <div style="text-align: center;">¿Olvidaste tu contraseña?</div>
