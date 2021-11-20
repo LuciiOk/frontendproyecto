@@ -11,24 +11,22 @@
         </div>
     </div>
     <div class="row row-cols-3 justify-content-start" id="info-base">
-
         <div class="col" id="nombre">
             <div>
                 <h3>
                     Nombre
                 </h3>
-                <p>
-                    claudio
+                <p *ngIf="infoPersonal !== undefined">
+                    {{infoPersonal.nombre}}
                 </p>
             </div>
-
         </div>
         <div class="col" id="edad">
             <div>
                 <h3>
                     Años
                 </h3>
-                <p>12 </p>
+                <p *ngIf="infoPersonal !== undefined">{{infoPersonal.edad}} </p>
 
             </div>
         </div>
@@ -37,10 +35,7 @@
                 <h3>
                     Correo
                 </h3>
-                <p>
-                    cascascac@adada.cl
-                </p>
-
+                <p *ngIf="infoPersonal !== undefined">{{infoPersonal.email}} </p>
             </div>
         </div>
         <div class="col" id="fechanac">
@@ -48,9 +43,7 @@
                 <h3>
                     Fecha de nacimiento
                 </h3>
-                <p>
-                    12/12/12
-                </p>
+                <p *ngIf="infoPersonal !== undefined">{{infoPersonal.fechanacimiento}} </p>
             </div>
         </div>
         <div class="col" id="sexo">
@@ -58,9 +51,7 @@
                 <h3>
                     Sexo
                 </h3>
-                <p>
-                    Masculino
-                </p>
+                <p *ngIf="infoPersonal !== undefined">{{infoPersonal.genero}} </p>
             </div>
         </div>
 
@@ -79,24 +70,16 @@
                 <h3>
                     Peso
                 </h3>
-                <p>
-                    12
-                </p>
+                <p *ngIf="infoMedica !== undefined">{{infoMedica.peso}} Kg</p>
             </div>
         </div>
         <div class="col">
             <h3>
                 Altura
             </h3>
-            <p>
-                12
-            </p>
-
+            <p *ngIf="infoMedica !== undefined">{{infoMedica.estatura}} </p>
         </div>
-
-
     </div>
-
     <div class="row titulo-seccion">
         <div class="col">
             <h1>Comorbilidades</h1>
