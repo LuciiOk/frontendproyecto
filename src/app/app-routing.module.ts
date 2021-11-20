@@ -10,24 +10,24 @@ const routes: Routes = [
   },
   {
     path:'login',
-    canActivate: [LoggedinGuardGuard],
-    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)
+    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule),
+    canActivate: [LoggedinGuardGuard]
   },
   {
     path:'registro',
-    canActivate: [LoggedinGuardGuard],
-    loadChildren: () => import('./pages/registro/registro.module').then(m => m.RegistroModule)
+    loadChildren: () => import('./pages/registro/registro.module').then(m => m.RegistroModule),
+    canActivate: [LoggedinGuardGuard]
   },
   {
     path:'juego',
-    canActivate: [AuthGuardGuard],
     loadChildren: () => import('./pages/game/game.module').then(m => m.GameModule),
+    canActivate: [AuthGuardGuard]
 
   },
   {
     path:'profile',
-    canActivate: [AuthGuardGuard],
-    loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfileModule)
+    loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfileModule),
+    canActivate: [AuthGuardGuard]
   }
 ];
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserDataService } from 'src/app/service/user-data.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  infoMedica = {};
+
+  constructor(private userService:UserDataService) { }
 
   ngOnInit(): void {
+    this.userService.getUserData().subscribe(data => {
+      console.log(data)
+    })
+
+    this.userService.getMedicalInfo().subscribe(data => {
+      console.log(data)
+    }, error => {
+      console.log(error)
+    })
   }
 
 }

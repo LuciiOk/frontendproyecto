@@ -1,40 +1,25 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanActivateChild, CanDeactivate, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import {  CanActivate, Router} from '@angular/router';
+import { map, Observable, take } from 'rxjs';
 import { ConexionService } from '../service/conexion.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuardGuard implements CanActivate, CanActivateChild, CanDeactivate<unknown>, CanLoad {
+export class AuthGuardGuard implements CanActivate {
 
   constructor(private conexion:ConexionService, private router:Router){}
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    
-    if (this.conexion.isLoggedin()) {
-      return true;
-    }
-    this.router.navigate(['/login'])
-    return false;
-  }
-  canActivateChild(
-    childRoute: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
-  }
-  canDeactivate(
-    component: unknown,
-    currentRoute: ActivatedRouteSnapshot,
-    currentState: RouterStateSnapshot,
-    nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
-  }
-  canLoad(
-    route: Route,
-    segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
+  canActivate(): Observable<boolean> {
+    return this.conexion.isLogged.pipe(
+      take(1),
+      map((isLogged:boolean) => {
+        if (isLogged) {
+          return true;
+        }
+        this.router.navigate([''])
+        return false;
+      })
+    ) 
   }
 }

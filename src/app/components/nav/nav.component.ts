@@ -1,5 +1,5 @@
-import { Component, NgModule, OnInit } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router'
+import { Component, OnInit } from '@angular/core';
+import { Router} from '@angular/router'
 import { ConexionService } from 'src/app/service/conexion.service';
 @Component({
   selector: 'app-nav',
@@ -9,29 +9,27 @@ import { ConexionService } from 'src/app/service/conexion.service';
 
 export class NavComponent implements OnInit {
   token:boolean = false
-  nombre?:string;
+  nombre: string =  localStorage.getItem('nombre') ||'';
 
   constructor(
     private router: Router,
-    private route:ActivatedRoute,
-    private userservice:ConexionService
+    private auth:ConexionService
   ) { }
 
-  ngOnInit(): void {
-    this.userservice.getUser().subscribe(data => {
-      if (sessionStorage.getItem('token')) {
+  ngOnInit() {
+    this.auth.userName.subscribe(data => {
+      if (this.token === true) {
         this.nombre = data;
-        this.token = true;
       }
+    })
+
+    this.auth.isLogged.subscribe(data => {
+      this.token = data;
     })
   }
 
   ira() {
     this.router.navigate(['/'], {fragment: 'Test'});
-  }
-
-  prueba(){
-    console.log('hols')
   }
   
   // realiza la navegacion al componente indicado

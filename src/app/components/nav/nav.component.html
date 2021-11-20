@@ -10,15 +10,16 @@
             <a class="nav-link" [routerLink]="['/']" fragment="nosotros">Nosotros</a>
           </li>
           <li>
-            <a class="nav-link" [routerLink]="['/']" fragment="conocenos">Conocenos</a>
+            <a class="nav-link" [routerLink]="['/']" fragment="conocenos">Conócenos</a>
           </li>
-          <li *ngIf="token">
-            <a class="nav-link" [routerLink]="['/profile']" >{{nombre}}</a>
-          </li>
-          <li *ngIf="!token">
-            <a class="nav-link" [routerLink]="['/login']" >Iniciar sesión</a>
+          <li >
+            <a *ngIf="!token; else isvisible" class="nav-link" [routerLink]="['/login']" >Iniciar Sesión</a>
           </li>
         </ul>
       </div>
   </div>
 </nav>
+
+<ng-template #isvisible>
+    <a class="nav-link" [routerLink]="['/profile']" >{{nombre}}</a>
+</ng-template>

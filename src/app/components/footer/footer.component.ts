@@ -11,11 +11,6 @@ export class FooterComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-    if (localStorage.getItem('token') !== null) {
-      this.token = true;
-    }
-    console.log(this.token)
-  }
+  ngOnInit(): void {}
 
 }

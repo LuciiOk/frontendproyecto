@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { map, Observable, take } from 'rxjs';
 import { ConexionService } from '../service/conexion.service';
 
 @Injectable({
@@ -12,13 +12,18 @@ export class LoggedinGuardGuard implements CanActivate {
 
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
-    if (this.servicio.isLoggedin()) {
-      this.router.navigate(['/']);
-      return false;
-    }
-    return true;
+    state: RouterStateSnapshot): Observable<boolean>  {
+    
+    return this.servicio.isLogged.pipe(
+      take(1),
+      map((isLogged:boolean) => {
+        if (isLogged) {
+          this.router.navigate([''])
+          return false;
+        }
+        return true;
+      })
+    ) 
   }
   
 }

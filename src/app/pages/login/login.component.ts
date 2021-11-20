@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConexionService } from 'src/app/service/conexion.service';
 
@@ -26,10 +26,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.servicio.login(this.formulario.value).subscribe(data => {
-        sessionStorage.setItem('token', data.body.token);
-        sessionStorage.setItem('user', data.body.user.nombre)
         this.router.navigate(['']);
-        window.location.reload();
       }, error => {
         console.log(error.message);
         this.error = true;
