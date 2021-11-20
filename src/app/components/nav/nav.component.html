@@ -1,22 +1,22 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav">
   <div class="container-fluid">
-      <a class="navbar-brand" [routerLink]="['/']" fragment="" id="logo"><img src="../../../assets/recursos/TS.png"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" class=" collapse navbar-collapse" id="navbarSupportedContent" >
-        <ul class="navbar-nav" id="color">
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/']" fragment="nosotros">Nosotros</a>
-          </li>
-          <li>
-            <a class="nav-link" [routerLink]="['/']" fragment="conocenos">Conócenos</a>
-          </li>
-          <li *ngIf="!token; else isvisible">
-            <a  class="nav-link" [routerLink]="['/login']" >Iniciar Sesión</a>
-          </li>
-        </ul>
-      </div>
+    <a class="navbar-brand" [routerLink]="['/']" fragment="" id="logo"><img src="../../../assets/recursos/TS.png"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" class=" collapse navbar-collapse" id="navbarSupportedContent" >
+      <ul class="navbar-nav" id="color">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/']" fragment="nosotros">Nosotros</a>
+        </li>
+        <li>
+          <a class="nav-link" [routerLink]="['/']" fragment="conocenos">Conócenos</a>
+        </li>
+        <li *ngIf="!token; else isvisible">
+          <a class="nav-link" [routerLink]="['/login']" >Iniciar Sesión</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
 

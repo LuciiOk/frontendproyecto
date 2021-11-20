@@ -65,7 +65,7 @@ export class RegistroComponent implements OnInit {
     let {salsa, folklor, zumba, futbol, voley, basket} = this.infoGustos.value;
 
     let user:Users = {
-      nombre, email, password: 'password', nacimiento, sexo,
+      nombre, email, password: 'password', fechanacimiento: nacimiento, genero: sexo,
       infoMedica: {estatura, peso},
       gustos: {salsa, folklor, zumba, futbol, voley, basket}
     }

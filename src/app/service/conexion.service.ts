@@ -13,6 +13,7 @@ export class ConexionService {
   private user = new BehaviorSubject<string>('');
   private helper = new JwtHelperService();
 
+  // cabeceras para las peticiones http
   private HttpUploadOptions = {
     headers: new HttpHeaders(
       {
@@ -24,17 +25,20 @@ export class ConexionService {
     )
   };
 
-
   constructor(private http:HttpClient) { this.checkToken() }
 
+  // este metodo obtiene el nombre de usuario desde sessionStorage,
+  // sirve para cambiar el nombre del navbar al iniciar sesion
   get userName():Observable<string> {
     return this.user.asObservable();
   }
 
+  // este metodo indica si el usuario esta logeado o no
   get isLogged():Observable<boolean> {
     return this.isLoggedIn.asObservable();
   }
 
+  // login del usuario
   login({mail, pass}:any):Observable<any> {
 
     let resultado = this.http.post<any>(`${environment.hostname}/auth/login`, JSON.stringify({"email":mail, "pass":pass}), {headers: this.HttpUploadOptions.headers, observe: 'response'})
@@ -42,7 +46,7 @@ export class ConexionService {
       map(res => {
         this.isLoggedIn.next(true);
         this.saveData(res);
-        this.user.next(localStorage.getItem('nombre') || '')
+        this.user.next(sessionStorage.getItem('nombre') || '')
         return res;
       })
     );
@@ -50,8 +54,9 @@ export class ConexionService {
     return resultado;
   }
 
+  // verifica si hay un token en el sessionStorage
   private checkToken():void {
-    const token : string | null= localStorage.getItem('token');
+    const token : string | null= sessionStorage.getItem('token');
 
     if (token?.length != 0 && token != null) {
       this.isLoggedIn.next(true);
@@ -59,14 +64,16 @@ export class ConexionService {
       this.isLoggedIn.next(false)
   }
 
+  // almacena los datos en sessionStorage
   private saveData(data:any) {
-    localStorage.setItem('token', data.body.token);
-    localStorage.setItem('id', data.body.user.id)
-    localStorage.setItem('nombre', data.body.user.nombre)
+    sessionStorage.setItem('token', data.body.token);
+    sessionStorage.setItem('id', data.body.user.id)
+    sessionStorage.setItem('nombre', data.body.user.nombre)
   }
 
+  //metodo para hacer logout
   logout() {
-    localStorage.clear();
+    sessionStorage.clear();
     this.isLoggedIn.next(false);
   }
 
@@ -75,6 +82,6 @@ export class ConexionService {
     return this.http.post(`${environment.hostname}/auth/register`, 
     user
     , { headers:this.HttpUploadOptions.headers
-      ,observe: 'response'});
+    ,observe: 'response'});
   }
 }

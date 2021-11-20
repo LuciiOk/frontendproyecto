@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class UserDataService {
 
+  // cabeceras del header
   private HttpUploadOptions = {
     headers: new HttpHeaders(
       {
@@ -15,7 +16,7 @@ export class UserDataService {
       'Access-Control-Allow-Headers': 'Content-Type',
       'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT',
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + localStorage.getItem('token')
+      'Authorization': 'Bearer ' + sessionStorage.getItem('token') // asigna a la cabecera authorization el token generado con jwt
       }
     )
   };
@@ -23,14 +24,16 @@ export class UserDataService {
   constructor(private http:HttpClient) { 
   }
 
+  // aqui se obtienen los datos basicos del usuario logeado.
   getUserData():Observable<any> {
-    return this.http.get(`${environment.hostname}/user/${localStorage.getItem('id')}`, this.HttpUploadOptions);
+    return this.http.get(`${environment.hostname}/user/${sessionStorage.getItem('id')}`, this.HttpUploadOptions);
   }
 
+  // se obtiene la informacion medica del usuario logeado.
   getMedicalInfo():Observable<any> {
-    return this.http.get(`${environment.hostname}/fichas/${localStorage.getItem('id')}`, this.HttpUploadOptions);
+    return this.http.get(`${environment.hostname}/fichas/${sessionStorage.getItem('id')}`, this.HttpUploadOptions);
   }
-
+  // se obtienen los gustos personales del usuario logeado.
   getPleasuresInfo() {
 
   }

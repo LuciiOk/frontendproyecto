@@ -9,7 +9,7 @@ import { ConexionService } from 'src/app/service/conexion.service';
 
 export class NavComponent implements OnInit {
   token:boolean = false
-  nombre: string =  localStorage.getItem('nombre') ||'';
+  nombre: string =  sessionStorage.getItem('nombre') ||'';
 
   constructor(
     private router: Router,
