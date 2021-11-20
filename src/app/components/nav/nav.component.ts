@@ -31,6 +31,11 @@ export class NavComponent implements OnInit {
   ira() {
     this.router.navigate(['/'], {fragment: 'Test'});
   }
+
+  logout() {
+    this.auth.logout();
+    this.router.navigate(['']);
+  }
   
   // realiza la navegacion al componente indicado
   navigateTo(component: string) {

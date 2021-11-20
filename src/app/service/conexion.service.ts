@@ -65,7 +65,7 @@ export class ConexionService {
     localStorage.setItem('nombre', data.body.user.nombre)
   }
 
-  private logout() {
+  logout() {
     localStorage.clear();
     this.isLoggedIn.next(false);
   }

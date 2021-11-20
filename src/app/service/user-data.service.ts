@@ -24,11 +24,11 @@ export class UserDataService {
   }
 
   getUserData():Observable<any> {
-    return this.http.get(`${environment.hostname}/user/${localStorage.getItem('id')}`, this.HttpUploadOptions)
+    return this.http.get(`${environment.hostname}/user/${localStorage.getItem('id')}`, this.HttpUploadOptions);
   }
 
   getMedicalInfo():Observable<any> {
-    return this.http.get(`${environment.hostname}/fichas/${localStorage.getItem('id')}`, this.HttpUploadOptions)
+    return this.http.get(`${environment.hostname}/fichas/${localStorage.getItem('id')}`, this.HttpUploadOptions);
   }
 
   getPleasuresInfo() {

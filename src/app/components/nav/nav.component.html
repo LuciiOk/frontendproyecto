@@ -12,8 +12,8 @@
           <li>
             <a class="nav-link" [routerLink]="['/']" fragment="conocenos">Conócenos</a>
           </li>
-          <li >
-            <a *ngIf="!token; else isvisible" class="nav-link" [routerLink]="['/login']" >Iniciar Sesión</a>
+          <li *ngIf="!token; else isvisible">
+            <a  class="nav-link" [routerLink]="['/login']" >Iniciar Sesión</a>
           </li>
         </ul>
       </div>
@@ -21,5 +21,12 @@
 </nav>
 
 <ng-template #isvisible>
-    <a class="nav-link" [routerLink]="['/profile']" >{{nombre}}</a>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true"
+    >{{nombre}}</a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <li><a class="dropdown-item" [routerLink]="['/profile']" >Mi Perfil</a></li>
+      <li><a class="dropdown-item" (click)="logout()" [routerLink]="['']">Cerrar Sesión</a></li>
+    </ul>
+  </li>
 </ng-template>
