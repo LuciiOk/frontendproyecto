@@ -1,0 +1,53 @@
+$textcolor: #01255b;
+$btncolor: #1e90ff;
+$btncolorhover: #047df5;
+$circulo: #A00606;
+$cuadrado: #F4B67E;
+
+#fondo {
+    height: calc(100vh - 60px - 132px);
+    background: url('../../../assets/recursos/fondo2.png');
+    background-size: contain;
+}
+
+#punto {
+  background-color: $circulo;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+#jugador {
+  transform: scaleX(-1);
+}
+
+#main {
+  height: 50vh;
+}
+
+#cuadrados {
+  border-radius: 10px;
+  height: 100px;
+  width: 100px;
+  background: $cuadrado;
+  display: inline-block;
+}
+
+.o-button {
+    text-decoration: none;
+    padding: 16px;
+    background: $btncolor;
+    color: white;
+    border-radius: 4px;
+    font-size: 25px;
+    border-color: $btncolor;
+    width: 315px;
+    height: 65px;
+    left: 135px;
+    top: 566px;
+    font-family: Airbnb Cereal App Medium, sans-serif;
+  }
+  
+  .o-button:hover {
+    background-color: $btncolorhover;
+  }
