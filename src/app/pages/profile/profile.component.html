@@ -1,17 +1,27 @@
 <div class="container-fluid">
     
-    <div class="main-title">
-        <h1 >Perfil</h1>
-    </div>
-    
-
-    <div class="row justify-content-center titulo-seccion">
-        <div class="col">
-            <h1>Informacion Base</h1>
+    <div class= "row main-title">
+        <div class="col-4" id="volvercont">
+            <a (click)="volver()" >
+                <i id="volver" class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+            </a>
+        </div>
+        <div class="col-4">
+            <h1 >Perfil</h1> 
+        </div>
+        <div class="col-4" id="editar">
+            <a href="" >
+                <i class="fa fa-pencil-square" aria-hidden="true"></i>
+            </a>
         </div>
     </div>
-    <div class="row row-cols-3 justify-content-start" id="info-base">
-        <div class="col" id="nombre">
+    <div class="row justify-content-center titulo-seccion">
+        <div class="col">
+            <h2>Informacion Base</h2> 
+        </div>
+    </div>
+    <div class="row justify-content-start" id="info-base">
+        <div class="col-6 col-md-4 " id="nombre">
             <div>
                 <h3>
                     Nombre
@@ -21,16 +31,15 @@
                 </p>
             </div>
         </div>
-        <div class="col" id="edad">
+        <div class="col-6 col-md-4 " id="edad">
             <div>
                 <h3>
                     Años
                 </h3>
                 <p *ngIf="infoPersonal !== undefined">{{infoPersonal.edad}} </p>
-
             </div>
         </div>
-        <div class="col" id="correo">
+        <div class="col-6 col-4 " id="correo">
             <div>
                 <h3>
                     Correo
@@ -38,7 +47,7 @@
                 <p *ngIf="infoPersonal !== undefined">{{infoPersonal.email}} </p>
             </div>
         </div>
-        <div class="col" id="fechanac">
+        <div class="col-6 col-md-4" id="fechanac">
             <div>
                 <h3>
                     Fecha de nacimiento
@@ -46,7 +55,7 @@
                 <p *ngIf="infoPersonal !== undefined">{{ infoPersonal.fechanacimiento | date:'dd-MM-yyyy' }} </p>
             </div>
         </div>
-        <div class="col" id="sexo">
+        <div class="col-6 col-md-4" id="sexo">
             <div>
                 <h3>
                     Sexo
@@ -59,7 +68,7 @@
 
     <div class="row titulo-seccion">
         <div class="col">
-            <h1>Informacion Medica</h1>
+            <h2>Informacion Medica</h2>
         </div>
 
     </div>
@@ -82,12 +91,12 @@
     </div>
     <div class="row titulo-seccion">
         <div class="col">
-            <h1>Comorbilidades</h1>
+            <h2>Comorbilidades</h2>
         </div>
     </div>
-    <div class="row row-cols-3 justify-content-center" id="comorbilidades">
+    <div class="row justify-content-center" id="comorbilidades">
 
-        <div class="col">
+        <div class="col-6 col-md-4">
             <div>
                 <h3>
                     ¿Presenta alguna enfermadad cardiaca?
@@ -98,7 +107,7 @@
             </div>
 
         </div>
-        <div class="col">
+        <div class="col-6 col-md-4">
             <div>
                 <h3>
                     ¿Presenta alguna alergia?
@@ -108,7 +117,7 @@
                 </p>
             </div>
         </div>
-        <div class="col">
+        <div class="col-6 col-md-4">
             <div>
                 <h3>
                     ¿Presenta alguna enfermedad respiratoria?
@@ -118,7 +127,7 @@
                 </p>
             </div>
         </div>
-        <div class="col">
+        <div class="col-6 col-md-4">
             <div>
                 <h3>
                     ¿Presenta alguna enfermedad degenerativa?
@@ -129,7 +138,7 @@
             </div>
         </div>
 
-        <div class="col">
+        <div class="col-6 col-md-4">
             <div>
                 <h3>
                     ¿Has tenido alguna cirugia?
@@ -140,7 +149,7 @@
             </div>
 
         </div>
-        <div class="col">
+        <div class="col-6 col-md-4">
             <div>
                 <h3>
                     ¿Has tenido alguna operacion?
@@ -155,15 +164,15 @@
 
     <div class="row titulo-seccion">
         <div class="col">
-            <h1>Deportes</h1>
+            <h2>Deportes</h2>
         </div>
     </div>   
-    <div class="row row-cols-3" id="deportes">
+    <div class="row" id="deportes">
 
 
 
         
-        <div class="col" id="futbol">
+        <div class="col-6 col-md-4" id="futbol">
             <div>
                 <h3>
                     ¿Practicas algun deporte?
@@ -173,7 +182,7 @@
                 </p>
             </div>
         </div>
-        <div class="col" id="baloncesto">
+        <div class="col-6 col-md-4" id="baloncesto">
             <div>
                 <h3>
                     ¿Que deportes practicas?
@@ -185,7 +194,7 @@
 
         </div>
 
-        <div class="col" id="volleyball">
+        <div class="col-6 col-md-4" id="volleyball">
 
             <div>
                 <h3>
@@ -197,7 +206,7 @@
             </div>
         </div>
 
-        <div class="col" id="salsa">
+        <div class="col-6 col-md-4" id="salsa">
             <div>
                 <h3>
                     ¿Te gusta bailar salsa?
@@ -208,7 +217,7 @@
             </div>
         </div>
 
-        <div class="col" id="zumba">
+        <div class="col-6 col-md-4" id="zumba">
             <div>
                 <h3>
                     ¿Te gusta bailar zumba?
@@ -219,7 +228,7 @@
             </div>
         </div>
 
-        <div class="col" id="folklor">
+        <div class="col-6 col-md-4" id="folklor">
             <div>
                 <h3>
                     ¿Te gusta bailar folklors?

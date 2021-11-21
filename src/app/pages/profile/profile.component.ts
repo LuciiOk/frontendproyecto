@@ -20,6 +20,7 @@ export class ProfileComponent implements OnInit {
       this.infoPersonal = data[0];
       
       if (this.infoPersonal !== undefined) {
+        
         let diferencia:number = Math.abs(Date.now() - Date.parse(this.infoPersonal?.fechanacimiento));
         const newLocal = Math.floor((diferencia / (1000 * 3600 * 24)) / 365.25);
         this.infoPersonal.edad = newLocal;
@@ -34,6 +35,10 @@ export class ProfileComponent implements OnInit {
     }, error => {
       console.log(error);
     })
+  }
+
+  volver() {
+    history.back();
   }
 
 }

@@ -6,9 +6,9 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http'
 import { AuthGuardGuard } from './helpers/auth-guard.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { NavComponent } from './components/nav/nav.component';
 import { ComponentsModule } from './components/components.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     ComponentsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatIconModule
   ],
   providers: [AuthGuardGuard],
   bootstrap: [AppComponent]

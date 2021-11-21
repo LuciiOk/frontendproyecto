@@ -1,12 +1,15 @@
+$textcolor: #01255b;
+$font: Airbnb Cereal App Medium;
+
 * {
-    font-family: Airbnb Cereal App Medium;
+    font-family: $font;
   } 
 
 #color li a {
   text-align: center;
-  font-family: Airbnb Cereal App Medium !important; 
+  font-family: $font !important; 
   font-size: 18px;
-  color: #01255b;
+  color: $textcolor;
 }
 
 #navbarSupportedContent {

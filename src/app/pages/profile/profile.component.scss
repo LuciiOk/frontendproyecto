@@ -1,25 +1,31 @@
 $btncolor: #1e90ff;
 $btncolorhover: #047df5;
+$textcolor: #01255B;
+$volver: #1151b1;
 
-.container-fluid{
+.container-fluid {
     background-image: url("../../../assets/recursos/fondo4.png");
+    background-size: contain;
 }
-h1{
+
+h2 {
     font-family: Airbnb Cereal App Medium;
     font-style: normal; 
     font-weight: bold;
-    font-size: 37.0833px;
+    font-size: 37px;
     line-height: 48px;
-    color: #01255B;
+    color: $textcolor;
     margin-bottom: 30px;
     text-align: center;
 
 }
+
+
 h3{
     text-align: center;
     font-size:30px ;
     font-weight: bold;
-    color: #01255B;
+    color: $textcolor;
 }
 
 .col{
@@ -28,9 +34,33 @@ h3{
     font-weight: bold;
     font-size: 25.3333px;
     line-height: 48px;
-    color: #01255B;
+    color: $textcolor;
     margin-bottom: 30px;
    
+}
+
+#volvercont {
+    text-align: center;
+}
+
+#volver:hover {
+    color: $volver;
+}
+
+i {
+    color: $textcolor;
+    font-size: 50px;
+}
+
+#volver {
+    cursor: pointer;
+    width: 100px;
+
+    color: $textcolor;
+}
+
+#editar {
+    text-align: center;
 }
 
 
@@ -40,19 +70,20 @@ p{
     font-size: 25px;
     font-weight: normal;
     line-height: 170%;
-    color: #01255B;
+    color: $textcolor;
 }
 
 .main-title{
     padding-top: 4%;
     
-}
- .titulo-seccion{
-    padding-top: 10%;
+}   
 
+.titulo-seccion {
+    padding-top: 50px;
 }
 
 .main-title h1{
+    color: $textcolor;
     font-family: Subway;
     font-size: 60px;
     text-align: center;
@@ -87,4 +118,17 @@ p{
       display: flex;
       justify-content: center;
   }
+
+@media (max-width: 800px) {
+    .main-title h1 {
+        font-size: 40px;
+    }
+    h3 {
+        font-size: 20px;
+    }
+    p {
+        font-size: 16px;
+    }
+}
+
   
