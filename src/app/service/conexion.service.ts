@@ -58,10 +58,12 @@ export class ConexionService {
   private checkToken():void {
     const token : string | null= sessionStorage.getItem('token');
 
-    if (token?.length != 0 && token != null) {
+    if (token?.length != 0 && token != null && !this.helper.isTokenExpired(token)) {
       this.isLoggedIn.next(true);
-    } else 
+    } else {
+      this.logout()
       this.isLoggedIn.next(false)
+    }
   }
 
   // almacena los datos en sessionStorage
@@ -79,6 +81,7 @@ export class ConexionService {
 
 
   register(user:Users):Observable<any> {
+    console.log(user)
     return this.http.post(`${environment.hostname}/auth/register`, 
     user
     , { headers:this.HttpUploadOptions.headers

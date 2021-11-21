@@ -20,19 +20,9 @@
             />
           </div>
           <div class="col-sm-4">
-            <label class="form-label">Constraseña</label>
-            <input
-              type="password"
-              class="form-control"
-              placeholder="●●●●●●●●●●●●"
-              formControlName="password"
-              required
-            />
-          </div>
-          <div class="col-sm-4">
             <label class="form-label">Correo Electronico</label>
             <input
-              type="email"
+              type="text"
               class="form-control"
               placeholder="andres@gmail.com"
               formControlName="email"
@@ -75,6 +65,16 @@
               <option value="Hombre">Hombre</option>
               <option value="Mujer">Mujer</option>
             </select>
+          </div>
+          <div class="col-sm-4">
+            <label class="form-label">Constraseña</label>
+            <input
+              type="password"
+              class="form-control"
+              placeholder="●●●●●●●●●●●●"
+              formControlName="password"
+              required
+            />
           </div>
           
           <div class="col-sm-12" style="text-align: end;">
@@ -338,7 +338,7 @@
           Ahora puedes disfrutar de la plataforma y aprender jugando!
       </div>
         <div class="modal-footer" style="border-top: none!important;">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" [routerLink]="['/login']">Entendido</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Entendido</button>
         </div>
       </div>
     </div>
