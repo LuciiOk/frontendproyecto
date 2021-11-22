@@ -51,3 +51,5 @@
     font-weight: normal;
     src: url(./assets/recursos/fonts/AirbnbCerealBlack.woff) format('woff');
     }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

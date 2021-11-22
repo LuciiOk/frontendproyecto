@@ -11,6 +11,16 @@ select {
   border-radius: 2px;
 }
 
+mat-stepper {
+  background-color: transparent;
+}
+
+h1 {
+  color: #01255b;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 h2,
 h1 {
   color: #01255b;
@@ -61,6 +71,13 @@ h1 {
   background: #333542;
 }
 
+input[type=radio] {
+  -webkit-appearance: checkbox; /* Chrome, Safari, Opera */
+  -moz-appearance: checkbox;    /* Firefox */
+  -ms-appearance: checkbox;     /* not currently supported */
+  border-radius: none;
+}
+
 #form .previous-step:hover,
 #form .previous-step:focus {
   background-color: #000000;
@@ -74,15 +91,6 @@ h1 {
 .text {
   color: #2f8d46;
   font-weight: normal;
-}
-
-#progressbar {
-  margin-bottom: 30px;
-  overflow: hidden;
-}
-
-#progressbar .active {
-  color: #333542;
 }
 
 #progressbar li {

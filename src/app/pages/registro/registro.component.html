@@ -11,127 +11,199 @@
   <h1>Crear cuenta</h1>
   <div class="row d-flex justify-content-center flex-column align-items-center">
     <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-9 text-center">
-      <div class="px-0 pt-4 pb-0 mt-3 mb-3">
-        <form id="form">
-          <ul id="progressbar">
-            <li [ngClass]="{'active':show==1}" id="step1">
-              <strong>Información<br />personal</strong>
-            </li>
-            <li [ngClass]="{'active':show==2}" id="step2">
-              <strong>Información<br />médica</strong>
-            </li>
-            <li [ngClass]="{'active':show==3}" id="step3">
-              <strong>Gustos<br />personales</strong>
-            </li>
-          </ul>
-          <div *ngIf="show==1">
+      <div class="px-0 pt-4 pb-0 mt-3 mb-3"> 
+        
+          <mat-stepper linear labelPosition="bottom" #stepper>
+            <mat-step  [stepControl]="stepOne" [editable]="false" [completed]="true">
+              
+              <fieldset>
+                <h2>Información base</h2>
+                <form class="row gx-4 gy-3 d-flex justify-content-evenly" [formGroup]="stepOne">
+                  <ng-template matStepLabel>
+                    <p>Información personal</p>
+                  </ng-template>
+                  <div class="col-sm-3">
+                    <label>Nombre</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Andres Gallego"
+                      formControlName="nombre"
+                      [ngClass]="{ 'is-invalid': stepOne.controls['nombre'].invalid && (stepOne.controls['nombre'].dirty || stepOne.controls['nombre'].touched),
+                      'is-valid': stepOne.controls['nombre'].valid && (stepOne.controls['nombre'].dirty || stepOne.controls['nombre'].touched)}"
+                    />
+
+                    <div *ngIf="stepOne.controls['nombre'].invalid && (stepOne.controls['nombre'].dirty || stepOne.controls['nombre'].touched)" class="invalid-feedback">
+                    <div *ngIf="stepOne.controls['nombre'].hasError('required')">
+                      * Este campo es obligatorio
+                    </div> 
+                  </div>
+
+                  </div>
+                  
+                  <div class="col-sm-3">
+                    <label>Contraseña</label>
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Contraseña"
+                      formControlName="password"
+                      [ngClass]="{ 'is-invalid': stepOne.controls['password'].invalid && (stepOne.controls['password'].dirty || stepOne.controls['password'].touched),
+                      'is-valid': stepOne.controls['password'].valid && (stepOne.controls['password'].dirty || stepOne.controls['password'].touched)}"
+                    />
+
+                    <div *ngIf="stepOne.controls['password'].invalid && (stepOne.controls['password'].dirty || stepOne.controls['password'].touched)" class="invalid-feedback">
+                    <div *ngIf="stepOne.controls['password'].hasError('required')">
+                      * Este campo es obligatorio
+                    </div> 
+                    </div>
+                  </div>
+                    
+                  <div class="col-sm-4">
+                    <label>Correo Electronico</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      formControlName="email"
+                      placeholder="andres@gmail.com"
+                      [ngClass]="{ 'is-invalid': stepOne.controls['email'].invalid && (stepOne.controls['email'].dirty || stepOne.controls['email'].touched),'is-valid': stepOne.controls['email'].valid && (stepOne.controls['email'].dirty || stepOne.controls['email'].touched)}"
+                    />
+
+                    <div *ngIf="stepOne.controls['email'].invalid && (stepOne.controls['email'].dirty || stepOne.controls['email'].touched)" class="invalid-feedback">
+                      <div *ngIf="stepOne.controls['email'].hasError('required')">
+                        * Este campo es obligatorio
+                      </div> 
+                    </div>
+                  </div>
+
+
+                  <div class="col-sm-3">
+                    <label>fecha nacimiento</label>
+                    <input
+                      type="date"
+                      class="form-control"
+                      placeholder="DD/MM/AAAA"
+                      formControlName="fechanacimiento"
+                      [ngClass]="{ 'is-invalid': stepOne.controls['fechanacimiento'].invalid && (stepOne.controls['fechanacimiento'].dirty || stepOne.controls['fechanacimiento'].touched),
+                      'is-valid': stepOne.controls['fechanacimiento'].valid && (stepOne.controls['fechanacimiento'].dirty || stepOne.controls['fechanacimiento'].touched)}"
+                    />
+
+                    <div *ngIf="stepOne.controls['fechanacimiento'].invalid && (stepOne.controls['fechanacimiento'].dirty || stepOne.controls['fechanacimiento'].touched)" class="invalid-feedback">
+                    <div *ngIf="stepOne.controls['fechanacimiento'].hasError('required')">
+                      * Este campo es obligatorio
+                    </div> 
+                  </div>
+
+                  </div>
+                  
+                  <div class="col-sm-2">
+                    <label>genero</label>
+                    <select class="form-select" id="specificSizeSelect" formControlName="genero"
+                    [ngClass]="{ 'is-invalid': stepOne.controls['genero'].invalid && (stepOne.controls['genero'].dirty || stepOne.controls['genero'].touched),'is-valid': stepOne.controls['genero'].valid && (stepOne.controls['genero'].dirty || stepOne.controls['genero'].touched)}" 
+                     >
+                      <option selected>Escoge</option>
+                      <option value="1">Masculino</option>
+                      <option value="2">Femenino</option>
+                    </select>
+
+                    <div *ngIf="stepOne.controls['genero'].invalid && (stepOne.controls['genero'].dirty || stepOne.controls['genero'].touched)" class="invalid-feedback">
+                      <div *ngIf="stepOne.controls['genero'].hasError('required')">
+                        * Este campo es obligatorio
+                      </div> 
+                    </div>
+
+                  </div>
+                  <div class="col-sm-12" style="text-align: end;">
+                    <button type="button" class="btn btn-primary" matStepperNext>
+                      Siguiente
+                    </button>
+                  </div>
+                </form>
+              </fieldset>
+              
+            </mat-step>
+          
+          
+          
+          
+          <mat-step [stepControl]="stepTwo" [editable]="false" [completed]="true">
+          
             <fieldset>
-              <h2>Información base</h2>
-              <form class="row gx-4 gy-3 d-flex justify-content-evenly">
-                <div class="col-sm-3">
-                  <label>Nombre</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Andres Gallego"
-                  />
-                </div>
-                <div class="col-sm-3">
-                  <label>Edad (en años) </label>
-                  <select class="form-select" id="specificSizeSelect">
-                    <option selected>Escoge</option>
-                    <option value="1">5</option>
-                    <option value="2">6</option>
-                    <option value="3">7</option>
-                    <option value="3">8</option>
-                    <option value="3">9</option>
-                    <option value="3">10</option>
-                    <option value="3">11</option>
-                    <option value="3">12</option>
-                    <option value="3">13</option>
-                    <option value="3">14</option>
-                    <option value="3">15</option>
-                  </select>
-                </div>
-                <div class="col-sm-4">
-                  <label>Correo Electronico</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    placeholder="andres@gmail.com"
-                  />
-                </div>
-                <div class="col-sm-4">
-                  <label>Fecha de nacimiento</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    placeholder="10/09/2005"
-                  />
-                </div>
-                <div class="col-sm-2">
-                  <label>Sexo</label>
-                  <select class="form-select" id="specificSizeSelect">
-                    <option selected>Escoge</option>
-                    <option value="1">Masculino</option>
-                    <option value="2">Femenino</option>
-                  </select>
-                </div>
-                <div class="col-sm-12" style="text-align: end;">
-                  <button type="button" class="btn btn-primary" (click)="show=2">
-                    Siguiente
-                  </button>
-                </div>
-              </form>
-            </fieldset>
-          </div>
-          <div *ngIf="show==2">
-            <fieldset>
-              <form class="row gx-6 gy-5 d-flex justify-content-evenly">
-                <h2>Información médica</h2>
+              <h2>Información médica</h2>
+              <form class="row gx-6 gy-5 d-flex justify-content-evenly" [formGroup]="stepTwo">
+                <ng-template matStepLabel>
+                  <p>Información médica</p>
+                </ng-template>
+
+               
                 <div class="col-sm-2">
                   <label>Estatura(cm)</label>
                   <input
                     type="text"
                     class="form-control"
                     placeholder="180"
+                    formControlName="estatura"
+                    [ngClass]="{ 'is-invalid': stepTwo.controls['estatura'].invalid && (stepTwo.controls['estatura'].dirty || stepTwo.controls['estatura'].touched),
+                      'is-valid': stepTwo.controls['estatura'].valid && (stepTwo.controls['estatura'].dirty || stepTwo.controls['estatura'].touched)}"
                   />
+
+                  <div *ngIf="stepTwo.controls['estatura'].invalid && (stepTwo.controls['estatura'].dirty || stepTwo.controls['estatura'].touched)" class="invalid-feedback">
+                    <div *ngIf="stepTwo.controls['estatura'].hasError('required')">
+                      * Este campo es obligatorio
+                    </div> 
+                  </div>
+
                 </div>
                 <div class="col-sm-2">
                   <label>Peso (kg) </label>
-                  <select class="form-select" id="specificSizeSelect">
+                  <select class="form-select" id="specificSizeSelect" formControlName="peso"
+                  [ngClass]="{ 'is-invalid': stepTwo.controls['peso'].invalid && (stepTwo.controls['peso'].dirty || stepTwo.controls['peso'].touched),
+                  'is-valid': stepTwo.controls['peso'].valid && (stepTwo.controls['peso'].dirty || stepTwo.controls['peso'].touched)}">
                     <option selected>Escoge</option>
                     <option value="1">50 kg</option>
                     <option value="2">60 kg</option>
                     <option value="3">70 kg</option>
                     <option value="3">80 kg</option>
                   </select>
+
+                  <div *ngIf="stepTwo.controls['peso'].invalid && (stepTwo.controls['peso'].dirty || stepTwo.controls['peso'].touched)" class="invalid-feedback">
+                    <div *ngIf="stepTwo.controls['peso'].hasError('required')">
+                      * Este campo es obligatorio
+                    </div> 
+                  </div>
+
                 </div>
                 <h2>Comorbilidades</h2>
                 <div class="col-4">
-                  <div><label>¿Presenta en enfermedades cardiacas?</label></div>
+                  
+                  <div ><label>¿Presenta en enfermedades cardiacas?</label></div>
                   <div class="d-flex justify-content-around align-items-center">
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                    <label class="form-check-label" for="inlineCheckbox1">Si</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                    <label class="form-check-label" for="inlineCheckbox2">No</label>
-                  </div>
-                  <input type="text" class="form-control" placeholder="Cuales" style="width: 50%;"/>
-                </div>
-                </div>
-                <div class="col-4">
-                    <div><label>¿Presenta en enfermedades despiratorias?</label></div>
-                    <div class="d-flex justify-content-around align-items-center">
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                    <div class="form-check">
+                      <input name="inlineCheckbox1" class="form-check-input" type="radio" id="inlineCheckbox1" value="option1" 
+                      >
                       <label class="form-check-label" for="inlineCheckbox1">Si</label>
                     </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                      <label class="form-check-label" for="inlineCheckbox2">No</label>
+                    <div class="form-check">
+                      <input name="inlineCheckbox1" class="form-check-input" type="radio" id="inlineCheckbox2" value="option2" checked
+                        >
+                      <label for="inlineCheckbox2" class="form-check-label">No</label>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Cuales" style="width: 50%;"/>
+                  </div>
+                 
+                </div>
+
+                <div  class="col-4">
+                    <div><label>¿Presenta en enfermedades despiratorias?</label></div>
+                    <div class="d-flex justify-content-around align-items-center">
+                    <div class="form-check">
+                      <input  name="inlineCheckbox2" class="form-check-input" type="radio" id="inlineCheckbox3" value="option1">
+                      <label  for="inlineCheckbox3" class="form-check-label">Si</label>
+                    </div>
+                    <div class="form-check">
+                      <input  name="inlineCheckbox2" class="form-check-input" type="radio" id="inlineCheckbox4" value="option2" checked
+                        >
+                      <label for="inlineCheckbox4" class="form-check-label" >No</label>
                     </div>
                     <input type="text" class="form-control" placeholder="Cuales" style="width: 50%;"/>
                   </div>
@@ -139,13 +211,14 @@
                   <div class="col-4">
                     <div><label>¿Has tenido alguna cirugía?</label></div>
                     <div class="d-flex justify-content-around align-items-center">
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                      <label class="form-check-label" for="inlineCheckbox1">Si</label>
+                    <div class="form-check">
+                      <input  name="inlineCheckbox3" class="form-check-input" type="radio" id="inlineCheckbox5" value="option1" >
+                      <label class="form-check-label" for="inlineCheckbox5">Si</label>
                     </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                      <label class="form-check-label" for="inlineCheckbox2">No</label>
+                    <div class="form-check">
+                      <input name="inlineCheckbox3" class="form-check-input" type="radio" id="inlineCheckbox6" value="option2" checked
+                        >
+                      <label class="form-check-label" for="inlineCheckbox6">No</label>
                     </div>
                     <input type="text" class="form-control" placeholder="Cuales" style="width: 50%;"/>
                   </div>
@@ -153,13 +226,13 @@
                   <div class="col-4">
                     <div><label>¿Tienes alguna alergia?</label></div>
                     <div class="d-flex justify-content-around align-items-center">
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                      <label class="form-check-label" for="inlineCheckbox1">Si</label>
+                    <div class="form-check">
+                      <input  name="inlineCheckbox4" class="form-check-input" type="radio" id="inlineCheckbox7" value="option7">
+                      <label class="form-check-label" for="inlineCheckbox7">Si</label>
                     </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                      <label class="form-check-label" for="inlineCheckbox2">No</label>
+                    <div class="form-check">
+                      <input  name="inlineCheckbox4" class="form-check-input" type="radio" id="inlineCheckbox8" value="option8" checked>
+                      <label class="form-check-label" for="inlineCheckbox8">No</label>
                     </div>
                     <input type="text" class="form-control" placeholder="Cuales" style="width: 50%;"/>
                   </div>
@@ -167,13 +240,13 @@
                   <div class="col-4">
                     <div><label>¿Tienes enfermedades degenerativas?</label></div>
                     <div class="d-flex justify-content-around align-items-center">
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                      <label class="form-check-label" for="inlineCheckbox1">Si</label>
+                    <div class="form-check">
+                      <input  name="inlineCheckbox5" class="form-check-input" type="radio" id="inlineCheckbox9" value="option9">
+                      <label class="form-check-label" for="inlineCheckbox9">Si</label>
                     </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                      <label class="form-check-label" for="inlineCheckbox2">No</label>
+                    <div class="form-check">
+                      <input  name="inlineCheckbox5" class="form-check-input" type="radio" id="inlineCheckbox10" value="option10" checked>
+                      <label class="form-check-label" for="inlineCheckbox10">No</label>
                     </div>
                     <input type="text" class="form-control" placeholder="Cuales" style="width: 50%;"/>
                   </div>
@@ -181,13 +254,13 @@
                   <div class="col-4">
                     <div><label>¿Has tenido alguna cirugía?</label></div>
                     <div class="d-flex justify-content-around align-items-center">
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                      <label class="form-check-label" for="inlineCheckbox1">Si</label>
+                    <div class="form-check">
+                      <input  name="inlineCheckbox6" class="form-check-input" type="radio" id="inlineCheckbox11" value="option11">
+                      <label class="form-check-label" for="inlineCheckbox11">Si</label>
                     </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                      <label class="form-check-label" for="inlineCheckbox2">No</label>
+                    <div class="form-check">
+                      <input  name="inlineCheckbox6" class="form-check-input" type="radio" id="inlineCheckbox12" value="option12" checked>
+                      <label class="form-check-label" for="inlineCheckbox12">No</label>
                     </div>
                     <input type="text" class="form-control" placeholder="Cuales" style="width: 50%;"/>
                   </div>
@@ -197,59 +270,65 @@
                   class="col-sm-6"
                   style="text-align: start; margin-top: 20px"
                 >
-                  <button type="button" class="btn btn-primary" (click)="show=1">
+                  <button type="button" class="btn btn-primary"  matStepperPrevious>
                     Anterior
                   </button>
                 </div>
                 <div class="col-sm-6" style="text-align: end; margin-top: 20px">
-                  <button type="button" class="btn btn-primary" (click)="show=3">
+                  <button  type="button" class="btn btn-primary" matStepperNext>
                     Siguiente
                   </button>
                 </div>
             </div>
             </form>
             </fieldset>
-          </div>
-          <div *ngIf="show==3">
+          </mat-step>
+
+          <mat-step [stepControl]="stepThree" [editable]="false" [completed]="true">
+          
             <fieldset>
-                <form class="row gx-6 gy-5 d-flex justify-content-evenly">
-                    <h2>Deportes</h2>
+              <h2>Deportes</h2>
+                <form class="row gx-6 gy-5 d-flex justify-content-evenly"  [formGroup]="stepThree">
+                  <ng-template matStepLabel>
+                    <p>Gustos personales</p>
+                  </ng-template>
+                    
                     <div class="col-4">
                         <div><label>¿Te gusta el fútbol?</label></div>
                         <div class="d-flex justify-content-around align-items-center">
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                          <label class="form-check-label" for="inlineCheckbox1">Si</label>
+                        <div class="form-check">
+                          <input name="inlineCheckbox7" class="form-check-input" type="radio" id="inlineCheckbox13" value="option13" formControlName="futbol">
+                          <label class="form-check-label" for="inlineCheckbox13">Si</label>
                         </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                          <label class="form-check-label" for="inlineCheckbox2">No</label>
+                        <div class="form-check">
+                          <input name="inlineCheckbox7" class="form-check-input" type="radio" id="inlineCheckbox14" value="option14" formControlName="futbol" checked>
+                          <label class="form-check-label" for="inlineCheckbox14">No</label>
                         </div>
                       </div>
                       </div>
                       <div class="col-4">
                         <div><label>¿Te gusta el baloncesto?</label></div>
                         <div class="d-flex justify-content-around align-items-center">
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                          <label class="form-check-label" for="inlineCheckbox1">Si</label>
+                        <div class="form-check">
+                          <input name="inlineCheckbox8" class="form-check-input" type="radio" id="inlineCheckbox15" value="option15" formControlName="basket">
+                          <label class="form-check-label" for="inlineCheckbox15">Si</label>
                         </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                          <label class="form-check-label" for="inlineCheckbox2">No</label>
+                        <div class="form-check">
+                          <input  name="inlineCheckbox8" class="form-check-input" type="radio" id="inlineCheckbox16" value="option16" formControlName="basket" checked>
+                          <label class="form-check-label" for="inlineCheckbox16">No</label>
                         </div>
                       </div>
                       </div>
                       <div class="col-4">
                         <div><label>¿Te gusta el Voleibol?</label></div>
                         <div class="d-flex justify-content-around align-items-center">
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                          <label class="form-check-label" for="inlineCheckbox1">Si</label>
+                        <div class="form-check">
+                          <input  name="inlineCheckbox9" class="form-check-input" type="radio" id="inlineCheckbox17" value="option17" formControlName="voley">
+                          <label class="form-check-label" for="inlineCheckbox17">Si</label>
                         </div>
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                          <label class="form-check-label" for="inlineCheckbox2">No</label>
+                        <div class="form-check">
+                          <input  name="inlineCheckbox9" class="form-check-input" type="radio" id="inlineCheckbox18" value="option18" formControlName="voley" checked> 
+                          <label class="form-check-label" for="inlineCheckbox18">No</label>
                         </div>
                       </div>
                       </div>
@@ -257,39 +336,39 @@
                       <div class="col-4">
                           <div><label>¿Te gusta bailar salsa?</label></div>
                           <div class="d-flex justify-content-around align-items-center">
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                            <label class="form-check-label" for="inlineCheckbox1">Si</label>
+                          <div class="form-check">
+                            <input  name="inlineCheckbox10" class="form-check-input" type="radio" id="inlineCheckbox19" value="option19" formControlName="salsa">
+                            <label class="form-check-label" for="inlineCheckbox19">Si</label>
                           </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                            <label class="form-check-label" for="inlineCheckbox2">No</label>
+                          <div class="form-check">
+                            <input  name="inlineCheckbox10" class="form-check-input" type="radio" id="inlineCheckbox20" value="option20" formControlName="salsa" checked>
+                            <label class="form-check-label" for="inlineCheckbox20">No</label>
                           </div>
                         </div>
                         </div>
                         <div class="col-4">
                           <div><label>¿Te gusta bailar zumba?</label></div>
                           <div class="d-flex justify-content-around align-items-center">
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                            <label class="form-check-label" for="inlineCheckbox1">Si</label>
+                          <div class="form-check">
+                            <input  name="inlineCheckbox11" class="form-check-input" type="radio" id="inlineCheckbox21" value="option21" formControlName="zumba">
+                            <label class="form-check-label" for="inlineCheckbox21">Si</label>
                           </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                            <label class="form-check-label" for="inlineCheckbox2">No</label>
+                          <div class="form-check">
+                            <input  name="inlineCheckbox11" class="form-check-input" type="radio" id="inlineCheckbox22" value="option22" formControlName="zumba" checked>
+                            <label class="form-check-label" for="inlineCheckbox22">No</label>
                           </div>
                         </div>
                         </div>
                         <div class="col-4">
                           <div><label>¿Te gusta bailar folklor?</label></div>
                           <div class="d-flex justify-content-around align-items-center">
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                            <label class="form-check-label" for="inlineCheckbox1">Si</label>
+                          <div class="form-check">
+                            <input  name="inlineCheckbox12" class="form-check-input" type="radio" id="inlineCheckbox23" value="option23" formControlName="folklor" >
+                            <label class="form-check-label" for="inlineCheckbox23">Si</label>
                           </div>
-                          <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                            <label class="form-check-label" for="inlineCheckbox2">No</label>
+                          <div class="form-check">
+                            <input  name="inlineCheckbox12" class="form-check-input" type="radio" id="inlineCheckbox24" value="option24" formControlName="folklor" checked>
+                            <label class="form-check-label" for="inlineCheckbox24">No</label>
                           </div>
                         </div>
                         </div>
@@ -298,20 +377,21 @@
                       class="col-sm-6"
                       style="text-align: start; margin-top: 20px"
                     >
-                      <button type="button" class="btn btn-primary" (click)="show=2">
+                      <button type="button" class="btn btn-primary"  matStepperPrevious>
                         Anterior
                       </button>
                     </div>
                     <div class="col-sm-6" style="text-align: end; margin-top: 20px">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button (click)="completeStep()"  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Terminar
                           </button>
                     </div>
                 </div>
                 </form>
-            </fieldset>
-          </div>
-        </form>
+            </fieldset>          
+        </mat-step>
+        </mat-stepper> 
+      
       </div>
     </div>
   </div>
@@ -333,7 +413,7 @@
             Ahora puedes disfrutar de la plataforma y aprender jugando
         </div>
         <div class="modal-footer" style="border-top: none!important;">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" routerLink="/" routerLinkActive="active">Entendido</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" routerLink="/login" routerLinkActive="active">Entendido</button>
         </div>
       </div>
     </div>
