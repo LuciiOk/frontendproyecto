@@ -10,7 +10,7 @@ import {MatIconModule} from '@angular/material/icon';
   declarations: [],
   imports: [
     CommonModule,
-    ProfileRoutingModule, 
+    ProfileRoutingModule,
     RouterModule,
     MatIconModule
   ]
