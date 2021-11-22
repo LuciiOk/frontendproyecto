@@ -14,15 +14,21 @@ export class GameComponent implements OnInit {
   modal!:ElementRef;
   @ViewChild('winner')
   modalWinner!:ElementRef;
+  @ViewChild('errorMod')
+  error!:ElementRef;
 
-  array = [0,0,0,1,0,0,0]
+  juegoEmpezado:boolean = false;
+
+  array = [0,0,0,1,0,0,0];
+  amigos = ['ignacio', 'claudio', 'johan', 'ignacio', 'claudio', 'johan']; // falta hacer dinamico esto
   jugador?:Users;
-  contrincante = 0;
-  jugadorPrincipal = 0;
+  contrincanteNombre?:string;
+  contrincante:number = 0;
+  jugadorPrincipal:number = 0;
+  ganador:string = '';
+  puntosGanador = 0;
 
-  constructor(private userData:UserDataService,  public modalService: NgbModal,) {
-    
-  }
+  constructor(private userData:UserDataService,  public modalService: NgbModal,) { }
 
   ngAfterViewInit() {
     
@@ -31,7 +37,6 @@ export class GameComponent implements OnInit {
   ngOnInit(): void {
     
     this.userData.getUserData().subscribe(data => {
-      this.modalService.open(this.modal, {size: 'lg'});
       this.jugador = data[0];
       console.log(this.jugador)
     }, err => {
@@ -39,36 +44,58 @@ export class GameComponent implements OnInit {
     });
   }
 
-  openModal(elemento:any) {
-    this.modalService.open(elemento)
+  openModal() {
+    if (this.contrincanteNombre !== undefined) {
+      this.juegoEmpezado = true;
+      this.modalService.open(this.modal, {size: 'lg'});
+    } else {
+      this.modalService.open(this.error);
+    }
+  }
+
+  cerrar() {
+    this.modalService.dismissAll();
+  }
+  
+
+  add(amigo:string) {
+    this.contrincanteNombre = amigo;
   }
 
   punto(value:string) {
     console.log(this.array.findIndex( element => element === 1))
     if (value === 'jugador') {
       let indice = this.array.findIndex( element => element === 1);
-      if (indice > 0) {
+      if (indice < 6) {
         this.array[indice] = 0;
-        this.array[indice - 1] = 1;
+        this.array[indice + 1] = 1;
         this.jugadorPrincipal ++;
-        indice ++;
+        indice++;
       }
-      if (indice === 0) {
+      if (indice === 6) {
         this.modalService.open(this.modalWinner);
+        if (this.jugador !== undefined) {
+          this.ganador = this.jugador?.nombre;
+          this.puntosGanador = this.jugadorPrincipal;
+        }
         console.log('Has ganado!');
       }
     }
 
     if (value === 'contrincante') {
       let indice = this.array.findIndex( element => element === 1);
-      if (indice < 6) {
+      if (indice > 0) {
         this.array[indice] = 0;
-        this.array[indice + 1] = 1;
-        this.contrincante ++;
-        indice ++;
+        this.array[indice - 1] = 1;
+        this.contrincante++;
+        indice--;
       }
-      if (indice === 6) {
+      if (indice === 0) {
         this.modalService.open(this.modalWinner);
+        if (this.contrincanteNombre !== undefined) {
+          this.ganador = this.contrincanteNombre;
+          this.puntosGanador = this.contrincante;
+        }
         console.log('Ha ganado el contrincante');
       }
     }

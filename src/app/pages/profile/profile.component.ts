@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MedicalInfo } from 'src/app/interfaces/medical-info';
+import { Pleasures } from 'src/app/interfaces/pleasures';
 import { Users } from 'src/app/interfaces/users';
 import { UserDataService } from 'src/app/service/user-data.service';
 
@@ -12,6 +13,7 @@ export class ProfileComponent implements OnInit {
 
   infoPersonal?:Users;
   infoMedica?:MedicalInfo;
+  infoGusto?:Pleasures;
 
   constructor(private userService:UserDataService) { }
 
@@ -31,9 +33,12 @@ export class ProfileComponent implements OnInit {
 
     this.userService.getMedicalInfo().subscribe(data => {
       this.infoMedica = data;
-      console.log(this.infoMedica);
     }, error => {
       console.log(error);
+    })
+
+    this.userService.getPleasuresInfo().subscribe((data:any) => {
+      this.infoGusto = data;
     })
   }
 

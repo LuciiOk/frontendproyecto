@@ -1,11 +1,13 @@
 <div class="container-fluid py-5" id="fondo">
     <div class="row text-center">
         <div class="col-3" *ngIf="jugador !== undefined">
-            <h2 >{{jugador.nombre}}</h2>
-            <button (click)="punto('jugador')" class="o-button" tyh2e="button">Puntos</button>
+            <h2 id="jugadores" >{{jugador.nombre}}</h2>
+            <button [disabled]="!juegoEmpezado" (click)="punto('jugador')" class="o-button" tyh2e="button">
+                Puntos
+            </button>
             <h2>Puntos: {{jugadorPrincipal}}</h2>
-            <img *ngIf="jugador.genero == 'Hombre'" id="jugador" src="../../../assets/recursos/niño.png" style="width: 170px;" alt="jugador-Hombre">
-            <img *ngIf="jugador.genero == 'Mujer'" id="jugador" src="../../../assets/recursos/niña2.png" style="width: 170px;" alt="jugador-Mujer">
+            <img *ngIf="jugador.genero == 'masculino'" id="jugador" src="../../../assets/recursos/niño.png" style="width: 170px;" alt="jugador-Hombre">
+            <img *ngIf="jugador.genero == 'femenino'" id="jugador" src="../../../assets/recursos/niña2.png" style="width: 170px;" alt="jugador-Mujer">
         </div>
         <div class="col-6">
             <div class="row justify-content-center align-items-center" id="main">
@@ -14,21 +16,23 @@
                     </div>
                 </div>
             </div>
-            <button class="o-button" (click)="openModal(winner)">Empezamos!</button>
+            <button type="button" class="o-button" (click)="openModal()">Empezamos!</button>
         </div>
         <div class="col-3">
             <div class="row rows-col-3">
                 <div class="d-flex justify-content-center ">
-                    <button class="d-flex my-2" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                    <button *ngIf="!contrincanteNombre" class="d-flex my-2 btn btn-outline-dark " data-bs-toggle="modal" data-bs-target="#exampleModal" >
                         Agregar contrincante +
                     </button>
                 </div>
             </div>
             
-            <h2>
-                contrincante
+            <h2 id="jugadores" *ngIf="contrincanteNombre">
+                {{contrincanteNombre}}
             </h2>
-            <button (click)="punto('contrincante')" class="o-button" tyh2e="button">Puntos</button>
+            <button type="button" [disabled]="!juegoEmpezado" (click)="punto('contrincante')" class="o-button" tyh2e="button">
+                Puntos
+            </button>
             <h2>Puntos: {{contrincante}}</h2>
             <img src="../../../assets/recursos/niña2.png" style="width: 200px;" alt="contrincante">
         </div>
@@ -48,8 +52,12 @@
           <h2  class="modal-title" id="exampleModalLabel">Elige un contrincante de tu lista de contactos</h2>
         </div>
         <div class="modal-body">
-          Ahora puedes disfrutar de la plataforma y aprender jugando!
-      </div>
+          <div class="row justify-content-center">
+              <div id="amigo" class="col-3 mx-2 my-1 text-center" *ngFor="let amigo of amigos">
+                  <button (click)="add(amigo)" id="add">{{amigo}} +</button>
+              </div>
+          </div>
+        </div>
         <div class="modal-footer" style="border-top: none!important;">
           <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Entendido</button>
         </div>
@@ -59,9 +67,22 @@
 
 <ng-template #presentacion let-modal>
     <app-presentation></app-presentation>
-</ng-template>   
+</ng-template>  
+
+<ng-template #errorMod let-modal>
+  <div class="modal-header justify-content-center" style="border-bottom: none!important;">
+    <h2  class="modal-title titulo" id="exampleModalLabel">Oops, ha ocurrido algo!</h2>
+  </div>
+  <div class="modal-body text-center">
+      <p id="texto" class="text-danger">Tienes que escoger a un amigo </p>
+  </div>
+  <div class="modal-footer justify-content-center" style="border-top: none!important;">
+      <button routerLink="[/]"  id="texto" type="button" class="btn btn-primary" (click)="cerrar()">Entendido!</button>
+  </div>
+</ng-template>
+
 
 <ng-template #winner let-modal>
-    <app-winner></app-winner>
+    <app-winner [ganador]="ganador" [puntos]="puntosGanador"></app-winner>
 </ng-template>   
 

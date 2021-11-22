@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-winner',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WinnerComponent implements OnInit {
 
-  constructor() { }
+  @Input() 
+  ganador?:string;
+  @Input()
+  puntos?:number;
+  
+  constructor(private modalService:NgbModal) { }
 
   ngOnInit(): void {
   }
 
+  cerrar() {
+    this.modalService.dismissAll();
+  }
 }

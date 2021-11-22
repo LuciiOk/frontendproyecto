@@ -35,7 +35,7 @@ export class UserDataService {
   }
   // se obtienen los gustos personales del usuario logeado.
   getPleasuresInfo() {
-
+    return this.http.get(`${environment.hostname}/preferencias/${sessionStorage.getItem('id')}`, this.HttpUploadOptions);
   }
   deleteUser() {
     let id = sessionStorage.getItem('id');
