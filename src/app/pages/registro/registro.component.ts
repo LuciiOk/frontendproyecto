@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Users } from 'src/app/interfaces/users';
 import { ConexionService } from 'src/app/service/conexion.service';
 
@@ -17,7 +17,6 @@ export class RegistroComponent implements OnInit {
   stepOne:FormGroup;
   stepTwo:FormGroup;
   stepThree:FormGroup;
-  // completed =false;
 
   isOptional = false
   editable = false;
@@ -28,7 +27,7 @@ export class RegistroComponent implements OnInit {
   
   constructor(private builder:FormBuilder, private authService:ConexionService) {
     this.stepOne = builder.group({
-       nombre:['',Validators.compose([Validators.required])],
+       nombre:['' ,Validators.compose([Validators.required])],
        password:['',[Validators.required]],
        email:['',Validators.compose([Validators.required, Validators.email])], 
        fechanacimiento:['',Validators.compose([Validators.required])],

@@ -85,7 +85,7 @@ export class ConexionService {
     user
     , { headers:this.HttpUploadOptions.headers
     ,observe: 'response'}).pipe(map (res => {
-        return res;
+      return res;
     }));
   }
 }

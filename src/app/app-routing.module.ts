@@ -28,7 +28,12 @@ const routes: Routes = [
     path:'profile',
     loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfileModule),
     canActivate: [AuthGuardGuard]
+  },{
+    path:'modificar',
+    loadChildren: () => import('./pages/registro/registro.module').then(m => m.RegistroModule),
+    canActivate: [AuthGuardGuard]
   }
+
 ];
 
 @NgModule({
