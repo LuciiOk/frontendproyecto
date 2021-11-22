@@ -6,19 +6,25 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http'
 import { AuthGuardGuard } from './helpers/auth-guard.guard';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { NavComponent } from './components/nav/nav.component';
 import { ComponentsModule } from './components/components.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProfileComponent
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ComponentsModule
+    ComponentsModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    NgbModalModule,
+    NgbModule
   ],
   providers: [AuthGuardGuard],
   bootstrap: [AppComponent]

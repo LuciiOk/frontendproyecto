@@ -1,0 +1,34 @@
+$textcolor: #01255b;
+$titulo: #FFA502;
+$texto: Airbnb Cereal App Medium;
+
+p {
+  font-family: $texto;
+  color: $textcolor;
+  font-size: 17px;
+}
+
+.modal-footer {
+  border-top: none;
+}
+
+#img-footer2 {
+  width: 300px;
+
+}
+
+#img-footer1 {
+  width: 100px;
+  
+}
+
+ol li {
+  font-size: 12px;
+}
+
+.titulo {
+  font-family: MADE Sunflower;
+  color: $titulo;
+  font-size: 50px;
+  font-weight: bold;
+}

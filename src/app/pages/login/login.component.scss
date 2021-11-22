@@ -26,3 +26,13 @@ h1{
   font-size: 46.2007px;
   color: #FFA502;
 }
+
+#titulo {
+  text-align: center;
+}
+
+@media (max-width: 650px) {
+  #titulo {
+    display: none;
+  }
+}

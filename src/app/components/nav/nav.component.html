@@ -1,11 +1,32 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container">
-    <a class="nav-link" [routerLink]="['/']" routerLinkActive="router-link-active"><img src="../../../assets/recursos/TS.png" style="width: 50%;"></a>
-    <div class="d-xl-flex flex-row-revers justify-content-between col-5">
-          <a class="nav-link" [routerLink]="['/']" routerLinkActive="router-link-active">Nosotros</a>
-          <a class="nav-link" [routerLink]="['/']" routerLinkActive="router-link-active">Conocenos</a>
-          <a class="nav-link" *ngIf="token"  [routerLink]="['/profile']" >{{nombre}}</a>
-          <a class="nav-link" *ngIf="!token" [routerLink]="['/login']" >Iniciar sesión</a>
-    </div> 
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="nav">
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="['/']" fragment="" id="logo"><img src="../../../assets/recursos/TS.png"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" class=" collapse navbar-collapse" id="navbarSupportedContent" >
+      <ul class="navbar-nav" id="color">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/']" fragment="nosotros">Nosotros</a>
+        </li>
+        <li>
+          <a class="nav-link" [routerLink]="['/']" fragment="conocenos">Conócenos</a>
+        </li>
+        <li *ngIf="!token; else isvisible">
+          <a class="nav-link" [routerLink]="['/login']" >Iniciar Sesión</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
+
+<ng-template #isvisible>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true"
+    >{{nombre}}</a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+      <li><a class="dropdown-item" [routerLink]="['/profile']" >Mi Perfil</a></li>
+      <li><a class="dropdown-item" (click)="logout()" [routerLink]="['']">Cerrar Sesión</a></li>
+    </ul>
+  </li>
+</ng-template>

@@ -1,0 +1,32 @@
+$textcolor: #01255b;
+$font: Airbnb Cereal App Medium;
+
+* {
+    font-family: $font;
+  } 
+
+#color li a {
+  text-align: center;
+  font-family: $font !important; 
+  font-size: 18px;
+  color: $textcolor;
+}
+
+#navbarSupportedContent {
+  justify-content: end;
+}
+
+#nav {
+  padding: 10px 100px;
+}
+
+@media (max-width: 650px) {
+  #nav {
+    padding: 10px 20px;
+  }
+}
+
+#logo img {
+  width: 55px;
+}
+  
