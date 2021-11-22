@@ -5,16 +5,23 @@ import { GameRoutingModule } from './game-routing.module';
 import { ComponentsModule } from 'src/app/components/components.module';
 import { GameComponent } from './game.component';
 import { AuthGuardGuard } from 'src/app/helpers/auth-guard.guard';
+import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { WinnerComponent } from './winner/winner.component';
+import { PresentationComponent } from './presentation/presentation.component';
 
 
 @NgModule({
   declarations: [
-    GameComponent
+    GameComponent,
+    WinnerComponent,
+    PresentationComponent
   ],
   imports: [
     CommonModule,
     GameRoutingModule,
-    ComponentsModule
+    ComponentsModule,
+    NgbModalModule,
+    NgbModule
   ],
   providers: [AuthGuardGuard]
 })

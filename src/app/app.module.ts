@@ -9,11 +9,12 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { ComponentsModule } from './components/components.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProfileComponent
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,7 +22,9 @@ import { MatIconModule } from '@angular/material/icon';
     HttpClientModule,
     ComponentsModule,
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    NgbModalModule,
+    NgbModule
   ],
   providers: [AuthGuardGuard],
   bootstrap: [AppComponent]

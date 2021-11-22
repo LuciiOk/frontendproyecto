@@ -5,7 +5,7 @@
             <button (click)="punto('jugador')" class="o-button" tyh2e="button">Puntos</button>
             <h2>Puntos: {{jugadorPrincipal}}</h2>
             <img *ngIf="jugador.genero == 'Hombre'" id="jugador" src="../../../assets/recursos/niño.png" style="width: 170px;" alt="jugador-Hombre">
-            <img *ngIf="jugador.genero == 'Mujer'" src="../../../assets/recursos/niña.png" style="width: 170px;" alt="jugador-Mujer">
+            <img *ngIf="jugador.genero == 'Mujer'" id="jugador" src="../../../assets/recursos/niña2.png" style="width: 170px;" alt="jugador-Mujer">
         </div>
         <div class="col-6">
             <div class="row justify-content-center align-items-center" id="main">
@@ -14,7 +14,7 @@
                     </div>
                 </div>
             </div>
-            <button class="o-button">Empezamos!</button>
+            <button class="o-button" (click)="openModal(winner)">Empezamos!</button>
         </div>
         <div class="col-3">
             <div class="row rows-col-3">
@@ -55,4 +55,13 @@
         </div>
       </div>
     </div>
-  </div>
+</div>
+
+<ng-template #presentacion let-modal>
+    <app-presentation></app-presentation>
+</ng-template>   
+
+<ng-template #winner let-modal>
+    <app-winner></app-winner>
+</ng-template>   
+
