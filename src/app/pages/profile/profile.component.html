@@ -1,19 +1,4 @@
 <div class="container-fluid">
-
-    <div class="main-title">
-        <h1 >Perfil</h1>
-    </div>
-    
-
-    <div class="row justify-content-center titulo-seccion">
-        <div class="col">
-            <h1>Informacion Base</h1>
-        </div>
-    </div>
-    
-    <div class="row row-cols-3 justify-content-start" id="info-base">
-
-        <div class="col" id="nombre">
     
     <div class= "row main-title">
         <div class="col-4" id="volvercont">
@@ -25,7 +10,7 @@
             <h1 >Perfil</h1> 
         </div>
         <div class="col-4" id="editar">
-            <a href="" >
+            <a (click)="editar()" >
                 <i class="fa fa-pencil-square" aria-hidden="true"></i>
             </a>
         </div>
@@ -256,5 +241,7 @@
     </div>
     <div class="container-fluid" id="btn">
         <a [routerLink]="['/']" fragment="inicio" class="o-button" style="margin-bottom: 40px;">Volver al inicio</a>
+        <a (click)="eliminarcuenta()" class="o-button"> Eliminar Cuenta </a>
     </div>
+
 </div>

@@ -41,4 +41,15 @@ export class ProfileComponent implements OnInit {
     history.back();
   }
 
+  editar() {
+    
+  }
+
+  eliminarcuenta() {
+     this.userService.deleteUser().subscribe(data => {
+       console.log(data);
+      }, error => {
+        console.log(error);
+      })
+  }
 }

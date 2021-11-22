@@ -37,4 +37,8 @@ export class UserDataService {
   getPleasuresInfo() {
 
   }
+  deleteUser() {
+    let id = sessionStorage.getItem('id');
+    return this.http.delete(`${environment.hostname}/user/${id}`, this.HttpUploadOptions);
+  }
 }
