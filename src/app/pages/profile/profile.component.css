@@ -13,7 +13,7 @@ h1{
 
 }
 h3{
-    font-size:30px ;
+    font-size:20px ;
     font-weight: bold;
     color: #01255B;
 }
@@ -36,6 +36,7 @@ p{
     font-weight: normal;
     line-height: 170%;
     color: #01255B;
+    text-align: justify;
 }
 
 .main-title{
@@ -48,7 +49,7 @@ p{
 }
 
 .main-title h1{
-    font-family: Subway;
+    font-family: Airbnb Cereal App Medium;
     font-size: 60px;
     text-align: center;
 }
