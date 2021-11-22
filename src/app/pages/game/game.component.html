@@ -2,7 +2,9 @@
     <div class="row text-center">
         <div class="col-3" *ngIf="jugador !== undefined">
             <h2 >{{jugador.nombre}}</h2>
-            <button (click)="punto('jugador')" class="o-button" tyh2e="button">Puntos</button>
+            <button [disabled]="!juegoEmpezado" (click)="punto('jugador')" class="o-button" tyh2e="button">
+                Puntos
+            </button>
             <h2>Puntos: {{jugadorPrincipal}}</h2>
             <img *ngIf="jugador.genero == 'Hombre'" id="jugador" src="../../../assets/recursos/niño.png" style="width: 170px;" alt="jugador-Hombre">
             <img *ngIf="jugador.genero == 'Mujer'" id="jugador" src="../../../assets/recursos/niña2.png" style="width: 170px;" alt="jugador-Mujer">
@@ -14,21 +16,23 @@
                     </div>
                 </div>
             </div>
-            <button class="o-button" (click)="openModal(winner)">Empezamos!</button>
+            <button type="button" class="o-button" (click)="openModal(winner)">Empezamos!</button>
         </div>
         <div class="col-3">
             <div class="row rows-col-3">
                 <div class="d-flex justify-content-center ">
-                    <button class="d-flex my-2" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                    <button *ngIf="!contrincanteNombre" class="d-flex my-2" data-bs-toggle="modal" data-bs-target="#exampleModal" >
                         Agregar contrincante +
                     </button>
                 </div>
             </div>
             
-            <h2>
-                contrincante
+            <h2 *ngIf="contrincanteNombre">
+                {{contrincanteNombre}}
             </h2>
-            <button (click)="punto('contrincante')" class="o-button" tyh2e="button">Puntos</button>
+            <button type="button" [disabled]="!juegoEmpezado" (click)="punto('contrincante')" class="o-button" tyh2e="button">
+                Puntos
+            </button>
             <h2>Puntos: {{contrincante}}</h2>
             <img src="../../../assets/recursos/niña2.png" style="width: 200px;" alt="contrincante">
         </div>
@@ -50,7 +54,7 @@
         <div class="modal-body">
           <div class="row justify-content-center">
               <div id="amigo" class="col-3 mx-2 my-1 text-center" *ngFor="let amigo of amigos">
-                  <button id="add">{{amigo}} +</button>
+                  <button (click)="add(amigo)" id="add">{{amigo}} +</button>
               </div>
           </div>
         </div>

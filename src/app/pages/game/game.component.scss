@@ -1,5 +1,6 @@
 $textcolor: #01255b;
 $btncolor: #1e90ff;
+$hover: #a7d3ff;
 $btncolorhover: #047df5;
 $circulo: #A00606;
 $cuadrado: #F4B67E;
@@ -22,7 +23,8 @@ $texto: Airbnb Cereal App Medium;
 }
 
 #add {
-  
+  border-radius: 10px;
+  overflow: hidden;
   padding: 5px 0;
   width: 100%;
   font-family: $texto;
@@ -30,6 +32,10 @@ $texto: Airbnb Cereal App Medium;
   color: $textcolor;
   border: none;
   background-color: transparent;
+}
+
+#add:hover {
+  background-color: $hover;
 }
 
 #fondo {

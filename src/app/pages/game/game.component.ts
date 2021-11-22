@@ -15,9 +15,12 @@ export class GameComponent implements OnInit {
   @ViewChild('winner')
   modalWinner!:ElementRef;
 
+  juegoEmpezado:boolean = false;
+
   array = [0,0,0,1,0,0,0]
   amigos = ['ignacio', 'claudio', 'johan', 'ignacio', 'claudio', 'johan'];
   jugador?:Users;
+  contrincanteNombre?:string;
   contrincante:number = 0;
   jugadorPrincipal:number = 0;
   ganador:string = ''
@@ -42,7 +45,14 @@ export class GameComponent implements OnInit {
   }
 
   openModal(elemento:any) {
-    this.modalService.open(elemento)
+    if (this.contrincanteNombre) {
+      this.juegoEmpezado = true;
+      this.modalService.open(elemento);
+    }
+  }
+
+  add(amigo:string) {
+    this.contrincanteNombre = amigo;
   }
 
   punto(value:string) {
@@ -74,6 +84,9 @@ export class GameComponent implements OnInit {
       }
       if (indice === 6) {
         this.modalService.open(this.modalWinner);
+        if (this.contrincanteNombre !== undefined) {
+          this.ganador = this.contrincanteNombre;
+        }
         console.log('Ha ganado el contrincante');
       }
     }
