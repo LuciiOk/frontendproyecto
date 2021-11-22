@@ -7,7 +7,6 @@ import { ConexionService } from 'src/app/service/conexion.service';
 
 
 
-
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -15,62 +14,59 @@ import { ConexionService } from 'src/app/service/conexion.service';
 })
 export class RegistroComponent implements OnInit {
 
-  infoPersonal:FormGroup;
-  infoMedica:FormGroup;
-  infoGustos:FormGroup;
-
-  errorMessage?:string;
-  error:boolean = false;
+  stepOne:FormGroup;
+  stepTwo:FormGroup;
+  stepThree:FormGroup;
+  // completed =false;
 
   isOptional = false
+  editable = false;
 
-  show:number=1;
+  error = false;
+  errorMessage?:string;
+
   
-  completed = false
+  constructor(private builder:FormBuilder, private authService:ConexionService) {
+    this.stepOne = builder.group({
+       nombre:['',Validators.compose([Validators.required])],
+       password:['',[Validators.required]],
+       email:['',Validators.compose([Validators.required, Validators.email])], 
+       fechanacimiento:['',Validators.compose([Validators.required])],
+       genero:['',Validators.compose([Validators.required])]
+    });
 
-  editable = false
+    this.stepTwo = builder.group({
+      estatura:['',Validators.compose([Validators.required, Validators.pattern(/[0-9]/)])],
+      peso:['',Validators.compose([Validators.required])]
+    });
 
-  constructor(public form:FormBuilder, private authService:ConexionService, private router: Router) {
-    this.infoPersonal = this.form.group({
-      nombre: ['', Validators.required],
-      email:['', [Validators.required, Validators.email]],
-      nacimiento:['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      edad: ['', Validators.required] ,
-      sexo: ['', Validators.required]
-
-    })
-
-    this.infoMedica = this.form.group({
-      estatura: ['', Validators.required],
-      peso: ['', Validators.required]
-    })
-
-    this.infoGustos = this.form.group({
-      salsa: ['no', []],
-      folklor: ['no', []],
-      zumba: ['no', []], 
-      futbol: ['no', []],
-      voley: ['no', []],
-      basket: ['no', []]
-    })
+    this.stepThree = builder.group({
+      futbol:['no',[Validators.required]],
+      basket:['no',[Validators.required]],
+      voley:['no',[Validators.required]],
+      salsa:['no',[Validators.required]],
+      zumba:['no',[Validators.required]],
+      folklor:['no',[Validators.required]]
+    });
   }
 
   ngOnInit(): void {
   }
 
-  registrar(){
-    let {nombre, email, password, nacimiento, sexo} = this.infoPersonal.value;
-    let {estatura, peso} = this.infoMedica.value;
-    let {salsa, folklor, zumba, futbol, voley, basket} = this.infoGustos.value;
+  completeStep(){
+    // this.completed = true;
+  }
 
+  registrar(){
+    let {nombre, email, password, fechanacimiento, genero} = this.stepOne.value;
+    let {estatura, peso} = this.stepTwo.value;
+    let {salsa, folklor, zumba, futbol, voley, basket} = this.stepThree.value;
     let user:Users = {
-      nombre, email, password, fechanacimiento: nacimiento, genero: sexo,
+      nombre, email, password, fechanacimiento: fechanacimiento, genero: genero,
       infoMedica: {estatura, peso},
       gustos: {salsa, folklor, zumba, futbol, voley, basket}
     }
 
-    console.log(user)
     this.authService.register(user).subscribe((data:any) => {
       this.error = false;
     }, error => {

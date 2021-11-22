@@ -81,10 +81,11 @@ export class ConexionService {
 
 
   register(user:Users):Observable<any> {
-    console.log(user)
     return this.http.post(`${environment.hostname}/auth/register`, 
     user
     , { headers:this.HttpUploadOptions.headers
-    ,observe: 'response'});
+    ,observe: 'response'}).pipe(map (res => {
+        return res;
+    }));
   }
 }

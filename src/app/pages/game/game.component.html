@@ -16,7 +16,7 @@
                     </div>
                 </div>
             </div>
-            <button type="button" class="o-button" (click)="openModal(winner)">Empezamos!</button>
+            <button type="button" class="o-button" (click)="openModal()">Empezamos!</button>
         </div>
         <div class="col-3">
             <div class="row rows-col-3">
@@ -67,9 +67,22 @@
 
 <ng-template #presentacion let-modal>
     <app-presentation></app-presentation>
-</ng-template>   
+</ng-template>  
+
+<ng-template #errorMod let-modal>
+  <div class="modal-header justify-content-center" style="border-bottom: none!important;">
+    <h2  class="modal-title titulo" id="exampleModalLabel">Oops, ha ocurrido algo!</h2>
+  </div>
+  <div class="modal-body text-center">
+      <p id="texto" class="text-danger">Tienes que escoger a un amigo </p>
+  </div>
+  <div class="modal-footer justify-content-center" style="border-top: none!important;">
+      <button routerLink="[/]"  id="texto" type="button" class="btn btn-primary" (click)="cerrar()">Entendido!</button>
+  </div>
+</ng-template>
+
 
 <ng-template #winner let-modal>
-    <app-winner [ganador]="ganador"></app-winner>
+    <app-winner [ganador]="ganador" [puntos]="puntosGanador"></app-winner>
 </ng-template>   
 
