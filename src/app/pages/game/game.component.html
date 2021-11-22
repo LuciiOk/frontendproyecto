@@ -1,13 +1,13 @@
 <div class="container-fluid py-5" id="fondo">
     <div class="row text-center">
         <div class="col-3" *ngIf="jugador !== undefined">
-            <h2 >{{jugador.nombre}}</h2>
+            <h2 id="jugadores" >{{jugador.nombre}}</h2>
             <button [disabled]="!juegoEmpezado" (click)="punto('jugador')" class="o-button" tyh2e="button">
                 Puntos
             </button>
             <h2>Puntos: {{jugadorPrincipal}}</h2>
-            <img *ngIf="jugador.genero == 'Hombre'" id="jugador" src="../../../assets/recursos/niño.png" style="width: 170px;" alt="jugador-Hombre">
-            <img *ngIf="jugador.genero == 'Mujer'" id="jugador" src="../../../assets/recursos/niña2.png" style="width: 170px;" alt="jugador-Mujer">
+            <img *ngIf="jugador.genero == 'masculino'" id="jugador" src="../../../assets/recursos/niño.png" style="width: 170px;" alt="jugador-Hombre">
+            <img *ngIf="jugador.genero == 'femenino'" id="jugador" src="../../../assets/recursos/niña2.png" style="width: 170px;" alt="jugador-Mujer">
         </div>
         <div class="col-6">
             <div class="row justify-content-center align-items-center" id="main">
@@ -21,13 +21,13 @@
         <div class="col-3">
             <div class="row rows-col-3">
                 <div class="d-flex justify-content-center ">
-                    <button *ngIf="!contrincanteNombre" class="d-flex my-2" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                    <button *ngIf="!contrincanteNombre" class="d-flex my-2 btn btn-outline-dark " data-bs-toggle="modal" data-bs-target="#exampleModal" >
                         Agregar contrincante +
                     </button>
                 </div>
             </div>
             
-            <h2 *ngIf="contrincanteNombre">
+            <h2 id="jugadores" *ngIf="contrincanteNombre">
                 {{contrincanteNombre}}
             </h2>
             <button type="button" [disabled]="!juegoEmpezado" (click)="punto('contrincante')" class="o-button" tyh2e="button">

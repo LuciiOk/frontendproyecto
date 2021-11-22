@@ -65,6 +65,12 @@ $texto: Airbnb Cereal App Medium;
   height: 50vh;
 }
 
+#jugadores {
+  font-family: $texto;
+  color: $textcolor;
+  font-size: 36px;
+}
+
 #cuadrados {
   border: solid 5px $bordecuadrado;
   border-radius: 10px;

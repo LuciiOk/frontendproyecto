@@ -86,7 +86,7 @@
             <h3>
                 Altura
             </h3>
-            <p *ngIf="infoMedica !== undefined">{{infoMedica.estatura * 100}} cm</p>
+            <p *ngIf="infoMedica !== undefined">{{infoMedica.estatura}} cm</p>
         </div>
     </div>
     <div class="row titulo-seccion">
@@ -101,9 +101,10 @@
                 <h3>
                     ¿Presenta alguna enfermadad cardiaca?
                 </h3>
-                <p>
-                    si
-                </p>
+               <div *ngIf="infoMedica !== undefined">
+                   <p *ngIf="infoMedica.enfcardiaca !== ''">{{ infoMedica.enfcardiaca}}</p>
+                   <p *ngIf="infoMedica.enfcardiaca === ''">No</p>
+               </div>
             </div>
 
         </div>
@@ -112,9 +113,10 @@
                 <h3>
                     ¿Presenta alguna alergia?
                 </h3>
-                <p>
-                    si
-                </p>
+                <div *ngIf="infoMedica !== undefined">
+                    <p *ngIf="infoMedica.alergia !== ''">{{ infoMedica.alergia}}</p>
+                    <p *ngIf="infoMedica.alergia === ''">No</p>
+                </div>
             </div>
         </div>
         <div class="col-6 col-md-4">
@@ -122,9 +124,10 @@
                 <h3>
                     ¿Presenta alguna enfermedad respiratoria?
                 </h3>
-                <p>
-                    si
-                </p>
+                <div *ngIf="infoMedica !== undefined">
+                    <p *ngIf="infoMedica.enfrespiratorias !== ''">{{ infoMedica.enfrespiratorias}}</p>
+                    <p *ngIf="infoMedica.enfrespiratorias === ''">No</p>
+                </div>
             </div>
         </div>
         <div class="col-6 col-md-4">
@@ -132,9 +135,10 @@
                 <h3>
                     ¿Presenta alguna enfermedad degenerativa?
                 </h3>
-                <p>
-                    si
-                </p>
+                <div *ngIf="infoMedica !== undefined">
+                    <p *ngIf="infoMedica.enfdegenerativa !== ''">{{ infoMedica.enfdegenerativa}}</p>
+                    <p *ngIf="infoMedica.enfdegenerativa === ''">No</p>
+                </div>
             </div>
         </div>
 
@@ -143,20 +147,21 @@
                 <h3>
                     ¿Has tenido alguna cirugia?
                 </h3>
-                <p>
-                    si
-                </p>
+                <div *ngIf="infoMedica !== undefined">
+                    <p *ngIf="infoMedica.cirugia !== ''">{{ infoMedica.cirugia}}</p>
+                    <p *ngIf="infoMedica.cirugia === ''">No</p>
+                </div>
             </div>
-
         </div>
         <div class="col-6 col-md-4">
             <div>
                 <h3>
                     ¿Has tenido alguna operacion?
                 </h3>
-                <p>
-                    si
-                </p>
+                <div *ngIf="infoMedica !== undefined">
+                    <p *ngIf="infoMedica.cirugia !== ''">{{ infoMedica.cirugia}}</p>
+                    <p *ngIf="infoMedica.cirugia === ''">No</p>
+                </div>
             </div>
         </div>
     </div>
@@ -175,21 +180,17 @@
         <div class="col-6 col-md-4" id="futbol">
             <div>
                 <h3>
-                    ¿Practicas algun deporte?
+                    ¿Te gusta el futbol?
                 </h3>
-                <p>
-                    si
-                </p>
+                <p *ngIf="infoGusto !== undefined">{{infoGusto.futbol}}</p>
             </div>
         </div>
         <div class="col-6 col-md-4" id="baloncesto">
             <div>
                 <h3>
-                    ¿Que deportes practicas?
+                    ¿Te gusta el basketbol?
                 </h3>
-                <p>
-                    si
-                </p>
+                <p *ngIf="infoGusto !== undefined">{{infoGusto.basket}}</p>
             </div>
 
         </div>
@@ -198,11 +199,9 @@
 
             <div>
                 <h3>
-                    ¿Que deportes practicas?
+                    ¿Te gusta el Voleyball?
                 </h3>
-                <p>
-                    si
-                </p>
+                <p *ngIf="infoGusto !== undefined">{{infoGusto.voley}}</p>
             </div>
         </div>
 
@@ -211,9 +210,7 @@
                 <h3>
                     ¿Te gusta bailar salsa?
                 </h3>
-                <p>
-                    si
-                </p>
+                <p *ngIf="infoGusto !== undefined">{{infoGusto.salsa}}</p>
             </div>
         </div>
 
@@ -222,9 +219,7 @@
                 <h3>
                     ¿Te gusta bailar zumba?
                 </h3>
-                <p>
-                    si
-                </p>
+                <p *ngIf="infoGusto !== undefined">{{infoGusto.zumba}}</p>
             </div>
         </div>
 
@@ -233,9 +228,7 @@
                 <h3>
                     ¿Te gusta bailar folklors?
                 </h3>
-                <p>
-                    si
-                </p>
+                <p *ngIf="infoGusto !== undefined">{{infoGusto.folklor}}</p>
             </div>
         </div>
     </div>
