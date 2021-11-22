@@ -16,9 +16,11 @@ export class GameComponent implements OnInit {
   modalWinner!:ElementRef;
 
   array = [0,0,0,1,0,0,0]
+  amigos = ['ignacio', 'claudio', 'johan', 'ignacio', 'claudio', 'johan'];
   jugador?:Users;
-  contrincante = 0;
-  jugadorPrincipal = 0;
+  contrincante:number = 0;
+  jugadorPrincipal:number = 0;
+  ganador:string = ''
 
   constructor(private userData:UserDataService,  public modalService: NgbModal,) {
     
@@ -51,10 +53,13 @@ export class GameComponent implements OnInit {
         this.array[indice] = 0;
         this.array[indice - 1] = 1;
         this.jugadorPrincipal ++;
-        indice ++;
+        indice--;
       }
       if (indice === 0) {
         this.modalService.open(this.modalWinner);
+        if (this.jugador !== undefined) {
+          this.ganador = this.jugador?.nombre;
+        }
         console.log('Has ganado!');
       }
     }
@@ -64,8 +69,8 @@ export class GameComponent implements OnInit {
       if (indice < 6) {
         this.array[indice] = 0;
         this.array[indice + 1] = 1;
-        this.contrincante ++;
-        indice ++;
+        this.contrincante++;
+        indice++;
       }
       if (indice === 6) {
         this.modalService.open(this.modalWinner);

@@ -48,8 +48,12 @@
           <h2  class="modal-title" id="exampleModalLabel">Elige un contrincante de tu lista de contactos</h2>
         </div>
         <div class="modal-body">
-          Ahora puedes disfrutar de la plataforma y aprender jugando!
-      </div>
+          <div class="row justify-content-center">
+              <div id="amigo" class="col-3 mx-2 my-1 text-center" *ngFor="let amigo of amigos">
+                  <button id="add">{{amigo}} +</button>
+              </div>
+          </div>
+        </div>
         <div class="modal-footer" style="border-top: none!important;">
           <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Entendido</button>
         </div>
@@ -62,6 +66,6 @@
 </ng-template>   
 
 <ng-template #winner let-modal>
-    <app-winner></app-winner>
+    <app-winner [ganador]="ganador"></app-winner>
 </ng-template>   
 
