@@ -87,4 +87,10 @@ export class ConexionService {
     , { headers:this.HttpUploadOptions.headers
     ,observe: 'response'});
   }
+
+  delete(id:string):Observable<any> {
+    console.log(id)
+    
+    return this.http.delete(`${environment.hostname}/users/${id}`, { headers:this.HttpUploadOptions.headers});
+  }
 }
