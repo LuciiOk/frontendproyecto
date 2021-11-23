@@ -10,11 +10,13 @@ import { ComponentsModule } from './components/components.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DeleteModalComponent } from './pages/delete-modal/delete-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProfileComponent,
+    DeleteModalComponent,
   ],
   imports: [
     BrowserModule,
