@@ -1,0 +1,32 @@
+$fuente: Airbnb Cereal App Medium, sans-serif;
+$btncolor: #1e90ff;
+$btncolorhover: #047df5;
+
+#fondo {
+    background-image: url(../../../assets/recursos/fondo2.png);
+    background-size: cover;
+    background-repeat: repeat-x;
+    min-height: calc(100vh - 59px - 132px);
+}
+
+.agregar:hover {
+    background-color: $btncolorhover;
+}
+
+.agregar {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: $btncolor;
+    color: white;
+    border-radius: 4px;
+    font-size: 25px;
+    border-color: $btncolor;
+    width: 315px;
+    height: 65px;
+    left: 135px;
+    top: 566px;
+    font-family: $fuente;
+}

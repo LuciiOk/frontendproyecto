@@ -1,0 +1,31 @@
+<div class="modal-header justify-content-center" style="border-bottom: none!important;">
+    <h2  class="modal-title titulo" id="exampleModalLabel">Agregar a un amigo</h2>
+</div>
+<div class="modal-body justify-content-center">
+    <div class="container">
+        <form [formGroup]="formulario" (ngSubmit)=(agregarAmigo()) class="needs-validation" novalidate>
+            <div class="row">
+                <div class="col-12 my-4">
+                    <label for="amigo" class="form-label">Nombre Amigo</label>
+                    <input formControlName="nombre" type="text" id="amigo" class="form-control" placeholder="Nombre amigo">
+                </div>
+                
+                <div class="container my-4">
+                    <label for="genero" class="form-label">Genero</label>
+                    <select formControlName="genero" class="form-select">
+                        <option value="">Selecciona una opcion</option>
+                        <option value="Femenino">Femenino</option>
+                        <option value="Masculino">Masculino</option>
+                    </select>
+                </div>
+                <div class="container text-center my-4">
+                    <button id="texto" type="submit" class="btn btn-primary" (click)="cerrar()">Agregar!</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal-footer justify-content-center">
+    <img id="img-footer1" src="../../../assets/recursos/aquien.png" alt="futbol">
+    <img id="img-footer2" src="../../../assets/recursos/porque.png" alt="ulaula">
+</div>

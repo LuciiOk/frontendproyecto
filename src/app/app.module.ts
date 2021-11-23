@@ -10,11 +10,13 @@ import { ComponentsModule } from './components/components.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AmigosComponent } from './pages/amigos/amigos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProfileComponent,
+    // AmigosComponent
   ],
   imports: [
     BrowserModule,

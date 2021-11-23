@@ -32,6 +32,11 @@ const routes: Routes = [
     path:'modificar',
     loadChildren: () => import('./pages/registro/registro.module').then(m => m.RegistroModule),
     canActivate: [AuthGuardGuard]
+  },
+  {
+    path:'amigos',
+    loadChildren: () => import('./pages/amigos/amigos.module').then(m => m.AmigosModule),
+    canActivate: [AuthGuardGuard]
   }
 
 ];
