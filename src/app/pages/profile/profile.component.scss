@@ -92,7 +92,7 @@ p{
     padding-bottom: 10%;
 }
 
-.o-button {
+.volver {
     display: flex;
     text-decoration: none;
     align-items: center;
@@ -109,7 +109,23 @@ p{
     top: 566px;
     font-family: Airbnb Cereal App Medium, sans-serif;
   }
-  
+  .eliminar {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: red;
+    color: white;
+    border-radius: 4px;
+    font-size: 25px;
+    border-color: $btncolor;
+    width: 315px;
+    height: 65px;
+    left: 135px;
+    top: 566px;
+    font-family: Airbnb Cereal App Medium, sans-serif;
+  }
   .o-button:hover {
     background-color: $btncolorhover;
   }
@@ -117,6 +133,10 @@ p{
   #btn {
       display: flex;
       justify-content: center;
+  }
+
+  #eliminar {
+      background-color: red p !important;
   }
 
 @media (max-width: 800px) {

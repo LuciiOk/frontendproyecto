@@ -21,8 +21,7 @@ export class UserDataService {
     )
   };
 
-  constructor(private http:HttpClient) { 
-  }
+  constructor(private http:HttpClient) {  }
 
   // aqui se obtienen los datos basicos del usuario logeado.
   getUserData():Observable<any> {
@@ -36,5 +35,17 @@ export class UserDataService {
   // se obtienen los gustos personales del usuario logeado.
   getPleasuresInfo() {
     return this.http.get(`${environment.hostname}/preferencias/${sessionStorage.getItem('id')}`, this.HttpUploadOptions);
+  }
+
+  deleteUser():Observable<any> {
+    return this.http.delete(`${environment.hostname}/user/${sessionStorage.getItem('id')}`, this.HttpUploadOptions);
+  }
+
+  deleteMedicalInfo():Observable<any>{
+    return this.http.delete(`${environment.hostname}/fichas/${sessionStorage.getItem('id')}`, this.HttpUploadOptions);
+  }
+
+  deletePleasures():Observable<any> {
+    return this.http.delete(`${environment.hostname}/preferencias/${sessionStorage.getItem('id')}`, this.HttpUploadOptions);
   }
 }

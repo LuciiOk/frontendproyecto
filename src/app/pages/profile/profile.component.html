@@ -233,6 +233,7 @@
         </div>
     </div>
     <div class="container-fluid" id="btn">
-        <a [routerLink]="['/']" fragment="inicio" class="o-button" style="margin-bottom: 40px;">Volver al inicio</a>
+        <button [routerLink]="['/']" fragment="inicio" class="volver mx-2" style="margin-bottom: 40px;">Volver al inicio</button>
+        <button (click)="eliminarcuenta()" class="eliminar mx-2"> Eliminar Cuenta </button>
     </div>
 </div>

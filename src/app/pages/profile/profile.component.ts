@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MedicalInfo } from 'src/app/interfaces/medical-info';
 import { Pleasures } from 'src/app/interfaces/pleasures';
 import { Users } from 'src/app/interfaces/users';
+import { ConexionService } from 'src/app/service/conexion.service';
 import { UserDataService } from 'src/app/service/user-data.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class ProfileComponent implements OnInit {
   infoMedica?:MedicalInfo;
   infoGusto?:Pleasures;
 
-  constructor(private userService:UserDataService) { }
+  constructor(private userService:UserDataService, private auth:ConexionService) { }
 
   ngOnInit(): void {
     this.userService.getUserData().subscribe(data => {
@@ -44,6 +45,24 @@ export class ProfileComponent implements OnInit {
 
   volver() {
     history.back();
+  }
+
+  eliminarcuenta() {
+    this.userService.deleteMedicalInfo().subscribe(data => {
+      console.log(data)
+    })
+
+    this.userService.deletePleasures().subscribe(data => {
+      console.log(data)
+    })
+
+    this.userService.deleteUser().subscribe(data => {
+      console.log(data);
+    }, error => {
+        console.log(error);
+    })
+
+    this.auth.logout();
   }
 
 }
