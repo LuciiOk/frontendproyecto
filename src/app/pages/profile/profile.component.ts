@@ -4,7 +4,7 @@ import { Pleasures } from 'src/app/interfaces/pleasures';
 import { Users } from 'src/app/interfaces/users';
 import { UserDataService } from 'src/app/service/user-data.service';
 import { ConexionService } from 'src/app/service/conexion.service';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-profile',
