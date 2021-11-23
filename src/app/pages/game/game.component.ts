@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Users } from 'src/app/interfaces/users';
 import { UserDataService } from 'src/app/service/user-data.service';
 import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { ListaPreguntas, Preguntas } from 'src/app/interfaces/preguntas';
 
 @Component({
   selector: 'app-game',
@@ -16,6 +17,8 @@ export class GameComponent implements OnInit {
   modalWinner!:ElementRef;
   @ViewChild('errorMod')
   error!:ElementRef;
+  @ViewChild('juego')
+  juego!:ElementRef;
 
   juegoEmpezado:boolean = false;
 
@@ -28,6 +31,12 @@ export class GameComponent implements OnInit {
   ganador:string = '';
   puntosGanador = 0;
 
+  turno = 1;
+
+  preguntas:Preguntas[] = ListaPreguntas;
+
+  pregunta?:Preguntas;
+
   constructor(private userData:UserDataService,  public modalService: NgbModal,) { }
 
   ngAfterViewInit() {
@@ -35,9 +44,9 @@ export class GameComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
     this.userData.getUserData().subscribe(data => {
       this.jugador = data[0];
+      this.modalService.open(this.modal, {size: 'lg'});
       console.log(this.jugador)
     }, err => {
       console.log('Ha ocurrido un error!')
@@ -47,7 +56,12 @@ export class GameComponent implements OnInit {
   openModal() {
     if (this.contrincanteNombre !== undefined) {
       this.juegoEmpezado = true;
-      this.modalService.open(this.modal, {size: 'lg'});
+      this.modalService.open(this.juego,  {size: 'lg'})
+      this.pregunta = this.preguntas[Math.floor(Math.random() * this.preguntas.length)]
+      if (this.turno === 1)
+        this.turno = 0;
+      else 
+        this.turno = 1;
     } else {
       this.modalService.open(this.error);
     }
@@ -71,6 +85,7 @@ export class GameComponent implements OnInit {
         this.array[indice + 1] = 1;
         this.jugadorPrincipal ++;
         indice++;
+        this.turno = 0
       }
       if (indice === 6) {
         this.modalService.open(this.modalWinner);

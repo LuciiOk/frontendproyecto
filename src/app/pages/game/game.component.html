@@ -1,6 +1,6 @@
 <div class="container-fluid py-5" id="fondo">
     <div class="row text-center">
-        <div class="col-3" *ngIf="jugador !== undefined">
+        <div class="col-md-3" *ngIf="jugador !== undefined">
             <h2 id="jugadores" >{{jugador.nombre}}</h2>
             <button [disabled]="!juegoEmpezado" (click)="punto('jugador')" class="o-button" tyh2e="button">
                 Puntos
@@ -9,16 +9,17 @@
             <img *ngIf="jugador.genero == 'Masculino'" id="jugador" src="../../../assets/recursos/niño.png" style="width: 170px;" alt="jugador-Hombre">
             <img *ngIf="jugador.genero == 'Femenino'" id="jugador" src="../../../assets/recursos/niña2.png" style="width: 170px;" alt="jugador-Mujer">
         </div>
-        <div class="col-6">
+        <div class="col-md-6">
             <div class="row justify-content-center align-items-center" id="main">
                 <div class="col-1 mx-3 d-flex align-items-center justify-content-center" id="cuadrados" *ngFor="let item of array">
                     <div id="punto" *ngIf="item == 1">
                     </div>
                 </div>
             </div>
-            <button type="button" class="o-button" (click)="openModal()">Empezamos!</button>
+            <button *ngIf="juegoEmpezado == false" type="button" class="o-button" (click)="openModal()">Empezamos!</button>
+            <button *ngIf="juegoEmpezado == true" class="o-button" (click)="openModal()">Siguiente turno</button>
         </div>
-        <div class="col-3">
+        <div class="col-md-3">
             <div class="row rows-col-3">
                 <div class="d-flex justify-content-center ">
                     <button *ngIf="!contrincanteNombre" class="d-flex my-2 btn btn-outline-dark " data-bs-toggle="modal" data-bs-target="#exampleModal" >
@@ -64,6 +65,16 @@
       </div>
     </div>
 </div>
+
+<ng-template #juego let-modal>
+    <app-modal-game
+     *ngIf="turno == 1 && jugador !==undefined && pregunta !== undefined"
+      [jugador]="jugador.nombre" [pregunta]="pregunta"></app-modal-game>
+
+    <app-modal-game *ngIf="turno == 0 && contrincanteNombre !==undefined"
+     [jugador]="contrincanteNombre" 
+     [pregunta]="pregunta"></app-modal-game>
+</ng-template>
 
 <ng-template #presentacion let-modal>
     <app-presentation></app-presentation>

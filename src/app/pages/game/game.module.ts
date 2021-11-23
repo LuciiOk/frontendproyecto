@@ -8,13 +8,15 @@ import { AuthGuardGuard } from 'src/app/helpers/auth-guard.guard';
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { WinnerComponent } from './winner/winner.component';
 import { PresentationComponent } from './presentation/presentation.component';
+import { ModalGameComponent } from './modal-game/modal-game.component';
 
 
 @NgModule({
   declarations: [
     GameComponent,
     WinnerComponent,
-    PresentationComponent
+    PresentationComponent,
+    ModalGameComponent
   ],
   imports: [
     CommonModule,

@@ -25,7 +25,7 @@ export class RegistroComponent implements OnInit {
   errorMessage?:string;
 
   
-  constructor(private builder:FormBuilder, private authService:ConexionService) {
+  constructor(private builder:FormBuilder, private authService:ConexionService, ) {
     this.stepOne = builder.group({
        nombre:['' ,Validators.compose([Validators.required])],
        password:['',[Validators.required]],
