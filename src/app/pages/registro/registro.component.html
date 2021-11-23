@@ -381,7 +381,7 @@
                       </button>
                     </div>
                     <div class="col-sm-6" style="text-align: end; margin-top: 20px">
-                        <button (click)="registrar()"  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button (click)="registrar()"  type="button" class="btn btn-primary">
                             Terminar
                           </button>
                     </div>
@@ -395,25 +395,23 @@
     </div>
   </div>
   </div>
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" style="display: flex; align-items: center; flex-direction: column;">
-        <img src="../../../assets/recursos/Check.png" style="width: 25%; z-index:1;">
-      <div class="modal-content" style="
-      margin-top: -20px;
-      z-index: -1;
-      justify-content: center;
-      align-items: center;
-  ">
-        <div class="modal-header" style="border-bottom: none!important;">
-          <h2 class="modal-title" id="exampleModalLabel">Cuenta fue creada con éxito</h2>
-        </div>
-        <div class="modal-body">
-            Ahora puedes disfrutar de la plataforma y aprender jugando
-        </div>
-        <div class="modal-footer" style="border-top: none!important;">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" routerLink="/login" routerLinkActive="active">Entendido</button>
-        </div>
-      </div>
+
+<ng-template #modaaa let-modal>
+  <div style="display: flex; align-items: center; flex-direction: column;">
+    <img *ngIf="!error" src="../../../assets/recursos/Check.png" style="width: 25%; z-index:1;">
+    <img *ngIf="error" src="../../../assets/recursos/error.png" style="width: 25%; z-index:1;">
+
+    <div class="modal-header" style="border-bottom: none!important;">
+      <h2 *ngIf="!error" class="modal-title" >Cuenta fue creada con éxito</h2>
+      <h2 *ngIf="error" class="modal-title">Ha ocurrido un error!</h2>
+    </div>
+    <div class="modal-body">
+        <p *ngIf="!error">Ahora puedes disfrutar de la plataforma y aprender jugando</p>
+        <p *ngIf="error" class="text-danger">{{errorMessage}}</p>
+    </div>
+    <div class="modal-footer" style="border-top: none!important;">
+      <button *ngIf="!error" type="button" routerLink="/login" class="btn btn-primary" (click)="cerrar()">Entendido</button>
+      <button *ngIf="error" type="button" class="btn btn-primary" (click)="cerrar()">Entendido</button>
     </div>
   </div>
+</ng-template>

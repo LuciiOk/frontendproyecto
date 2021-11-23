@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Users } from 'src/app/interfaces/users';
 import { ConexionService } from 'src/app/service/conexion.service';
 
@@ -14,6 +15,9 @@ import { ConexionService } from 'src/app/service/conexion.service';
 })
 export class RegistroComponent implements OnInit {
 
+  @ViewChild('modaaa')
+  modall!:ElementRef;
+
   stepOne:FormGroup;
   stepTwo:FormGroup;
   stepThree:FormGroup;
@@ -25,7 +29,7 @@ export class RegistroComponent implements OnInit {
   errorMessage?:string;
 
   
-  constructor(private builder:FormBuilder, private authService:ConexionService, ) {
+  constructor(private builder:FormBuilder, private authService:ConexionService, private modal:NgbModal) {
     this.stepOne = builder.group({
        nombre:['' ,Validators.compose([Validators.required])],
        password:['',[Validators.required]],
@@ -65,7 +69,6 @@ export class RegistroComponent implements OnInit {
 
   registrar(){
     let {nombre, email, password, fechanacimiento, genero} = this.stepOne.value;
-    // let {estatura, peso, enfCardiaca, alergia, enfRespiratoria, cirugia, enfDegenerativa} = this.stepTwo.value;
     let {salsa, folklor, zumba, futbol, voley, basket} = this.stepThree.value;
     
     let user:Users = {
@@ -82,5 +85,10 @@ export class RegistroComponent implements OnInit {
       this.error = true;
       this.errorMessage = error.error.message;
     });
+    this.modal.open(this.modall, {backdrop: 'static'})
+  }
+
+  cerrar() {
+    this.modal.dismissAll()
   }
 }

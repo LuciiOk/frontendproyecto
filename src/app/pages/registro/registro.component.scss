@@ -1,3 +1,5 @@
+$textcolor: #01255b;
+
 * {
   font-family: Airbnb Cereal App Medium;
 } 
@@ -5,7 +7,7 @@
 input, select {
   padding: 9px;
   background-color: #ffffff;
-  border: 3px solid #01255b;
+  border: 3px solid $textcolor;
   box-sizing: border-box;
 }
 
@@ -14,14 +16,14 @@ mat-stepper {
 }
 
 h1 {
-  color: #01255b;
+  color: $textcolor;
   margin-bottom: 20px;
   text-align: center;
 }
 
 h2,
 h1 {
-  color: #01255b;
+  color: $textcolor;
   margin-bottom: 20px;
   text-align: center;
 }

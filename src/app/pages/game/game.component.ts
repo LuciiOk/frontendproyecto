@@ -46,7 +46,7 @@ export class GameComponent implements OnInit {
   ngOnInit(): void {
     this.userData.getUserData().subscribe(data => {
       this.jugador = data[0];
-      this.modalService.open(this.modal, {size: 'lg'});
+      this.modalService.open(this.modal, {size: 'lg', backdrop: 'static'});
       console.log(this.jugador)
     }, err => {
       console.log('Ha ocurrido un error!')
@@ -56,14 +56,14 @@ export class GameComponent implements OnInit {
   openModal() {
     if (this.contrincanteNombre !== undefined) {
       this.juegoEmpezado = true;
-      this.modalService.open(this.juego,  {size: 'lg'})
+      this.modalService.open(this.juego,  {size: 'lg', backdrop: 'static'})
       this.pregunta = this.preguntas[Math.floor(Math.random() * this.preguntas.length)]
       if (this.turno === 1)
         this.turno = 0;
       else 
         this.turno = 1;
     } else {
-      this.modalService.open(this.error);
+      this.modalService.open(this.error, {size: 'lg', backdrop: 'static'});
     }
   }
 
@@ -88,7 +88,7 @@ export class GameComponent implements OnInit {
         this.turno = 0
       }
       if (indice === 6) {
-        this.modalService.open(this.modalWinner);
+        this.modalService.open(this.modalWinner, {size: 'lg', backdrop: 'static'});
         if (this.jugador !== undefined) {
           this.ganador = this.jugador?.nombre;
           this.puntosGanador = this.jugadorPrincipal;
@@ -106,7 +106,7 @@ export class GameComponent implements OnInit {
         indice--;
       }
       if (indice === 0) {
-        this.modalService.open(this.modalWinner);
+        this.modalService.open(this.modalWinner, {size: 'lg', backdrop: 'static'});
         if (this.contrincanteNombre !== undefined) {
           this.ganador = this.contrincanteNombre;
           this.puntosGanador = this.contrincante;
