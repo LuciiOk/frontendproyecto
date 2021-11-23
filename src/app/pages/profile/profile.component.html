@@ -234,10 +234,27 @@
     </div>
     <div class="container-fluid" id="btn">
         <a [routerLink]="['/']" fragment="inicio" class="o-button" style="margin-bottom: 40px;">Volver al inicio</a>
-        <a [routerLink]="['/']" (click)="eliminarcuenta()" class="o-button"> Eliminar Cuenta </a>
+        <button (click)="open(content)" class="o-button"> Eliminar Cuenta </button>
     </div>
 
-
-    
-
 </div>
+
+<!-- Modal -->
+
+<ng-template #content let-modal>
+
+    <div class="modal-header">
+        <h4 class="modal-title"></h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+        
+    </div>
+    <div class="modal-body">
+        <p>¿Estas seguro que deseas eliminar tu cuenta?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">Cancelar</button>
+        <button [routerLink]="['/']" type="button" class="btn btn-danger" (click)="modal.close(eliminarcuenta())">Eliminar</button>
+    </div>
+
+</ng-template>
+

@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MedicalInfo } from 'src/app/interfaces/medical-info';
 import { Pleasures } from 'src/app/interfaces/pleasures';
 import { Users } from 'src/app/interfaces/users';
 import { UserDataService } from 'src/app/service/user-data.service';
 import { ConexionService } from 'src/app/service/conexion.service';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
+
+
+
 export class ProfileComponent implements OnInit {
 
   infoPersonal?:Users;
@@ -17,7 +21,7 @@ export class ProfileComponent implements OnInit {
   infoGusto?:Pleasures;
   id?:number;
 
-  constructor(private userService:UserDataService, private conexionService: ConexionService) { }
+  constructor(private userService:UserDataService, private conexionService: ConexionService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.userService.getUserData().subscribe(data => {
@@ -45,9 +49,6 @@ export class ProfileComponent implements OnInit {
       this.infoGusto = data;
     })
     
-
-
-    
   }
 
   volver() {
@@ -58,6 +59,13 @@ export class ProfileComponent implements OnInit {
     
   }
 
+  open(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      console.log(result);
+    }, (reason) => {
+      console.log(reason);
+    });
+  }
   eliminarcuenta() {
 
     this.userService.deleteUser(this.id).subscribe(data => {
@@ -69,5 +77,5 @@ export class ProfileComponent implements OnInit {
 
     console.log(this.id);
   }
-  
+
 }
