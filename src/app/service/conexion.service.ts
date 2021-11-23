@@ -9,6 +9,9 @@ import { JwtHelperService } from  '@auth0/angular-jwt/'
   providedIn: 'root'
 })
 export class ConexionService {
+  static logout() {
+    throw new Error('Method not implemented.');
+  }
   private isLoggedIn = new BehaviorSubject<boolean>(false);
   private user = new BehaviorSubject<string>('');
   private helper = new JwtHelperService();
@@ -89,7 +92,7 @@ export class ConexionService {
     }));
   }
 
-  delete(id:string):Observable<any> {
+  deleteUser(id:string | number):Observable<any> {
     console.log(id)
     
     return this.http.delete(`${environment.hostname}/users/${id}`, { headers:this.HttpUploadOptions.headers});

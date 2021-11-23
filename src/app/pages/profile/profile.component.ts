@@ -3,6 +3,7 @@ import { MedicalInfo } from 'src/app/interfaces/medical-info';
 import { Pleasures } from 'src/app/interfaces/pleasures';
 import { Users } from 'src/app/interfaces/users';
 import { UserDataService } from 'src/app/service/user-data.service';
+import { ConexionService } from 'src/app/service/conexion.service';
 
 @Component({
   selector: 'app-profile',
@@ -14,12 +15,15 @@ export class ProfileComponent implements OnInit {
   infoPersonal?:Users;
   infoMedica?:MedicalInfo;
   infoGusto?:Pleasures;
+  id?:number;
 
-  constructor(private userService:UserDataService) { }
+  constructor(private userService:UserDataService, private conexionService: ConexionService) { }
 
   ngOnInit(): void {
     this.userService.getUserData().subscribe(data => {
       this.infoPersonal = data[0];
+      this.id=data[0].id;
+      console.log(this.infoPersonal);
       
       if (this.infoPersonal !== undefined) {
         
@@ -40,6 +44,10 @@ export class ProfileComponent implements OnInit {
     this.userService.getPleasuresInfo().subscribe((data:any) => {
       this.infoGusto = data;
     })
+    
+
+
+    
   }
 
   volver() {
@@ -51,10 +59,14 @@ export class ProfileComponent implements OnInit {
   }
 
   eliminarcuenta() {
-     this.userService.deleteUser().subscribe(data => {
-       console.log(data);
-      }, error => {
-        console.log(error);
-      })
+
+    this.userService.deleteUser(this.id).subscribe(data => {
+      console.log(data);
+    }, (error: any) => {
+      console.log(error);
+    })
+    this.conexionService.logout();
+
+    console.log(this.id);
   }
 }

@@ -37,8 +37,9 @@ export class UserDataService {
   getPleasuresInfo() {
     return this.http.get(`${environment.hostname}/preferencias/${sessionStorage.getItem('id')}`, this.HttpUploadOptions);
   }
-  deleteUser() {
-    let id = sessionStorage.getItem('id');
+  deleteUser(id:number| string | undefined) {
     return this.http.delete(`${environment.hostname}/user/${id}`, this.HttpUploadOptions);
   }
+
+  
 }
