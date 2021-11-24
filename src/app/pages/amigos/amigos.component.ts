@@ -23,14 +23,14 @@ export class AmigosComponent implements OnInit {
   }
 
   abrir() {
-    this.modalService.open(this.addFriend, {size: 'lg'});
+    this.modalService.open(this.addFriend, {size: 'lg'}).dismissed
+    .subscribe((result:Amigo) => this.listaAmigos?.push(result));
   }
 
   eliminar(amigo:Amigo) {
     this.amigosService.deleteAmigo(amigo).subscribe(resultado => {
       this.ngOnInit();
     });
-    // this.ngOnInit()
   }
 
 }
