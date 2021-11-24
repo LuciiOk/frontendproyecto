@@ -24,4 +24,8 @@ export class ListacontactosComponent implements OnInit {
     this.modalService.dismissAll();
   }
 
+  selectAmigo(amigo:Amigo) {
+    this.modalService.dismissAll(amigo);
+  }
+
 }

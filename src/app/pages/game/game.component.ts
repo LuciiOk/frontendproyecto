@@ -3,6 +3,7 @@ import { Users } from 'src/app/interfaces/users';
 import { UserDataService } from 'src/app/service/user-data.service';
 import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { ListaPreguntas, Preguntas } from 'src/app/interfaces/preguntas';
+import { Amigo } from 'src/app/interfaces/amigo';
 
 @Component({
   selector: 'app-game',
@@ -26,7 +27,7 @@ export class GameComponent implements OnInit {
 
   array = [0,0,0,1,0,0,0];
   jugador?:Users;
-  contrincanteNombre?:string;
+  contrincanteNombre?:Amigo;
   contrincante:number = 0;
   jugadorPrincipal:number = 0;
   ganador:string = '';
@@ -35,10 +36,9 @@ export class GameComponent implements OnInit {
   turno = 1;
 
   preguntas:Preguntas[] = ListaPreguntas;
-
   pregunta?:Preguntas;
 
-  constructor(private userData:UserDataService,  public modalService: NgbModal,) { }
+  constructor(private userData:UserDataService,  public modalService: NgbModal) { }
 
   ngAfterViewInit() {
     
@@ -56,6 +56,8 @@ export class GameComponent implements OnInit {
 
   abrirModal(modal:any) {
     this.modalService.open(modal, {size: 'xl', backdrop: 'static'})
+    .dismissed.subscribe(dato => this.contrincanteNombre = dato)
+    
   }
 
   comenzarJuego() {
@@ -74,10 +76,6 @@ export class GameComponent implements OnInit {
 
   cerrar() {
     this.modalService.dismissAll();
-  }
-  
-  add(amigo:string) {
-    this.contrincanteNombre = amigo;
   }
 
   punto(value:string) {
@@ -112,7 +110,7 @@ export class GameComponent implements OnInit {
       if (indice === 0) {
         this.modalService.open(this.modalWinner, {size: 'lg', backdrop: 'static'});
         if (this.contrincanteNombre !== undefined) {
-          this.ganador = this.contrincanteNombre;
+          this.ganador = this.contrincanteNombre.nombre;
           this.puntosGanador = this.contrincante;
         }
         console.log('Ha ganado el contrincante');

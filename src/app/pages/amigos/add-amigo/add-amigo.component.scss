@@ -46,13 +46,16 @@ input, select {
   
 }
 
-ol li {
-  font-size: 12px;
-}
-
 .titulo {
   font-family: MADE Sunflower;
   color: $titulo;
   font-size: 50px;
   font-weight: bold;
+  text-align: center;
+}
+
+@media (max-width:650px) {
+  #img-footer1, #img-footer2 {
+    display: none;
+  }
 }

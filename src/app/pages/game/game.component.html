@@ -29,7 +29,7 @@
             </div>
             
             <h2 id="jugadores" *ngIf="contrincanteNombre">
-                {{contrincanteNombre}}
+                {{contrincanteNombre.nombre}}
             </h2>
             <button type="button" [disabled]="!juegoEmpezado" (click)="punto('contrincante')" class="o-button" tyh2e="button">
                 Puntos
@@ -44,39 +44,13 @@
     <app-listacontactos></app-listacontactos>
 </ng-template>
 
- <!-- Modal -->
-<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" style="display: flex; align-items: center; flex-direction: column;">
-      <div class="modal-content" style="
-        margin-top: -20px;
-        z-index: -1;
-        justify-content: center;
-        align-items: center;
-      ">
-        <div class="modal-header" style="border-bottom: none!important;">
-          <h2  class="modal-title" id="exampleModalLabel">Elige un contrincante de tu lista de contactos</h2>
-        </div>
-        <div class="modal-body">
-          <div class="row justify-content-center">
-              <div id="amigo" class="col-3 mx-2 my-1 text-center" *ngFor="let amigo of amigos">
-                  <button (click)="add(amigo)" id="add">{{amigo}} +</button>
-              </div>
-          </div>
-        </div>
-        <div class="modal-footer" style="border-top: none!important;">
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Entendido</button>
-        </div>
-      </div>
-    </div>
-</div> -->
-
 <ng-template #juego let-modal>
     <app-modal-game
      *ngIf="turno == 1 && jugador !==undefined && pregunta !== undefined"
       [jugador]="jugador.nombre" [pregunta]="pregunta"></app-modal-game>
 
     <app-modal-game *ngIf="turno == 0 && contrincanteNombre !==undefined"
-     [jugador]="contrincanteNombre" 
+     [jugador]="contrincanteNombre.nombre" 
      [pregunta]="pregunta"></app-modal-game>
 </ng-template>
 

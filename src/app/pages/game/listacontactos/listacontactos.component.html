@@ -10,7 +10,7 @@
 <div class="modal-body">
   <div class="row justify-content-center">
       <div id="amigo" class="col-3 mx-2 my-1 text-center" *ngFor="let amigo of listaAmigos">
-          <button  id="add">
+          <button  id="add" (click)="selectAmigo(amigo)">
             <img *ngIf="amigo.genero === 'Femenino'" src="../../../../assets/recursos/ninia.svg" alt="ninia">
             <img *ngIf="amigo.genero !== 'Femenino'" src="../../../../assets/recursos/ninio.svg" alt="">
               {{amigo.nombre}} +
