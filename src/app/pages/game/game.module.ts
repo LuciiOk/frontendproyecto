@@ -9,6 +9,7 @@ import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { WinnerComponent } from './winner/winner.component';
 import { PresentationComponent } from './presentation/presentation.component';
 import { ModalGameComponent } from './modal-game/modal-game.component';
+import { ListacontactosComponent } from './listacontactos/listacontactos.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ModalGameComponent } from './modal-game/modal-game.component';
     GameComponent,
     WinnerComponent,
     PresentationComponent,
-    ModalGameComponent
+    ModalGameComponent,
+    ListacontactosComponent
   ],
   imports: [
     CommonModule,

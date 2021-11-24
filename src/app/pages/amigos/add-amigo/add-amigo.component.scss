@@ -18,6 +18,13 @@ label {
   color: $textcolor;
 }
 
+#cerrar {
+  background-color: transparent;
+  border: none;
+  color: $textcolor;
+  font-size: 30px;
+}
+
 .btn {
   font-family: $texto;
   font-size: 20px;

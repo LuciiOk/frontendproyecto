@@ -19,11 +19,12 @@ export class GameComponent implements OnInit {
   error!:ElementRef;
   @ViewChild('juego')
   juego!:ElementRef;
+  @ViewChild('amigos')
+  amigos!:ElementRef;
 
   juegoEmpezado:boolean = false;
 
   array = [0,0,0,1,0,0,0];
-  amigos = ['ignacio', 'claudio', 'johan', 'ignacio', 'claudio', 'johan']; // falta hacer dinamico esto
   jugador?:Users;
   contrincanteNombre?:string;
   contrincante:number = 0;
@@ -53,7 +54,11 @@ export class GameComponent implements OnInit {
     });
   }
 
-  openModal() {
+  abrirModal(modal:any) {
+    this.modalService.open(modal, {size: 'xl', backdrop: 'static'})
+  }
+
+  comenzarJuego() {
     if (this.contrincanteNombre !== undefined) {
       this.juegoEmpezado = true;
       this.modalService.open(this.juego,  {size: 'lg', backdrop: 'static'})
@@ -71,7 +76,6 @@ export class GameComponent implements OnInit {
     this.modalService.dismissAll();
   }
   
-
   add(amigo:string) {
     this.contrincanteNombre = amigo;
   }

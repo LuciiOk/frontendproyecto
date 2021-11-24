@@ -1,6 +1,7 @@
 $fuente: Airbnb Cereal App Medium, sans-serif;
 $btncolor: #1e90ff;
 $btncolorhover: #047df5;
+$border:  #ff957e ;
 
 #fondo {
     background-image: url(../../../assets/recursos/fondo2.png);
@@ -11,6 +12,28 @@ $btncolorhover: #047df5;
 
 .agregar:hover {
     background-color: $btncolorhover;
+}
+
+table {
+    border: 5px solid $border;
+    border-radius: 50%;
+    font-family: $fuente;
+}
+
+table th{
+    border: 5px solid $border;
+    font-size: 25px;
+}
+
+table td{
+    border: 5px solid $border;
+    font-size: 19px;
+}
+
+#eliminar {
+    background-color: transparent;
+    border: none;
+    color: red;
 }
 
 .agregar {

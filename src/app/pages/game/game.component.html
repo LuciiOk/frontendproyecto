@@ -16,13 +16,13 @@
                     </div>
                 </div>
             </div>
-            <button *ngIf="juegoEmpezado == false" type="button" class="o-button" (click)="openModal()">Empezamos!</button>
-            <button *ngIf="juegoEmpezado == true" class="o-button" (click)="openModal()">Siguiente turno</button>
+            <button *ngIf="juegoEmpezado == false" type="button" class="o-button" (click)="comenzarJuego()">Empezamos!</button>
+            <button *ngIf="juegoEmpezado == true" class="o-button" (click)="comenzarJuego()">Siguiente turno</button>
         </div>
         <div class="col-md-3">
             <div class="row rows-col-3">
                 <div class="d-flex justify-content-center ">
-                    <button *ngIf="!contrincanteNombre" class="d-flex my-2 btn btn-outline-dark " data-bs-toggle="modal" data-bs-target="#exampleModal" >
+                    <button *ngIf="!contrincanteNombre" class="d-flex my-2 btn btn-outline-dark " (click)="abrirModal(amigos)">
                         Agregar contrincante +
                     </button>
                 </div>
@@ -40,8 +40,12 @@
     </div>
 </div>
 
+<ng-template #amigos let-modal>
+    <app-listacontactos></app-listacontactos>
+</ng-template>
+
  <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" style="display: flex; align-items: center; flex-direction: column;">
       <div class="modal-content" style="
         margin-top: -20px;
@@ -64,7 +68,7 @@
         </div>
       </div>
     </div>
-</div>
+</div> -->
 
 <ng-template #juego let-modal>
     <app-modal-game

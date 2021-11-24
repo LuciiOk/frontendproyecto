@@ -1,0 +1,20 @@
+<div class="modal-header" style="border-bottom: none!important;">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-4"></div>
+      <div class="col-4"><h2  class="modal-title" id="exampleModalLabel">Elige un contrincante de tu lista de contactos</h2></div>
+      <div class="col-4 text-center"><button id="cerrar" (click)="cerrar()"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button></div>
+    </div>
+  </div>
+</div>
+<div class="modal-body">
+  <div class="row justify-content-center">
+      <div id="amigo" class="col-3 mx-2 my-1 text-center" *ngFor="let amigo of listaAmigos">
+          <button  id="add">
+            <img *ngIf="amigo.genero === 'Femenino'" src="../../../../assets/recursos/ninia.svg" alt="ninia">
+            <img *ngIf="amigo.genero !== 'Femenino'" src="../../../../assets/recursos/ninio.svg" alt="">
+              {{amigo.nombre}} +
+          </button>
+      </div>
+  </div>
+</div>

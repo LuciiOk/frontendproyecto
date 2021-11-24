@@ -1,0 +1,105 @@
+$textcolor: #01255b;
+$btncolor: #1e90ff;
+$hover: #a7d3ff;
+$btncolorhover: #047df5;
+$circulo: #A00606;
+$cuadrado: #F4B67E;
+$bordecuadrado: rgb(119, 60, 9);
+$titulo: #FFA502;
+$texto: Airbnb Cereal App Medium;
+
+
+.modal-title {
+  text-align: center;
+  font-size: 25px;
+  font-family: $texto;
+  color: $textcolor;
+}
+
+#cerrar {
+  background-color: transparent;
+  border: none;
+  color: $textcolor;
+  font-size: 30px;
+}
+
+#amigo {
+  padding: 0;
+  border-radius: 10px;
+  border: solid 2px $textcolor;
+}
+
+#texto {
+  font-size: 20px;
+  font-family: $texto;
+}
+
+#add {
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 5px 0;
+  width: 100%;
+  font-family: $texto;
+  font-size: 20px;
+  color: $textcolor;
+  border: none;
+  background-color: transparent;
+}
+
+#add:hover {
+  background-color: $hover;
+}
+
+#punto {
+  background-color: $circulo;
+  width: 80px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+#jugador {
+  transform: scaleX(-1);
+}
+// hola
+
+#main {
+  height: 50vh;
+}
+
+#jugadores {
+  font-family: $texto;
+  color: $textcolor;
+  font-size: 36px;
+}
+
+#cuadrados {
+  border: solid 5px $bordecuadrado;
+  border-radius: 10px;
+  height: 100px;
+  width: 100px;
+  background: $cuadrado;
+  display: inline-block;
+}
+
+#error {
+  color: red;
+}
+
+.o-button {
+    text-decoration: none;
+    padding: 16px;
+    background: $btncolor;
+    color: white;
+    border-radius: 4px;
+    font-size: 25px;
+    border-color: $btncolor;
+    width: 315px;
+    height: 65px;
+    left: 135px;
+    top: 566px;
+    font-family: Airbnb Cereal App Medium, sans-serif;
+  }
+  
+  .o-button:hover {
+    background-color: $btncolorhover;
+  }

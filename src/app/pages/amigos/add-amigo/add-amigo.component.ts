@@ -36,6 +36,7 @@ export class AddAmigoComponent implements OnInit {
 
     this.amigosService.agregarAmigo(amigo).subscribe(data => {
       console.log('se ha agregado el amigo');
+      this.modalService.dismissAll();
     }, error => {
       console.log(error);
     });

@@ -1,25 +1,32 @@
 <div class="modal-header justify-content-center" style="border-bottom: none!important;">
     <h2  class="modal-title titulo" id="exampleModalLabel">Agregar a un amigo</h2>
+    <button id="cerrar" class="mx-4" (click)="cerrar()"><i class="fa fa-times-circle-o" aria-hidden="true"></i></button>
 </div>
 <div class="modal-body justify-content-center">
     <div class="container">
         <form [formGroup]="formulario" (ngSubmit)=(agregarAmigo()) class="needs-validation" novalidate>
             <div class="row">
                 <div class="col-12 my-4">
-                    <label for="amigo" class="form-label">Nombre Amigo</label>
-                    <input formControlName="nombre" type="text" id="amigo" class="form-control" placeholder="Nombre amigo">
+                    <label for="nombre" class="form-label">Nombre Amigo</label>
+                    <input formControlName="nombre" name="nombre" type="text" id="amigo" class="form-control" placeholder="Nombre amigo"
+                    [ngClass]="{'is-invalid': formulario.controls['nombre'].invalid && (formulario.controls['nombre'].dirty || formulario.controls['nombre'].touched),
+                        'is-valid': !formulario.controls['nombre'].invalid && (formulario.controls['nombre'].dirty || formulario.controls['nombre'].touched)}"
+                    >
                 </div>
                 
                 <div class="container my-4">
-                    <label for="genero" class="form-label">Genero</label>
-                    <select formControlName="genero" class="form-select">
+                    <label for="genero" for="genero" class="form-label">Genero</label>
+                    <select formControlName="genero" name="genero" class="form-select"
+                    [ngClass]="{'is-invalid': formulario.controls['genero'].invalid && (formulario.controls['genero'].dirty || formulario.controls['genero'].touched)
+                     ,'is-valid': !formulario.controls['genero'].invalid && (formulario.controls['genero'].dirty || formulario.controls['genero'].touched)}"
+                    >
                         <option value="">Selecciona una opcion</option>
                         <option value="Femenino">Femenino</option>
                         <option value="Masculino">Masculino</option>
                     </select>
                 </div>
                 <div class="container text-center my-4">
-                    <button id="texto" type="submit" class="btn btn-primary" (click)="cerrar()">Agregar!</button>
+                    <button id="texto" type="submit" class="btn btn-primary" [disabled]="!formulario.valid">Agregar!</button>
                 </div>
             </div>
         </form>

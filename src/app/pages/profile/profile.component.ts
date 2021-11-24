@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MedicalInfo } from 'src/app/interfaces/medical-info';
 import { Pleasures } from 'src/app/interfaces/pleasures';
 import { Users } from 'src/app/interfaces/users';
@@ -16,7 +17,7 @@ export class ProfileComponent implements OnInit {
   infoMedica?:MedicalInfo;
   infoGusto?:Pleasures;
 
-  constructor(private userService:UserDataService, private auth:ConexionService) { }
+  constructor(private userService:UserDataService, private auth:ConexionService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.userService.getUserData().subscribe(data => {
@@ -47,6 +48,14 @@ export class ProfileComponent implements OnInit {
     history.back();
   }
 
+  open(content: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title', backdrop: 'static'}).result.then((result) => {
+      console.log(result);
+    }, (reason) => {
+      console.log(reason);
+    });
+  }
+
   eliminarcuenta() {
     this.userService.deleteMedicalInfo().subscribe(data => {
       console.log(data)
@@ -61,7 +70,6 @@ export class ProfileComponent implements OnInit {
     }, error => {
         console.log(error);
     })
-
     this.auth.logout();
   }
 
