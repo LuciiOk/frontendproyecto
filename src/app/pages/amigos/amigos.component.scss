@@ -2,6 +2,7 @@ $fuente: Airbnb Cereal App Medium, sans-serif;
 $btncolor: #1e90ff;
 $btncolorhover: #047df5;
 $border:  #ff957e ;
+$titulo:  #ff8800 ;
 
 #fondo {
     background-image: url(../../../assets/recursos/fondo2.png);
@@ -52,4 +53,10 @@ table td{
     left: 135px;
     top: 566px;
     font-family: $fuente;
+}
+
+#titulo {
+    font-size: 40px;
+    font-family: Subway;
+    color: $titulo;
 }
