@@ -24,7 +24,7 @@ export class AmigosComponent implements OnInit {
 
   abrir() {
     this.modalService.open(this.addFriend, {size: 'lg'}).dismissed
-    .subscribe((result:Amigo) => this.listaAmigos?.push(result));
+    .subscribe((result:Amigo) => this.ngOnInit());
   }
 
   eliminar(amigo:Amigo) {

@@ -1,4 +1,4 @@
-<!-- <div class="container-fluid">
+<div class="container-fluid">
     
     <div class= "row main-title">
         <div class="col-4" id="volvercont">
@@ -236,7 +236,19 @@
         <button [routerLink]="['/']" class="btn btn-lg btn-primary mx-2" fragment="inicio" style="margin-bottom: 40px;">Volver al inicio</button>
         <button (click)="open(content)" class="btn btn-lg btn-danger mx-2" style="margin-bottom: 40px;"> Eliminar Cuenta </button>
     </div>
-</div> -->
+</div>
 
-<router-outlet></router-outlet>
 
+<ng-template #content let-modal>
+    <div class="modal-header justify-content-center">
+        <h4 class="modal-title">ALTO!!!</h4>
+    </div>
+    <div class="modal-body">
+        <p>¿Estas seguro que deseas eliminar tu cuenta?</p>
+        <p id="advertencia">Si lo haces perderas todos tus datos!</p>
+    </div>
+    <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">Cancelar</button>
+        <button [routerLink]="['/']" type="button" class="btn btn-danger" (click)="modal.close(eliminarcuenta())">Eliminar</button>
+    </div>
+</ng-template>

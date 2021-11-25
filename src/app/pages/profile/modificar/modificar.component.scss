@@ -1,0 +1,48 @@
+$btncolor: #1e90ff;
+$btncolorhover: #047df5;
+$textcolor: #01255B;
+$volver: #1151b1;
+$font: Airbnb Cereal App Medium;
+
+#fondo {
+    background: url('../../../../assets/recursos/fondo2.png');
+    background-size: contain;
+}
+
+input, select {
+    border: $textcolor solid 4px;
+    font-family: $font;
+    color: $textcolor;
+}
+
+div {
+    padding: 10px;
+}
+
+input[type=radio] {
+    margin-right: 10px;
+}
+
+label {
+    font-size: 18px;
+    font-family: $font;
+    color: $textcolor;
+}
+
+h1, h2, h3 {
+    font-family: $font;
+    color: $textcolor;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+h2 {
+    font-size: 22px;
+}
+
+h3 {
+    font-size: 22px;
+    text-align: left;
+}

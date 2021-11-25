@@ -7,11 +7,11 @@ import { ConexionService } from 'src/app/service/conexion.service';
 import { UserDataService } from 'src/app/service/user-data.service';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  selector: 'app-perfil',
+  templateUrl: './perfil.component.html',
+  styleUrls: ['./perfil.component.scss']
 })
-export class ProfileComponent implements OnInit {
+export class PerfilComponent implements OnInit {
 
   infoPersonal?:Users;
   infoMedica?:MedicalInfo;

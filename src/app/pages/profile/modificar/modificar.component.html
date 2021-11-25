@@ -1,0 +1,255 @@
+<div class="container-fluid px-5 py-4 text-center" id="fondo">
+    <h1>Modificar Perfil</h1>
+    <form [formGroup]="formulario" (ngSubmit)="modificar()" class="needs-validation" novalidate>
+        <div class="container">
+            <div class="row">
+                <h2>Informacion Personal</h2>
+                <div class="col-md-6">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" id="nombre" class="form-control">        
+                </div>
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Correo Electronico</label>
+                    <input type="email" id="email" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="fechanacimiento" class="form-label">Fecha de nacimiento</label>
+                    <input type="date" id="fechanacimiento" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="genero" class="form-label">Genero</label>
+                    <select  id="genero" class="form-select">
+                        <option value="">Selecciona una opcion</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                    </select>    
+                </div>
+            </div>
+            <div class="row py-4">
+                <h2>Informacion Medica</h2>
+                <div class="col-md-6">
+                    <label for="estatura" class="form-label">estatura (kg)</label>
+                    <input type="number" id="estatura" class="form-control">
+                </div>
+                <div class="col-md-6">
+                    <label for="peso" class="form-label">Peso(cm)</label>
+                    <select id="peso" class="form-select">
+                        <option value="" selected>Escoge una opcion</option>
+                        <option value="50">50 kg</option>
+                        <option value="60">60 kg</option>
+                        <option value="70">70 kg</option>
+                        <option value="80">80 kg</option>
+                    </select>
+                </div>
+                <h2 class="pt-4">Comorbilidades</h2>
+                <div class="col-md-4">
+                    <label for="enfcardiacas" class="form-label">¿Presenta en enfermedades cardiacas?</label>
+                    <br>
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="enfcardiaca" id="si">
+                        <label class="form-check-label" for="si">
+                          Si
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="enfcardiaca" id="no">
+                        <label class="form-check-label" for="no">
+                          No
+                        </label>
+                      </div>
+                      <input type="text" id="enfcardiacas" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label for="enfrespiratorias" class="form-label">¿Presenta en enfermedades Respiratorias?</label>
+                    <br>
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="enfrespiratoria" id="si">
+                        <label class="form-check-label" for="si">
+                          Si
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="enfrespiratoria" id="no">
+                        <label class="form-check-label" for="no">
+                          No
+                        </label>
+                      </div>
+                      <input type="text" id="enfrespiratorias" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label for="cirugia" class="form-label">¿Has tenido alguna cirugía?</label>
+                    <br>
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="cirugias" id="si">
+                        <label class="form-check-label" for="si">
+                          Si
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="cirugias" id="no">
+                        <label class="form-check-label" for="no">
+                          No
+                        </label>
+                      </div>
+                      <input type="text" id="cirugia" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label for="enfcardiacas" class="form-label">¿Presenta en enfermedades cardiacas?</label>
+                    <br>
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="enfcardiaca" id="si">
+                        <label class="form-check-label" for="si">
+                          Si
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="enfcardiaca" id="no">
+                        <label class="form-check-label" for="no">
+                          No
+                        </label>
+                      </div>
+                      <input type="text" id="enfcardiacas" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label for="enfrespiratorias" class="form-label">¿Presenta en enfermedades Respiratorias?</label>
+                    <br>
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="enfrespiratoria" id="si">
+                        <label class="form-check-label" for="si">
+                          Si
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="enfrespiratoria" id="no">
+                        <label class="form-check-label" for="no">
+                          No
+                        </label>
+                      </div>
+                      <input type="text" id="enfrespiratorias" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label for="cirugia" class="form-label">¿Has tenido alguna cirugía?</label>
+                    <br>
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="cirugias" id="si">
+                        <label class="form-check-label" for="si">
+                          Si
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="cirugias" id="no">
+                        <label class="form-check-label" for="no">
+                          No
+                        </label>
+                      </div>
+                      <input type="text" id="cirugia" class="form-control">
+                </div>
+            </div>
+            <h2>Gustos Personales</h2>
+            <div class="row">
+                <h3>Deportes</h3>
+                <div class="col-md-4">
+                    <label for="futbol" class="form-label">¿Te gusta el fútbol?</label>
+                    <br>
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="futbol" id="si">
+                        <label class="form-check-label" for="si">
+                          Si
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="futbol" id="no">
+                        <label class="form-check-label" for="no">
+                          No
+                        </label>
+                      </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="futbol" class="form-label">¿Te gusta el baloncesto?</label>
+                    <br>
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="basket" id="si">
+                        <label class="form-check-label" for="si">
+                          Si
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="basket" id="no">
+                        <label class="form-check-label" for="no">
+                          No
+                        </label>
+                      </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="futbol" class="form-label">¿Te gusta el Voleibol?</label>
+                    <br>
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="voley" id="si">
+                        <label class="form-check-label" for="si">
+                          Si
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="voley" id="no">
+                        <label class="form-check-label" for="no">
+                          No
+                        </label>
+                      </div>
+                </div>
+                <h3>Bailes</h3>
+                <div class="col-md-4">
+                    <label for="futbol" class="form-label">¿Te gusta bailar salsa?</label>
+                    <br>
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="salsa" id="si">
+                        <label class="form-check-label" for="si">
+                          Si
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="salsa" id="no">
+                        <label class="form-check-label" for="no">
+                          No
+                        </label>
+                      </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="futbol" class="form-label">¿Te gusta bailar zumba?</label>
+                    <br>
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="zumba" id="si">
+                        <label class="form-check-label" for="si">
+                          Si
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="zumba" id="no">
+                        <label class="form-check-label" for="no">
+                          No
+                        </label>
+                      </div>
+                </div>
+                <div class="col-md-4">
+                    <label for="futbol" class="form-label">¿Te gusta bailar Folklor?</label>
+                    <br>
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="folklor" id="si">
+                        <label class="form-check-label" for="si">
+                          Si
+                        </label>
+                      </div>
+                      <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="folklor" id="no">
+                        <label class="form-check-label" for="no">
+                          No
+                        </label>
+                      </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <button type="reset" class=" col-5 mx-2 btn btn-lg btn-secondary">Cancelar</button>
+                <button type="submit" class=" col-5 mx-3 btn btn-lg btn-primary">Enviar</button>
+            </div>
+        </div>
+    </form>
+</div>
