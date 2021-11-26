@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Users } from '../interfaces/users';
 
 @Injectable({
   providedIn: 'root'
@@ -47,5 +48,17 @@ export class UserDataService {
 
   deletePleasures():Observable<any> {
     return this.http.delete(`${environment.hostname}/preferencias/${sessionStorage.getItem('id')}`, this.HttpUploadOptions);
+  }
+
+  updateUser(user:Users):Observable<any> {
+    return this.http.put(`${environment.hostname}/user/${sessionStorage.getItem('id')}`, user,this.HttpUploadOptions);
+  }
+
+  updateMedicalInfo(user:Users):Observable<any> {
+    return this.http.put(`${environment.hostname}/fichas/${sessionStorage.getItem('id')}`, user.infoMedica, this.HttpUploadOptions);
+  }
+
+  updatePleasures(user:Users):Observable<any> {
+    return this.http.put(`${environment.hostname}/preferencias/${sessionStorage.getItem('id')}`, user.gustos, this.HttpUploadOptions);
   }
 }

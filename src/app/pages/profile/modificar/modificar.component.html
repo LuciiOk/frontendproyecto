@@ -1,7 +1,7 @@
 <div class="container-fluid px-5 py-4 text-center" id="fondo">
     
     <form [formGroup]="formulario" (ngSubmit)="modificar()" class="needs-validation" novalidate>
-        <div class="container enjoy-css" id="formulario">
+        <div class="py-5 container" id="formulario">
             <h1>Modificar Perfil</h1>
             <div class="row">
                 <h2>Informacion Personal</h2>
@@ -27,9 +27,9 @@
                 </div>
                 <div class="col-md-6">
                     <label for="fechanacimiento" class="form-label">Fecha de nacimiento</label>
+                    <!-- <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker> -->
                     <input
-                    *ngIf="infoPersonal !== undefined"
-                    [(ngModel)]="infoPersonal.fechanacimiento"
+                    [value]="fecha"
                     [ngClass]="{ 'is-invalid': formulario.controls['fechanacimiento'].invalid && (formulario.controls['fechanacimiento'].dirty || formulario.controls['fechanacimiento'].touched),
                     'is-valid': formulario.controls['fechanacimiento'].valid && (formulario.controls['fechanacimiento'].dirty || formulario.controls['fechanacimiento'].touched)}"
                     formControlName="fechanacimiento" type="date" id="fechanacimiento" class="form-control">
@@ -76,6 +76,8 @@
                     <br>
                     <div class="form-check-inline">
                         <input
+                        *ngIf="infoMedica !== undefined"
+                        [checked]="infoMedica.enfcardiaca !== ''"
                         (click)="cambiar(true, 'enfcardiaca')"
                         class="form-check-input" type="radio" name="enfcardiaca" id="si1">
                         <label class="form-check-label" for="si1">
@@ -84,6 +86,8 @@
                       </div>
                       <div class="form-check-inline">
                         <input
+                        *ngIf="infoMedica !== undefined"
+                        [checked]="infoMedica.enfcardiaca === ''"
                         (click)="cambiar(false, 'enfcardiaca')"
                         class="form-check-input" type="radio" name="enfcardiaca" id="no1">
                         <label class="form-check-label" for="no1">
@@ -94,6 +98,7 @@
                       *ngIf="infoMedica !== undefined"
                       [(ngModel)]="infoMedica.enfcardiaca"
                       formControlName="enfcardiaca"
+                      [attr.disabled]="(infoMedica.enfcardiaca === '') ?  true : null"
                       type="text" id="enfcardiacas" class="form-control">
                 </div>
                 <div class="col-md-4">
@@ -101,6 +106,8 @@
                     <br>
                     <div class="form-check-inline">
                         <input
+                        *ngIf="infoMedica !== undefined"
+                        [checked]="infoMedica.enfrespiratorias !== ''"
                         (click)="cambiar(true, 'enfrespiratorias')"
                         class="form-check-input" type="radio" name="enfrespiratoria" id="si2">
                         <label class="form-check-label" for="si2">
@@ -109,6 +116,8 @@
                       </div>
                       <div class="form-check-inline">
                         <input
+                        *ngIf="infoMedica !== undefined"
+                        [checked]="infoMedica.enfrespiratorias === ''"
                         (click)="cambiar(false, 'enfrespiratorias')"
                         class="form-check-input" type="radio" name="enfrespiratoria" id="no2">
                         <label class="form-check-label" for="no2">
@@ -118,6 +127,7 @@
                       <input
                       *ngIf="infoMedica !== undefined"
                       [(ngModel)]="infoMedica.enfrespiratorias"
+                      [attr.disabled]="(infoMedica.enfrespiratorias === '') ?  true : null"
                       formControlName="enfrespiratorias"
                       type="text" id="enfrespiratorias" class="form-control">
                 </div>
@@ -126,6 +136,8 @@
                     <br>
                     <div class="form-check-inline">
                         <input
+                        *ngIf="infoMedica !== undefined"
+                        [checked]="infoMedica.cirugia !== ''"
                         (click)="cambiar(true, 'cirugia')"
                         class="form-check-input" type="radio" name="cirugias" id="si3">
                         <label class="form-check-label" for="si3">
@@ -134,6 +146,8 @@
                       </div>
                       <div class="form-check-inline">
                         <input
+                        *ngIf="infoMedica !== undefined"
+                        [checked]="infoMedica.cirugia === ''"
                         (click)="cambiar(false, 'cirugia')"
                         class="form-check-input" type="radio" name="cirugias" id="no4">
                         <label class="form-check-label" for="no4">
@@ -143,14 +157,17 @@
                       <input
                       *ngIf="infoMedica !== undefined"
                       [(ngModel)]="infoMedica.cirugia"
+                      [attr.disabled]="(infoMedica.cirugia === '') ?  true : null"
                       formControlName="cirugia"
                       type="text" id="cirugia" class="form-control">
                 </div>
                 <div class="col-md-6">
-                    <label for="enfcardiacas" class="form-label">¿Presenta alguna alergia?</label>
+                    <label for="alergia" class="form-label">¿Presenta alguna alergia?</label>
                     <br>
                     <div class="form-check-inline">
                         <input 
+                        *ngIf="infoMedica !== undefined"
+                        [checked]="infoMedica.alergia !== ''"
                         (click)="cambiar(true, 'alergia')"
                         class="form-check-input" type="radio" name="alergia" id="si5">
                         <label class="form-check-label" for="si5">
@@ -159,6 +176,8 @@
                       </div>
                       <div class="form-check-inline">
                         <input 
+                        *ngIf="infoMedica !== undefined"
+                        [checked]="infoMedica.alergia === ''"
                         (click)="cambiar(false, 'alergia')"
                         class="form-check-input" type="radio" name="alergia" id="no5">
                         <label class="form-check-label" for="no5">
@@ -167,15 +186,18 @@
                       </div>
                       <input
                       *ngIf="infoMedica !== undefined"
-                      [(ngModel)]="infoMedica.cirugia"
+                      [(ngModel)]="infoMedica.alergia"
+                      [attr.disabled]="(infoMedica.alergia === '') ?  true : null"
                       formControlName="alergia"
-                      type="text" id="enfcardiacas" class="form-control">
+                      type="text" id="alergia" class="form-control">
                 </div>
                 <div class="col-md-6">
-                    <label for="enfrespiratorias" class="form-label">¿Tienes enfermedades degenerativas?</label>
+                    <label for="enfdegenerativa" class="form-label">¿Tienes enfermedades degenerativas?</label>
                     <br>
                     <div class="form-check-inline">
                         <input
+                        *ngIf="infoMedica !== undefined"
+                        [checked]="infoMedica.enfdegenerativa !== ''"
                         (click)="cambiar(true, 'enfdegenerativa')"
                         class="form-check-input" type="radio" name="enfdegenerativa" id="si6">
                         <label class="form-check-label" for="si6">
@@ -184,6 +206,8 @@
                       </div>
                       <div class="form-check-inline">
                         <input 
+                        *ngIf="infoMedica !== undefined"
+                        [checked]="infoMedica.enfdegenerativa === ''"
                         (click)="cambiar(false, 'enfdegenerativa')"
                         class="form-check-input" type="radio" name="enfdegenerativa" id="no6">
                         <label class="form-check-label" for="no6">
@@ -193,8 +217,9 @@
                       <input
                       *ngIf="infoMedica !== undefined"
                       [(ngModel)]="infoMedica.enfdegenerativa"
+                      [attr.disabled]="(infoMedica.enfdegenerativa === '') ?  true : null"
                       formControlName="enfdegenerativa"
-                      type="text" id="enfrespiratorias" class="form-control">
+                      type="text" id="enfdegenerativa" class="form-control">
                 </div>
             </div>
             <h2>Gustos Personales</h2>
@@ -206,7 +231,8 @@
                     <div class="form-check-inline">
                         <input
                         *ngIf="infoGustos !== undefined"
-                        [checked]="infoGustos.futbol" value="si"
+                        [(ngModel)]="infoGustos.futbol" value="si"
+                        formControlName="futbol"
                         class="form-check-input" type="radio" name="futbol" id="si7">
                         <label class="form-check-label" for="si7">
                           Si
@@ -215,7 +241,8 @@
                       <div class="form-check-inline">
                         <input
                         *ngIf="infoGustos !== undefined"
-                        [checked]="infoGustos.futbol" value="no"
+                        [(ngModel)]="infoGustos.futbol" value="no"
+                        formControlName="futbol"
                         class="form-check-input" type="radio" name="futbol" id="no7">
                         <label class="form-check-label" for="no7">
                           No
@@ -228,7 +255,8 @@
                     <div class="form-check-inline">
                         <input
                         *ngIf="infoGustos !== undefined"
-                        [checked]="infoGustos.basket" value="si"
+                        [(ngModel)]="infoGustos.basket" value="si"
+                        formControlName="basket"
                         class="form-check-input" type="radio" name="basket" id="si8">
                         <label class="form-check-label" for="si8">
                           Si
@@ -237,7 +265,8 @@
                       <div class="form-check-inline">
                         <input
                         *ngIf="infoGustos !== undefined"
-                        [checked]="infoGustos.basket" value="no"
+                        [(ngModel)]="infoGustos.basket" value="no"
+                        formControlName="basket"
                         class="form-check-input" type="radio" name="basket" id="no8">
                         <label class="form-check-label" for="no8">
                           No
@@ -250,7 +279,8 @@
                     <div class="form-check-inline">
                         <input
                         *ngIf="infoGustos !== undefined"
-                        [checked]="infoGustos.voley" value="si"
+                        [(ngModel)]="infoGustos.voley" value="si"
+                        formControlName="voley"
                         class="form-check-input" type="radio" name="voley" id="si9">
                         <label class="form-check-label" for="si9">
                           Si
@@ -259,7 +289,8 @@
                       <div class="form-check-inline">
                         <input
                         *ngIf="infoGustos !== undefined"
-                        [checked]="infoGustos.voley" value="no"
+                        [(ngModel)]="infoGustos.voley" value="no"
+                        formControlName="voley"
                         class="form-check-input" type="radio" name="voley" id="no9">
                         <label class="form-check-label" for="no9">
                           No
@@ -273,7 +304,8 @@
                     <div class="form-check-inline">
                         <input
                         *ngIf="infoGustos !== undefined"
-                        [checked]="infoGustos.salsa" value="si"
+                        [(ngModel)]="infoGustos.salsa" value="si"
+                        formControlName="salsa"
                         class="form-check-input" type="radio" name="salsa" id="si10">
                         <label class="form-check-label" for="si10">
                           Si
@@ -282,7 +314,8 @@
                       <div class="form-check-inline">
                         <input
                         *ngIf="infoGustos !== undefined"
-                        [checked]="infoGustos.salsa" value="no"
+                        [(ngModel)]="infoGustos.salsa" value="no"
+                        formControlName="salsa"
                         class="form-check-input" type="radio" name="salsa" id="no10">
                         <label class="form-check-label" for="no10">
                           No
@@ -295,7 +328,8 @@
                     <div class="form-check-inline">
                         <input
                         *ngIf="infoGustos !== undefined"
-                        [checked]="infoGustos.zumba"
+                        [(ngModel)]="infoGustos.zumba"
+                        formControlName="zumba"
                         class="form-check-input" value="si" type="radio" name="zumba" id="si11">
                         <label class="form-check-label" for="si11">
                           Si
@@ -304,7 +338,8 @@
                       <div class="form-check-inline">
                         <input
                         *ngIf="infoGustos !== undefined"
-                        [checked]="infoGustos.zumba" 
+                        [(ngModel)]="infoGustos.zumba" 
+                        formControlName="zumba"
                         class="form-check-input" value="no" type="radio" name="zumba" id="no11">
                         <label class="form-check-label" for="no11">
                           No
@@ -317,7 +352,7 @@
                     <div class="form-check-inline">
                         <input
                         *ngIf="infoGustos !== undefined"
-                        [checked]="infoGustos.folklor" 
+                        [(ngModel)]="infoGustos.folklor"  
                         formControlName="folklor" 
                         class="form-check-input" type="radio" value="si" name="folklor" id="si12">
                         <label class="form-check-label" for="si12">
@@ -327,7 +362,8 @@
                       <div class="form-check-inline">
                         <input
                         *ngIf="infoGustos !== undefined"
-                        [checked]="infoGustos.folklor" 
+                        [(ngModel)]="infoGustos.folklor" 
+                        formControlName="folklor"
                         class="form-check-input" type="radio" value="no" name="folklor" id="no12">
                         <label class="form-check-label" for="no12">
                           No
@@ -337,8 +373,28 @@
             </div>
             <div class="col-12">
                 <button type="reset" id="cancelar" class=" col-5 mx-2 btn btn-lg btn-secondary">Cancelar</button>
-                <button type="submit" id="enviar" class=" col-5 mx-3 btn btn-lg btn-success">Enviar</button>
+                <button type="submit" [disabled]="!formulario.valid" id="enviar" class=" col-5 mx-3 btn btn-lg btn-success">Enviar</button>
             </div>
         </div>
     </form>
 </div>
+
+<ng-template #modaaa let-modal>
+  <div style="display: flex; align-items: center; flex-direction: column;">
+    <img *ngIf="error === undefined" src="../../../assets/recursos/Check.png" style="width: 25%; z-index:1;">
+    <img *ngIf="error !== undefined" src="../../../assets/recursos/error.png" style="width: 25%; z-index:1;">
+
+    <div class="modal-header" style="border-bottom: none!important;">
+      <h2 *ngIf="error === undefined" class="modal-title" >Cuenta fue modificada con éxito</h2>
+      <h2 *ngIf="error !== undefined" class="modal-title">Ha ocurrido un error!</h2>
+    </div>
+    <div class="modal-body">
+        <p *ngIf="error === undefined">Los cambios han sido guardados.</p>
+        <p *ngIf="error !== undefined" class="text-danger">{{error.error.message}}</p>
+    </div>
+    <div class="modal-footer" style="border-top: none!important;">
+      <button *ngIf="error === undefined" type="button" routerLink="/login" (click)="cerrar()" class="btn btn-primary">Entendido</button>
+      <button *ngIf="error !== undefined" type="button" class="btn btn-primary">Entendido</button>
+    </div>
+  </div>
+</ng-template>
