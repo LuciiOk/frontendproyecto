@@ -4,6 +4,7 @@ import { UserDataService } from 'src/app/service/user-data.service';
 import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { ListaPreguntas, Preguntas } from 'src/app/interfaces/preguntas';
 import { Amigo } from 'src/app/interfaces/amigo';
+import { ejercicio as ejercicios, Ejercicio } from 'src/app/interfaces/ejercicio';
 
 @Component({
   selector: 'app-game',
@@ -37,12 +38,10 @@ export class GameComponent implements OnInit {
 
   preguntas:Preguntas[] = ListaPreguntas;
   pregunta?:Preguntas;
+  ejercicios:Ejercicio[] = ejercicios;
+  ejercico?:string;
 
   constructor(private userData:UserDataService,  public modalService: NgbModal) { }
-
-  ngAfterViewInit() {
-    
-  }
 
   ngOnInit(): void {
     this.userData.getUserData().subscribe(data => {
@@ -64,7 +63,8 @@ export class GameComponent implements OnInit {
     if (this.contrincanteNombre !== undefined) {
       this.juegoEmpezado = true;
       this.modalService.open(this.juego,  {size: 'lg', backdrop: 'static'})
-      this.pregunta = this.preguntas[Math.floor(Math.random() * this.preguntas.length)]
+      this.pregunta = this.preguntas[Math.floor(Math.random() * this.preguntas.length)];
+      this.ejercico = this.ejercicios[Math.floor(Math.random() * this.ejercicios.length)].ejercicio;
       if (this.turno === 1)
         this.turno = 0;
       else 

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Preguntas } from 'src/app/interfaces/preguntas';
 
@@ -8,16 +8,40 @@ import { Preguntas } from 'src/app/interfaces/preguntas';
   styleUrls: ['./modal-game.component.scss']
 })
 export class ModalGameComponent implements OnInit {
+  @ViewChild('pregunta')
+  modalPregunta!:ElementRef;
+
   @Input()
   jugador?:string;
   @Input()
   pregunta?:Preguntas;
+  @Input()
+  ejercicio?:string;
 
+  preg?:string;
+  respuestas?:Array<string>;
   incorrecto?:boolean
+
+  timeLeft:number = 15;
+  interval:any;
 
   constructor(private modalService:NgbModal) { }
 
   ngOnInit(): void {
+    this.respuestas = this.pregunta?.respuestas.sort(() => Math.random() - 0.5);
+    this.preg = this.pregunta?.pregunta || '';
+    this.interval = setInterval(() => {
+      if(this.timeLeft > 0) {
+        this.timeLeft--;
+      } else {
+        return;
+      }
+    },1000);
+  }
+
+  siguientePaso() {
+    this.modalService.dismissAll();
+    this.modalService.open(this.modalPregunta);
   }
 
   cerrar(){
@@ -31,5 +55,4 @@ export class ModalGameComponent implements OnInit {
       this.incorrecto = true;
     }
   }
-
 }

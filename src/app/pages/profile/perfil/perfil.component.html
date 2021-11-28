@@ -88,6 +88,12 @@
             </h3>
             <p *ngIf="infoMedica !== undefined">{{infoMedica.estatura}} cm</p>
         </div>
+        <div class="col">
+            <h3>
+                IMC
+            </h3>
+            <p *ngIf="infoMedica !== undefined">{{ infoMedica.peso / infoMedica.estatura * infoMedica.estatura}}</p>
+        </div>
     </div>
     <div class="row titulo-seccion">
         <div class="col">

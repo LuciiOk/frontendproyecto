@@ -28,14 +28,17 @@
                 </div>
             </div>
             
-            <h2 id="jugadores" *ngIf="contrincanteNombre">
-                {{contrincanteNombre.nombre}}
-            </h2>
-            <button type="button" [disabled]="!juegoEmpezado" (click)="punto('contrincante')" class="o-button" tyh2e="button">
-                Puntos
-            </button>
-            <h2>Puntos: {{contrincante}}</h2>
-            <img src="../../../assets/recursos/niña2.png" style="width: 200px;" alt="contrincante">
+            <div *ngIf="contrincanteNombre">
+                <h2 id="jugadores" >
+                    {{contrincanteNombre.nombre}}
+                </h2>
+                <button type="button" [disabled]="!juegoEmpezado" (click)="punto('contrincante')" class="o-button" tyh2e="button">
+                    Puntos
+                </button>
+                <h2>Puntos: {{contrincante}}</h2>
+                <img *ngIf="contrincanteNombre.genero === 'Femenino'" src="../../../assets/recursos/niña2.png" style="width: 200px;" alt="contrincante">
+                <img *ngIf="contrincanteNombre.genero  === 'Masculino'" src="../../../assets/recursos/niño.png" style="width: 200px;" alt="contrincante">
+            </div>
         </div>
     </div>
 </div>
@@ -47,11 +50,13 @@
 <ng-template #juego let-modal>
     <app-modal-game
      *ngIf="turno == 1 && jugador !==undefined && pregunta !== undefined"
-      [jugador]="jugador.nombre" [pregunta]="pregunta"></app-modal-game>
+      [jugador]="jugador.nombre" [pregunta]="pregunta" [ejercicio]="ejercico"></app-modal-game>
 
     <app-modal-game *ngIf="turno == 0 && contrincanteNombre !==undefined"
      [jugador]="contrincanteNombre.nombre" 
-     [pregunta]="pregunta"></app-modal-game>
+     [pregunta]="pregunta"
+     [ejercicio]="ejercico"
+     ></app-modal-game>
 </ng-template>
 
 <ng-template #presentacion let-modal>
