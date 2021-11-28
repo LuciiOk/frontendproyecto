@@ -47,7 +47,6 @@ export class GameComponent implements OnInit {
     this.userData.getUserData().subscribe(data => {
       this.jugador = data[0];
       this.modalService.open(this.modal, {size: 'lg', backdrop: 'static'});
-      console.log(this.jugador)
     }, err => {
       console.log('Ha ocurrido un error!')
     });
