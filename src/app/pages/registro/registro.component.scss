@@ -1,8 +1,15 @@
 $textcolor: #01255b;
+$text: Airbnb Cereal App Medium;
 
 * {
-  font-family: Airbnb Cereal App Medium;
+  font-family: $text;
 } 
+
+label {
+  font-family: $text;
+  color: $textcolor;
+  font-size: 16px;
+}
 
 input, select {
   padding: 9px;

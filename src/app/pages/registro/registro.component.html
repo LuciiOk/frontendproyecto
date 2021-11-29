@@ -21,7 +21,7 @@
                   <ng-template matStepLabel>
                     <p>Información personal</p>
                   </ng-template>
-                  <div class="col-sm-3">
+                    <div class="col-md-4">
                     <label>Nombre</label>
                     <input
                       type="text"
@@ -40,7 +40,7 @@
 
                   </div>
                   
-                  <div class="col-sm-3">
+                  <div class="col-md-4">
                     <label>Contraseña</label>
                     <input
                       type="password"
@@ -58,7 +58,7 @@
                     </div>
                   </div>
                     
-                  <div class="col-sm-4">
+                  <div class="col-md-4">
                     <label>Correo Electronico</label>
                     <input
                       type="email"
@@ -76,7 +76,7 @@
                   </div>
 
 
-                  <div class="col-sm-3">
+                  <div class="col-md-6">
                     <label>fecha nacimiento</label>
                     <input
                       type="date"
@@ -95,7 +95,7 @@
 
                   </div>
                   
-                  <div class="col-sm-2">
+                  <div class="col-md-6">
                     <label>genero</label>
                     <select class="form-select" id="specificSizeSelect" formControlName="genero"
                     [ngClass]="{ 'is-invalid': stepOne.controls['genero'].invalid && (stepOne.controls['genero'].dirty || stepOne.controls['genero'].touched),'is-valid': stepOne.controls['genero'].valid && (stepOne.controls['genero'].dirty || stepOne.controls['genero'].touched)}" 
@@ -135,7 +135,7 @@
                 </ng-template>
 
                
-                <div class="col-sm-2">
+                <div class="col-md-6">
                   <label>Estatura(cm)</label>
                   <input
                     type="text"
@@ -153,7 +153,7 @@
                   </div>
 
                 </div>
-                <div class="col-sm-2">
+                <div class="col-md-6">
                   <label>Peso (kg) </label>
                   <select class="form-select" id="specificSizeSelect" formControlName="peso"
                   [ngClass]="{ 'is-invalid': stepTwo.controls['peso'].invalid && (stepTwo.controls['peso'].dirty || stepTwo.controls['peso'].touched),
@@ -173,17 +173,17 @@
 
                 </div>
                 <h2>Comorbilidades</h2>
-                <div class="col-4">
+                <div class="col-lg-4">
                   
                   <div ><label>¿Presenta en enfermedades cardiacas?</label></div>
                   <div class="d-flex justify-content-around align-items-center">
                     <div class="form-check">
-                      <input name="inlineCheckbox1" class="form-check-input" type="radio" id="inlineCheckbox1" value="si" 
+                      <input (click)="click('enfcardiaca', true)" name="inlineCheckbox1" class="form-check-input" type="radio" id="inlineCheckbox1" value="si" 
                       >
                       <label class="form-check-label" for="inlineCheckbox1">Si</label>
                     </div>
                     <div class="form-check">
-                      <input name="inlineCheckbox1" class="form-check-input" type="radio" id="inlineCheckbox2" value="no" checked
+                      <input (click)="click('enfcardiaca', false)" name="inlineCheckbox1" class="form-check-input" type="radio" id="inlineCheckbox2" value="no" checked
                         >
                       <label for="inlineCheckbox2" class="form-check-label">No</label>
                     </div>
@@ -192,73 +192,73 @@
                  
                 </div>
 
-                <div  class="col-4">
+                <div  class="col-lg-4">
                     <div><label>¿Presenta en enfermedades Respiratorias?</label></div>
                     <div class="d-flex justify-content-around align-items-center">
                     <div class="form-check">
-                      <input  name="inlineCheckbox2" class="form-check-input" type="radio" id="inlineCheckbox3" value="si">
+                      <input (click)="click('enfrespiratorias', true)"  name="inlineCheckbox2" class="form-check-input" type="radio" id="inlineCheckbox3" value="si">
                       <label  for="inlineCheckbox3" class="form-check-label">Si</label>
                     </div>
                     <div class="form-check">
-                      <input  name="inlineCheckbox2" class="form-check-input" type="radio" id="inlineCheckbox4" value="no" checked
+                      <input (click)="click('enfrespiratorias', false)"  name="inlineCheckbox2" class="form-check-input" type="radio" id="inlineCheckbox4" value="no" checked
                         >
                       <label for="inlineCheckbox4" class="form-check-label" >No</label>
                     </div>
                     <input type="text" formControlName="enfrespiratorias" class="form-control" placeholder="Cuales" style="width: 50%;"/>
                   </div>
                   </div>
-                  <div class="col-4">
+                  <div class="col-lg-4">
                     <div><label>¿Has tenido alguna cirugía?</label></div>
                     <div class="d-flex justify-content-around align-items-center">
                     <div class="form-check">
-                      <input  name="inlineCheckbox3" class="form-check-input" type="radio" id="inlineCheckbox5" value="si" >
+                      <input (click)="click('cirugia', true)"  name="inlineCheckbox3" class="form-check-input" type="radio" id="inlineCheckbox5" value="si" >
                       <label class="form-check-label" for="inlineCheckbox5">Si</label>
                     </div>
                     <div class="form-check">
-                      <input name="inlineCheckbox3" class="form-check-input" type="radio" id="inlineCheckbox6" value="no" checked
+                      <input (click)="click('cirugia', false)" name="inlineCheckbox3" class="form-check-input" type="radio" id="inlineCheckbox6" value="no" checked
                         >
                       <label class="form-check-label" for="inlineCheckbox6">No</label>
                     </div>
                     <input type="text" formControlName="cirugia" class="form-control" placeholder="Cuales" style="width: 50%;"/>
                   </div>
                   </div>
-                  <div class="col-4">
+                  <div class="col-lg-4">
                     <div><label>¿Tienes alguna alergia?</label></div>
                     <div class="d-flex justify-content-around align-items-center">
                     <div class="form-check">
-                      <input  name="inlineCheckbox4" class="form-check-input" type="radio" id="inlineCheckbox7" value="si">
+                      <input (click)="click('alergia', true)"  name="inlineCheckbox4" class="form-check-input" type="radio" id="inlineCheckbox7" value="si">
                       <label class="form-check-label" for="inlineCheckbox7">Si</label>
                     </div>
                     <div class="form-check">
-                      <input  name="inlineCheckbox4" class="form-check-input" type="radio" id="inlineCheckbox8" value="no" checked>
+                      <input (click)="click('alergia', false)"  name="inlineCheckbox4" class="form-check-input" type="radio" id="inlineCheckbox8" value="no" checked>
                       <label class="form-check-label" for="inlineCheckbox8">No</label>
                     </div>
                     <input type="text" formControlName="alergia" class="form-control" placeholder="Cuales" style="width: 50%;"/>
                   </div>
                   </div>
-                  <div class="col-4">
+                  <div class="col-lg-4">
                     <div><label>¿Tienes enfermedades degenerativas?</label></div>
                     <div class="d-flex justify-content-around align-items-center">
                     <div class="form-check">
-                      <input name="degenerativas" class="form-check-input" type="radio" id="inlineCheckbox9" value="si">
+                      <input (click)="click('enfdegenerativa', true)" name="degenerativas" class="form-check-input" type="radio" id="inlineCheckbox9" value="si">
                       <label class="form-check-label" for="inlineCheckbox9">Si</label>
                     </div>
                     <div class="form-check">
-                      <input  name="degenerativas" class="form-check-input" type="radio" id="inlineCheckbox10" value="no" checked>
+                      <input (click)="click('enfdegenerativa', false)"  name="degenerativas" class="form-check-input" type="radio" id="inlineCheckbox10" value="no" checked>
                       <label class="form-check-label" for="inlineCheckbox10">No</label>
                     </div>
                     <input type="text" formControlName="enfdegenerativa" class="form-control" placeholder="Cuales" style="width: 50%;"/>
                   </div>
                   </div>
-                  <div class="col-4">
+                  <div class="col-lg-4">
                     <div><label>¿Has tenido alguna cirugía?</label></div>
                     <div class="d-flex justify-content-around align-items-center">
                     <div class="form-check">
-                      <input  name="inlineCheckbox6" class="form-check-input" type="radio" id="inlineCheckbox11" value="si">
+                      <input (click)="click('cirugia2', false)"  name="inlineCheckbox6" class="form-check-input" type="radio" id="inlineCheckbox11" value="si">
                       <label class="form-check-label" for="inlineCheckbox11">Si</label>
                     </div>
                     <div class="form-check">
-                      <input  name="inlineCheckbox6" class="form-check-input" type="radio" id="inlineCheckbox12" value="no" checked>
+                      <input (click)="click('cirugia2', false)"  name="inlineCheckbox6" class="form-check-input" type="radio" id="inlineCheckbox12" value="no" checked>
                       <label class="form-check-label" for="inlineCheckbox12">No</label>
                     </div>
                     <input type="text" formControlName="cirugia2" class="form-control" placeholder="Cuales" style="width: 50%;"/>
@@ -274,7 +274,7 @@
                   </button>
                 </div>
                 <div class="col-sm-6" style="text-align: end; margin-top: 20px">
-                  <button  type="button" class="btn btn-primary" matStepperNext>
+                  <button  type="button" class="float-right btn btn-primary" matStepperNext>
                     Siguiente
                   </button>
                 </div>
@@ -292,7 +292,7 @@
                     <p>Gustos personales</p>
                   </ng-template>
                     
-                    <div class="col-4">
+                    <div class="col-md-4">
                         <div><label>¿Te gusta el fútbol?</label></div>
                         <div class="d-flex justify-content-around align-items-center">
                         <div class="form-check">
@@ -305,7 +305,7 @@
                         </div>
                       </div>
                       </div>
-                      <div class="col-4">
+                      <div class="col-md-4">
                         <div><label>¿Te gusta el baloncesto?</label></div>
                         <div class="d-flex justify-content-around align-items-center">
                         <div class="form-check">
@@ -318,7 +318,7 @@
                         </div>
                       </div>
                       </div>
-                      <div class="col-4">
+                      <div class="col-md-4">
                         <div><label>¿Te gusta el Voleibol?</label></div>
                         <div class="d-flex justify-content-around align-items-center">
                         <div class="form-check">
@@ -332,7 +332,7 @@
                       </div>
                       </div>
                       <h2>Baile</h2>
-                      <div class="col-4">
+                      <div class="col-md-4">
                           <div><label>¿Te gusta bailar salsa?</label></div>
                           <div class="d-flex justify-content-around align-items-center">
                           <div class="form-check">
@@ -345,7 +345,7 @@
                           </div>
                         </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                           <div><label>¿Te gusta bailar zumba?</label></div>
                           <div class="d-flex justify-content-around align-items-center">
                           <div class="form-check">
@@ -358,7 +358,7 @@
                           </div>
                         </div>
                         </div>
-                        <div class="col-4">
+                        <div class="col-md-4">
                           <div><label>¿Te gusta bailar folklor?</label></div>
                           <div class="d-flex justify-content-around align-items-center">
                           <div class="form-check">
@@ -381,7 +381,7 @@
                       </button>
                     </div>
                     <div class="col-sm-6" style="text-align: end; margin-top: 20px">
-                        <button (click)="registrar()"  type="button" class="btn btn-primary">
+                        <button (click)="registrar()"  type="button" class="float-right btn btn-primary">
                             Terminar
                           </button>
                     </div>

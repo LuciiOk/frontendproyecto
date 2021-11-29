@@ -50,6 +50,12 @@ export class RegistroComponent implements OnInit {
       degenerativas: ['no']
     });
 
+    this.stepTwo.controls['enfcardiaca'].disable();
+    this.stepTwo.controls['alergia'].disable();
+    this.stepTwo.controls['enfrespiratorias'].disable();
+    this.stepTwo.controls['cirugia'].disable();
+    this.stepTwo.controls['enfdegenerativa'].disable();
+
     this.stepThree = builder.group({
       futbol:['no',[Validators.required]],
       basket:['no',[Validators.required]],
@@ -86,6 +92,15 @@ export class RegistroComponent implements OnInit {
       this.errorMessage = error.error.message;
     });
     this.modal.open(this.modall, {backdrop: 'static'})
+  }
+
+  click(value:string, active:boolean) {
+    if (active === false) {
+      this.stepTwo.controls[value].reset();
+      this.stepTwo.controls[value].disable();
+      return;
+    }
+    this.stepTwo.controls[value].enable();
   }
 
   cerrar() {
