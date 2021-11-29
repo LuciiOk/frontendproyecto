@@ -5,6 +5,12 @@ $text: Airbnb Cereal App Medium;
   font-family: $text;
 } 
 
+h2 {
+  font-family: $text;
+  color: $textcolor;
+  font-size: 24px;
+}
+
 label {
   font-family: $text;
   color: $textcolor;
