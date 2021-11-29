@@ -33,8 +33,6 @@ export class ModalGameComponent implements OnInit {
     this.interval = setInterval(() => {
       if(this.timeLeft > 0) {
         this.timeLeft--;
-      } else {
-        return;
       }
     },1000);
   }
