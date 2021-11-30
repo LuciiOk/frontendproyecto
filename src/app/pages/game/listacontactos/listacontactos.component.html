@@ -8,13 +8,18 @@
   </div>
 </div>
 <div class="modal-body">
-  <div class="row justify-content-center">
-      <div id="amigo" class="col-3 mx-2 my-1 text-center" *ngFor="let amigo of listaAmigos">
+  <div  class="row justify-content-center">
+      <div *ngIf="listaAmigos !== undefined && listaAmigos.length !== 0">
+        <div  id="amigo" class="col-3 mx-2 my-1 text-center" *ngFor="let amigo of listaAmigos">
           <button  id="add" (click)="selectAmigo(amigo)">
             <img *ngIf="amigo.genero === 'Femenino'" src="../../../../assets/recursos/ninia.svg" alt="ninia">
             <img *ngIf="amigo.genero !== 'Femenino'" src="../../../../assets/recursos/ninio.svg" alt="">
               {{amigo.nombre}} +
           </button>
+        </div>
+      </div>
+      <div *ngIf="listaAmigos !== undefined && listaAmigos.length === 0">
+        <button id="add" (click)="add()">Agregar Amigo</button>
       </div>
   </div>
 </div>
